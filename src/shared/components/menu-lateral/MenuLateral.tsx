@@ -23,6 +23,7 @@ import SettingsIcon from "@mui/icons-material/Settings"; // Para "Settings"
 import HelpCenterIcon from "@mui/icons-material/HelpCenter"; // Para "Help Center"
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import SmallStatistic from "../Small_Statistic/SmallStatistic";
 
 export const MenuLateral: React.FC = () => {
   // const theme = useTheme();
@@ -52,7 +53,6 @@ export const MenuLateral: React.FC = () => {
       <CssBaseline />
       <Toolbar
         sx={{
-          display: "flex",
           flexDirection: "column",
           width: 240,
           height: "80vh",
@@ -61,6 +61,7 @@ export const MenuLateral: React.FC = () => {
           marginLeft: 2,
           borderRadius: 8,
           paddingBottom: 1,
+          display: { xs: "none", sm: "block" },
         }}
       >
         <List>
@@ -138,6 +139,7 @@ export const MenuLateral: React.FC = () => {
             </Typography>
           </Box>
         </Stack>
+        <SmallStatistic />
       </Box>
     </Box>
   );
