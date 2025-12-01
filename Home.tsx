@@ -1,5 +1,4 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box } from "@mui/material";
 import { Navbar } from "./src/shared/components/navbar/Navbar";
 import { MenuLateral } from "./src/shared/components/menu-lateral/MenuLateral";
 

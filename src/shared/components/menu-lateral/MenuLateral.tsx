@@ -1,8 +1,6 @@
 import {
   Box,
-  Button,
   CssBaseline,
-  Drawer,
   IconButton,
   List,
   ListItem,
@@ -12,15 +10,14 @@ import {
   Stack,
   Toolbar,
   Typography,
-  useTheme,
 } from "@mui/material";
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import PeopleIcon from "@mui/icons-material/People"; // Para "Customer"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"; // Para "Product"
-import BarChartIcon from "@mui/icons-material/BarChart"; // Para "Reports"
-import SettingsIcon from "@mui/icons-material/Settings"; // Para "Settings"
-import HelpCenterIcon from "@mui/icons-material/HelpCenter"; // Para "Help Center"
+import PeopleIcon from "@mui/icons-material/People";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import SettingsIcon from "@mui/icons-material/Settings";
+import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SmallStatistic from "../Small_Statistic/SmallStatistic";
