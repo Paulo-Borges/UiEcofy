@@ -58,7 +58,7 @@ export const MenuLateral: React.FC = () => {
           marginLeft: 2,
           borderRadius: 8,
           paddingBottom: 1,
-          display: { xs: "none", sm: "block" },
+          display: { xs: "none", sm: "flex" },
         }}
       >
         <List>
