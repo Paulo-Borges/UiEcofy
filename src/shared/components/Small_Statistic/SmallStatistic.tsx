@@ -19,9 +19,9 @@ export default function SmallStatistic() {
         <Box
           sx={{
             backgroundColor: "#ffffff",
-            p: 2,
+            padding: 2,
             borderRadius: 2,
-            height: 155,
+            height: 170,
             width: 270,
           }}
         >
@@ -72,7 +72,7 @@ export default function SmallStatistic() {
             backgroundColor: "#ffffff",
             p: 2,
             borderRadius: 2,
-            height: 155,
+            height: 170,
             width: 270,
           }}
         >
@@ -123,7 +123,7 @@ export default function SmallStatistic() {
             backgroundColor: "#ffffff",
             p: 2,
             borderRadius: 2,
-            height: 155,
+            height: 170,
             width: 270,
           }}
         >
@@ -174,7 +174,7 @@ export default function SmallStatistic() {
             backgroundColor: "#ffffff",
             p: 2,
             borderRadius: 2,
-            height: 155,
+            height: 170,
             width: 270,
           }}
         >
