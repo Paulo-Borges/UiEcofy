@@ -1,6 +1,7 @@
-import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
+import { Avatar, Box, IconButton, Typography } from "@mui/material";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Transactions from "../transactions/Transactions";
 
 export default function Statistic() {
   return (
@@ -115,6 +116,7 @@ export default function Statistic() {
             sx={{ width: "100%", height: "auto", backgroundColor: "#ffffff" }}
           ></Avatar>
         </Box>
+        <Transactions />
       </Box>
       <Box>TOP Category</Box>
     </Box>
