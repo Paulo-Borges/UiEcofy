@@ -21,6 +21,7 @@ import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SmallStatistic from "../Small_Statistic/SmallStatistic";
+import Statistic from "../statistic/Statistic";
 
 export const MenuLateral: React.FC = () => {
   // const theme = useTheme();
@@ -137,6 +138,7 @@ export const MenuLateral: React.FC = () => {
           </Box>
         </Stack>
         <SmallStatistic />
+        <Statistic />
       </Box>
     </Box>
   );
