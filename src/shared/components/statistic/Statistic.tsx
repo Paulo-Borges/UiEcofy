@@ -19,6 +19,7 @@ export default function Statistic() {
           sx={{
             display: "flex",
             width: "100%",
+            // width: { xs: "100%", md: "100%" },
             justifyContent: "space-between",
             backgroundColor: "#ffffff",
             borderRadius: 2,
@@ -113,7 +114,11 @@ export default function Statistic() {
             alt="Grafico de estatísticas"
             src="../../../src/assets/Body.png"
             variant="square"
-            sx={{ width: "100%", height: "auto", backgroundColor: "#ffffff" }}
+            sx={{
+              width: "100%",
+              height: "auto",
+              backgroundColor: "#ffffff",
+            }}
           ></Avatar>
         </Box>
         <Transactions />

@@ -60,7 +60,7 @@ const rows = [
 export default function TransactionsTable() {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="table">
+      <Table sx={{ width: { xs: "80%", md: "100%" } }} aria-label="table">
         <TableHead>
           {/* 1ª linha, linha de cabeçalho  */}
           <TableRow>
