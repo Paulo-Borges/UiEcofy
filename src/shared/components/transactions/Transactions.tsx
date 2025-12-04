@@ -17,7 +17,7 @@ export default function Transactions() {
         sx={{
           display: "flex",
           width: "100%",
-          // width: { xs: "100%", md: "100%" },
+          // width: { xs: "80%", sm: "100%", md: "100%" },
           justifyContent: "space-between",
           backgroundColor: "#ffffff",
           borderRadius: 2,

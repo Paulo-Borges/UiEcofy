@@ -60,14 +60,22 @@ const rows = [
 export default function TransactionsTable() {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ width: { xs: "80%", md: "100%" } }} aria-label="table">
+      <Table
+        sx={{ width: { xs: "60%", sm: "80%", md: "100%" } }}
+        aria-label="table"
+      >
         <TableHead>
           {/* 1ª linha, linha de cabeçalho  */}
           <TableRow>
             <TableCell>Product</TableCell>
             <TableCell align="right">Customer</TableCell>
             <TableCell align="right">Total</TableCell>
-            <TableCell align="right">Status</TableCell>
+            <TableCell
+              align="right"
+              sx={{ display: { xs: "none", sm: "flex" } }}
+            >
+              Status
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -81,7 +89,12 @@ export default function TransactionsTable() {
                 {row.email}
               </TableCell>
               <TableCell align="right">{row.total}</TableCell>
-              <TableCell align="right">{row.status}</TableCell>
+              <TableCell
+                align="right"
+                sx={{ display: { xs: "none", sm: "flex" } }}
+              >
+                {row.status}
+              </TableCell>
               {/* <TableCell align="right">{row.protein}</TableCell> */}
             </TableRow>
           ))}
