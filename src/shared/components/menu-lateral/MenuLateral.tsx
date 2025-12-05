@@ -117,7 +117,11 @@ export const MenuLateral: React.FC = () => {
               Welcome Back, Marcus
             </Typography>
           </Box>
-          <Box>
+          <Box
+            sx={{
+              marginRight: { sm: 0, md: 4 },
+            }}
+          >
             <Typography
               sx={{
                 marginBottom: 2,
