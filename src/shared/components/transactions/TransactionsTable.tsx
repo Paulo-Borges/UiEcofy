@@ -10,17 +10,21 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 function createData(
+  id: number,
+  image: string,
   name: string,
   customer: string,
   email: string,
   total: number,
   status: string
 ) {
-  return { name, customer, email, total, status };
+  return { id, image, name, customer, email, total, status };
 }
 
 const rows = [
   createData(
+    1,
+    "../../../src/assets/senuGalaxy.png",
     "Senu Galaxy",
     "John Bushmill",
     "Johnb@mail.com",
@@ -28,6 +32,8 @@ const rows = [
     "Processing"
   ),
   createData(
+    2,
+    "../../../src/assets/yarmin13Pro.png",
     "Yarmin 13 Pro",
     "Ilham Budi Agung",
     "ilahmbudi@mail.com",
@@ -35,6 +41,8 @@ const rows = [
     "Processing"
   ),
   createData(
+    3,
+    "../../../src/assets/sinod12.png",
     "Sino D12 Mini S...",
     "Mohammad Karim",
     "m_karim@mail.com",
@@ -42,6 +50,8 @@ const rows = [
     "Canceled"
   ),
   createData(
+    4,
+    "../../../src/assets/Ekia.png",
     "Ekia eFutur Rac...",
     "Linda Blair",
     "lindablair@mail.com",
@@ -49,6 +59,8 @@ const rows = [
     "Shipping"
   ),
   createData(
+    5,
+    "../../../src/assets/EkiaChair.png",
     "Ekia Chair",
     "Josh Adam  ",
     "josh_adam@mail.com",
@@ -64,7 +76,7 @@ export default function TransactionsTable() {
         sx={{ width: { xs: "60%", sm: "80%", md: "100%" } }}
         aria-label="table"
       >
-        <TableHead>
+        <TableHead sx={{ backgroundColor: "#f8f8fa" }}>
           {/* 1ª linha, linha de cabeçalho  */}
           <TableRow>
             <TableCell>Product</TableCell>
@@ -80,13 +92,24 @@ export default function TransactionsTable() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.name}>
+            <TableRow key={row.id}>
+              <Box>
+                <img
+                  src={row.image}
+                  alt={row.name}
+                  style={{ width: 50, marginRight: 16 }}
+                />
+              </Box>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
               <TableCell align="right" sx={{}}>
-                {row.customer}
-                {row.email}
+                <Box
+                  sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
+                >
+                  {row.customer}
+                  {row.email}
+                </Box>
               </TableCell>
               <TableCell align="right">{row.total}</TableCell>
               <TableCell
