@@ -80,14 +80,17 @@ export default function TransactionsTable() {
         <TableHead sx={{ backgroundColor: "#f8f8fa" }}>
           {/* 1ª linha, linha de cabeçalho  */}
           <TableRow>
-            <TableCell align="right">
+            <TableCell align="right" sx={{ width: 50 }}>
               Product
               <IconButton>
                 <KeyboardArrowDownIcon />
               </IconButton>
             </TableCell>
             <TableCell align="right">Customer</TableCell>
-            <TableCell align="right">
+            <TableCell
+              align="right"
+              sx={{ display: { xs: "none", sm: "flex" } }}
+            >
               Total
               <IconButton>
                 <KeyboardArrowDownIcon />
@@ -127,7 +130,12 @@ export default function TransactionsTable() {
                   {row.email}
                 </Box>
               </TableCell>
-              <TableCell align="right">{row.total}</TableCell>
+              <TableCell
+                align="right"
+                sx={{ display: { xs: "none", sm: "flex" } }}
+              >
+                {row.total}
+              </TableCell>
               <TableCell
                 align="right"
                 sx={{ display: { xs: "none", sm: "flex" } }}
