@@ -96,6 +96,7 @@ export default function Statistic() {
             <Box
               sx={{
                 border: "1px solid",
+                padding: "14px 8px",
                 display: { xs: "none", md: "flex" },
                 borderColor: "#cdcac7",
                 borderRadius: 4,
