@@ -1,6 +1,5 @@
 import { Typography, Box, Stack, IconButton } from "@mui/material";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import DoneAllIcon from "@mui/icons-material/DoneAll";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 

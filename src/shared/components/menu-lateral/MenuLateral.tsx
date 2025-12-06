@@ -90,8 +90,10 @@ export const MenuLateral: React.FC = () => {
           <Typography sx={{ fontWeight: "semiBold", fontSize: 12 }}>
             Add New Product
           </Typography>
-          <Typography sx={{ fontSize: 8 }}>
-            Or use <span color="#f68605">invite link</span>
+          <Typography
+            sx={{ fontSize: 8, display: "flex", textAlign: "center" }}
+          >
+            Or use <Box color="#f68605">invite link</Box>
           </Typography>
         </Stack>
       </Toolbar>
