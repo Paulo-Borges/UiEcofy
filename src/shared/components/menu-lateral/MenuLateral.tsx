@@ -2,6 +2,7 @@ import {
   Box,
   CssBaseline,
   IconButton,
+  Link,
   List,
   ListItem,
   ListItemButton,
@@ -24,21 +25,19 @@ import SmallStatistic from "../Small_Statistic/SmallStatistic";
 import Statistic from "../statistic/Statistic";
 
 export const MenuLateral: React.FC = () => {
-  // const theme = useTheme();
-  // const drawerWidth = 240;
-
   interface INavItems {
+    id: number;
     text: string;
     icon: React.ReactNode;
   }
 
   const navItems: INavItems[] = [
-    { text: "Dashboard", icon: <DashboardIcon /> },
-    { text: "Customer", icon: <PeopleIcon /> },
-    { text: "Product", icon: <ShoppingCartIcon /> },
-    { text: "Reports", icon: <BarChartIcon /> },
-    { text: "Settings", icon: <SettingsIcon /> },
-    { text: "Help Center", icon: <HelpCenterIcon /> },
+    { id: 1, text: "Dashboard", icon: <DashboardIcon /> },
+    { id: 2, text: "Customer", icon: <PeopleIcon /> },
+    { id: 3, text: "Product", icon: <ShoppingCartIcon /> },
+    { id: 4, text: "Reports", icon: <BarChartIcon /> },
+    { id: 5, text: "Settings", icon: <SettingsIcon /> },
+    { id: 6, text: "Help Center", icon: <HelpCenterIcon /> },
   ];
 
   return (
@@ -93,7 +92,16 @@ export const MenuLateral: React.FC = () => {
           <Typography
             sx={{ fontSize: 8, display: "flex", textAlign: "center" }}
           >
-            Or use <Box color="#f68605">invite link</Box>
+            Or use
+            <Link
+              href="https://github.com/Paulo-Borges"
+              target="_blank"
+              rel="noopener noreferrer"
+              underline="none"
+              color="#f68605"
+            >
+              invite link
+            </Link>
           </Typography>
         </Stack>
       </Toolbar>
@@ -139,7 +147,7 @@ export const MenuLateral: React.FC = () => {
               <IconButton sx={{ color: "#545454" }}>
                 <CalendarMonthIcon />
               </IconButton>
-              05 Dez 10:12 AM
+              06 Dez 10:12 AM
             </Typography>
           </Box>
         </Stack>

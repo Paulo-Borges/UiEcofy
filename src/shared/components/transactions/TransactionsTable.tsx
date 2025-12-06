@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 function createData(
   id: number,
@@ -79,14 +80,29 @@ export default function TransactionsTable() {
         <TableHead sx={{ backgroundColor: "#f8f8fa" }}>
           {/* 1ª linha, linha de cabeçalho  */}
           <TableRow>
-            <TableCell>Product</TableCell>
+            <TableCell align="right">
+              Product
+              <IconButton>
+                <KeyboardArrowDownIcon />
+              </IconButton>
+            </TableCell>
             <TableCell align="right">Customer</TableCell>
-            <TableCell align="right">Total</TableCell>
+            <TableCell align="right">
+              Total
+              <IconButton>
+                <KeyboardArrowDownIcon />
+              </IconButton>
+            </TableCell>
             <TableCell
               align="right"
               sx={{ display: { xs: "none", sm: "flex" } }}
             >
               Status
+            </TableCell>
+            <TableCell>
+              <IconButton>
+                <KeyboardArrowDownIcon />
+              </IconButton>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -97,7 +113,7 @@ export default function TransactionsTable() {
                 <img
                   src={row.image}
                   alt={row.name}
-                  style={{ width: 50, marginRight: 16 }}
+                  style={{ width: 50, marginLeft: 16, paddingTop: 18 }}
                 />
               </Box>
               <TableCell component="th" scope="row">
