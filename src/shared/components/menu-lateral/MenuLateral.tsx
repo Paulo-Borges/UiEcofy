@@ -147,7 +147,7 @@ export const MenuLateral: React.FC = () => {
               <IconButton sx={{ color: "#545454" }}>
                 <CalendarMonthIcon />
               </IconButton>
-              06 Dez 10:12 AM
+              08 Dez2025, 10:12 AM
             </Typography>
           </Box>
         </Stack>

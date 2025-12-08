@@ -1,25 +1,20 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Divider, IconButton, Stack, Typography } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { TableSortLabel } from "@mui/material";
 
 function createData(
   id: number,
   image: string,
   name: string,
   customer: string,
-  email: string,
   total: number,
   status: string
 ) {
-  return { id, image, name, customer, email, total, status };
+  return { id, image, name, customer, total, status };
 }
 
 const rows = [
@@ -28,7 +23,6 @@ const rows = [
     "../../../src/assets/senuGalaxy.png",
     "Senu Galaxy",
     "John Bushmill",
-    "Johnb@mail.com",
     121.08,
     "Processing"
   ),
@@ -37,7 +31,6 @@ const rows = [
     "../../../src/assets/yarmin13Pro.png",
     "Yarmin 13 Pro",
     "Ilham Budi Agung",
-    "ilahmbudi@mail.com",
     590.15,
     "Processing"
   ),
@@ -46,7 +39,6 @@ const rows = [
     "../../../src/assets/sinod12.png",
     "Sino D12 Mini S...",
     "Mohammad Karim",
-    "m_karim@mail.com",
     125.25,
     "Canceled"
   ),
@@ -55,7 +47,6 @@ const rows = [
     "../../../src/assets/Ekia.png",
     "Ekia eFutur Rac...",
     "Linda Blair",
-    "lindablair@mail.com",
     148.45,
     "Shipping"
   ),
@@ -64,7 +55,6 @@ const rows = [
     "../../../src/assets/EkiaChair.png",
     "Ekia Chair",
     "Josh Adam  ",
-    "josh_adam@mail.com",
     81.99,
     "Delivered"
   ),
@@ -72,81 +62,106 @@ const rows = [
 
 export default function TransactionsTable() {
   return (
-    <TableContainer component={Paper}>
-      <Table
+    <Stack component={Paper}>
+      <Box
         sx={{ width: { xs: "60%", sm: "80%", md: "100%" } }}
         aria-label="table"
       >
-        <TableHead sx={{ backgroundColor: "#f8f8fa" }}>
+        <Stack sx={{ backgroundColor: "#f8f8fa", padding: 2, paddingLeft: 4 }}>
           {/* 1ª linha, linha de cabeçalho  */}
-          <TableRow>
-            <TableCell align="right" sx={{ width: 50 }}>
-              Product
+          <TableRow sx={{ display: "flex", gap: { sm: 20, md: 8 } }}>
+            <TableSortLabel>
+              <Typography>Product</Typography>
               <IconButton>
                 <KeyboardArrowDownIcon />
               </IconButton>
-            </TableCell>
-            <TableCell align="right">Customer</TableCell>
-            <TableCell
-              align="right"
-              sx={{ display: { xs: "none", sm: "flex" } }}
+            </TableSortLabel>
+
+            <TableSortLabel sx={{ marginLeft: 6, marginRight: 6 }}>
+              <Typography>Customer</Typography>
+            </TableSortLabel>
+
+            <TableSortLabel
+              sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
             >
-              Total
+              <Typography>Total</Typography>
               <IconButton>
                 <KeyboardArrowDownIcon />
               </IconButton>
-            </TableCell>
-            <TableCell
-              align="right"
-              sx={{ display: { xs: "none", sm: "flex" } }}
+            </TableSortLabel>
+
+            <TableSortLabel
+              sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
             >
-              Status
-            </TableCell>
-            <TableCell>
+              <Typography>Status</Typography>
               <IconButton>
                 <KeyboardArrowDownIcon />
               </IconButton>
-            </TableCell>
+            </TableSortLabel>
+
+            {/* <TableSortLabel>
+              <IconButton>
+                <KeyboardArrowDownIcon />
+              </IconButton>
+            </TableSortLabel> */}
           </TableRow>
-        </TableHead>
-        <TableBody>
+        </Stack>
+        <Box>
           {rows.map((row) => (
-            <TableRow key={row.id}>
+            <TableRow
+              key={row.id}
+              sx={{
+                display: "flex",
+                alignContent: "center",
+                justifyItems: "end",
+                gap: 5,
+              }}
+            >
               <Box>
                 <img
                   src={row.image}
                   alt={row.name}
-                  style={{ width: 50, marginLeft: 16, paddingTop: 18 }}
+                  style={{
+                    width: 50,
+                    marginTop: 16,
+                    marginLeft: 16,
+                    paddingTop: 1,
+                  }}
                 />
               </Box>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right" sx={{}}>
-                <Box
-                  sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
-                >
-                  {row.customer}
-                  {row.email}
-                </Box>
-              </TableCell>
-              <TableCell
-                align="right"
-                sx={{ display: { xs: "none", sm: "flex" } }}
+              <Typography>{row.name}</Typography>
+              <Typography
+                sx={{
+                  display: "flex",
+                  alignItems: "flex-end",
+                  marginLeft: 6,
+                  marginRight: 6,
+                }}
+              >
+                {row.customer}
+              </Typography>
+              <Typography
+                sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
               >
                 {row.total}
-              </TableCell>
-              <TableCell
-                align="right"
-                sx={{ display: { xs: "none", sm: "flex" } }}
+              </Typography>
+              <Typography
+                sx={{
+                  display: {
+                    xs: "none",
+                    sm: "none",
+                    md: "flex",
+                    paddingLeft: 20,
+                  },
+                }}
               >
                 {row.status}
-              </TableCell>
-              {/* <TableCell align="right">{row.protein}</TableCell> */}
+              </Typography>
+              <Divider />
             </TableRow>
           ))}
-        </TableBody>
-      </Table>
+        </Box>
+      </Box>
       <Box
         sx={{
           margin: 2,
@@ -235,6 +250,6 @@ export default function TransactionsTable() {
           </IconButton>
         </Box>
       </Box>
-    </TableContainer>
+    </Stack>
   );
 }
