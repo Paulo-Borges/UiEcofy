@@ -40,6 +40,8 @@ export const MenuLateral: React.FC = () => {
     { id: 6, text: "Help Center", icon: <HelpCenterIcon /> },
   ];
 
+  const activeItemText = "Dashboard";
+
   return (
     <Box
       sx={{
@@ -62,14 +64,26 @@ export const MenuLateral: React.FC = () => {
         }}
       >
         <List>
-          {navItems.map((item) => (
-            <ListItem key={item.text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {navItems.map((item) => {
+            const isDashboard = item.text === activeItemText;
+
+            return (
+              <ListItem
+                key={item.text}
+                disablePadding
+                sx={{
+                  bgcolor: isDashboard ? "#f68605" : "transparent",
+                  color: isDashboard ? "#ffffff" : "inherit",
+                  borderRadius: isDashboard ? 4 : 0,
+                }}
+              >
+                <ListItemButton>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </ListItemButton>
+              </ListItem>
+            );
+          })}
         </List>
         <Box sx={{ flexGrow: 1 }}></Box>
         <Stack

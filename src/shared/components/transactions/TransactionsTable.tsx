@@ -98,12 +98,6 @@ export default function TransactionsTable() {
                 <KeyboardArrowDownIcon />
               </IconButton>
             </TableSortLabel>
-
-            {/* <TableSortLabel>
-              <IconButton>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            </TableSortLabel> */}
           </TableRow>
         </Stack>
         <Box>
@@ -112,7 +106,7 @@ export default function TransactionsTable() {
               key={row.id}
               sx={{
                 display: "flex",
-                alignContent: "center",
+                alignItems: "center",
                 justifyItems: "end",
                 gap: 5,
               }}
