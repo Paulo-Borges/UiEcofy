@@ -75,9 +75,10 @@ export const MenuLateral: React.FC = () => {
                   bgcolor: isDashboard ? "#f68605" : "transparent",
                   color: isDashboard ? "#ffffff" : "inherit",
                   borderRadius: isDashboard ? 4 : 0,
+                  marginBottom: 2,
                 }}
               >
-                <ListItemButton>
+                <ListItemButton sx={{}}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
@@ -161,7 +162,7 @@ export const MenuLateral: React.FC = () => {
               <IconButton sx={{ color: "#545454" }}>
                 <CalendarMonthIcon />
               </IconButton>
-              08 Dez2025, 10:12 AM
+              11 Dez2025, 10:12 AM
             </Typography>
           </Box>
         </Stack>

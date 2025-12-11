@@ -60,6 +60,57 @@ const rows = [
   ),
 ];
 
+interface StatusProps {
+  status: string;
+}
+
+const StatusChip: React.FC<StatusProps> = ({ status }) => {
+  let backgroundColor: string;
+  let textColor: string;
+  let borderColor: string;
+
+  if (status === "Processing") {
+    backgroundColor = "#fff1e9";
+    textColor = "#f47522";
+    borderColor = "#fdd4ba";
+  } else if (status === "Canceled") {
+    backgroundColor = "#fceae8";
+    textColor = "#e52b16";
+    borderColor = "#f7bbd7";
+  } else if (status === "Shipping") {
+    backgroundColor = "#e6foff";
+    textColor = "#0167ff";
+    borderColor = "#b0d0ff";
+  } else if (status === "Delivered") {
+    backgroundColor = "#e7f7ed";
+    textColor = "#0fa144";
+    borderColor = "#b5e7c7";
+  } else {
+    backgroundColor = "#e0e0e0";
+    textColor = "#616161";
+    borderColor = "#fdd4ba";
+  }
+  return (
+    <Box
+      sx={{
+        // Estilos para transformar em um "chip"
+        backgroundColor: backgroundColor,
+        color: textColor,
+        borderRadius: 3, // Borda arredondada
+        padding: "4px 8px", // Espaçamento interno
+        display: "inline-block", // Para que o Box se ajuste ao conteúdo
+        fontWeight: "bold",
+        fontSize: "0.8rem",
+        minWidth: "80px",
+        textAlign: "center",
+        border: `1px solid ${borderColor}`,
+      }}
+    >
+      {status}
+    </Box>
+  );
+};
+
 export default function TransactionsTable() {
   return (
     <Stack component={Paper}>
@@ -107,8 +158,11 @@ export default function TransactionsTable() {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyItems: "end",
                 gap: 5,
+                paddingY: 1,
+                "&:not(:last-child)": {
+                  borderBottom: "1px solid #eee",
+                },
               }}
             >
               <Box>
@@ -118,8 +172,6 @@ export default function TransactionsTable() {
                   style={{
                     width: 50,
                     marginTop: 16,
-                    marginLeft: 16,
-                    paddingTop: 1,
                   }}
                 />
               </Box>
@@ -137,9 +189,9 @@ export default function TransactionsTable() {
               <Typography
                 sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
               >
-                {row.total}
+                {row.total.toFixed(2)}
               </Typography>
-              <Typography
+              <Box
                 sx={{
                   display: {
                     xs: "none",
@@ -149,8 +201,8 @@ export default function TransactionsTable() {
                   },
                 }}
               >
-                {row.status}
-              </Typography>
+                <StatusChip status={row.status} />
+              </Box>
               <Divider />
             </TableRow>
           ))}
