@@ -13,9 +13,14 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LiveHelpOutlinedIcon from "@mui/icons-material/LiveHelpOutlined";
 import AssignmentReturnOutlinedIcon from "@mui/icons-material/AssignmentReturnOutlined";
+import { useState } from "react";
 
 export const Navbar: React.FC = () => {
-  function HandleSettings() {}
+  const [visivel, setVisivel] = useState(false);
+
+  function HandleSettings() {
+    setVisivel(!visivel);
+  }
 
   return (
     <>
@@ -95,7 +100,11 @@ export const Navbar: React.FC = () => {
         </Stack>
         <Stack
           sx={{
+            display: visivel ? "flex" : "none",
             background: "#ffffff",
+            position: "absolute",
+            top: 70,
+            right: 10,
             color: "#0e0d0d",
             width: 300,
             height: 200,
@@ -104,15 +113,41 @@ export const Navbar: React.FC = () => {
             border: "#e9e1e173 1px solid",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <Box
+            component={IconButton}
+            sx={{
+              padding: 0,
+              justifyContent: "flex-start",
+              gap: 2,
+              marginBottom: 3,
+            }}
+          >
             <SettingsOutlinedIcon />
             <Typography>Settings</Typography>
           </Box>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <Box
+            component={IconButton}
+            size="small"
+            sx={{
+              padding: 0,
+              justifyContent: "flex-start",
+              gap: 2,
+              marginBottom: 3,
+            }}
+          >
             <LiveHelpOutlinedIcon />
             <Typography>Help & Support</Typography>
           </Box>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <Box
+            component={IconButton}
+            size="small"
+            sx={{
+              padding: 0,
+              justifyContent: "flex-start",
+              gap: 2,
+              marginBottom: 3,
+            }}
+          >
             <AssignmentReturnOutlinedIcon />
             <Typography>Logout</Typography>
           </Box>
