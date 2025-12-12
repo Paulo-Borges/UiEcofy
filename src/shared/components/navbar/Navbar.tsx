@@ -10,9 +10,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import LiveHelpOutlinedIcon from "@mui/icons-material/LiveHelpOutlined";
+import AssignmentReturnOutlinedIcon from "@mui/icons-material/AssignmentReturnOutlined";
 
 export const Navbar: React.FC = () => {
-  // const theme = useTheme();
+  function HandleSettings() {}
 
   return (
     <>
@@ -84,11 +87,35 @@ export const Navbar: React.FC = () => {
                   marcusorlando@gmail.com
                 </Typography>
               </Box>
-              <IconButton>
+              <IconButton onClick={HandleSettings}>
                 <KeyboardArrowDownIcon />
               </IconButton>
             </Box>
           </Stack>
+        </Stack>
+        <Stack
+          sx={{
+            background: "#ffffff",
+            color: "#0e0d0d",
+            width: 300,
+            height: 200,
+            padding: 2,
+            borderRadius: 3,
+            border: "#e9e1e173 1px solid",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <SettingsOutlinedIcon />
+            <Typography>Settings</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <LiveHelpOutlinedIcon />
+            <Typography>Help & Support</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <AssignmentReturnOutlinedIcon />
+            <Typography>Logout</Typography>
+          </Box>
         </Stack>
       </AppBar>
     </>
