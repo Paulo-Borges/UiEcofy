@@ -160,6 +160,7 @@ export default function TransactionsTable() {
                 alignItems: "center",
                 gap: 5,
                 paddingY: 1,
+                paddingX: 1,
                 "&:not(:last-child)": {
                   borderBottom: "1px solid #eee",
                 },
