@@ -23,6 +23,7 @@ import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SmallStatistic from "../Small_Statistic/SmallStatistic";
 import Statistic from "../statistic/Statistic";
+import HoraExata from "../hora_exact/HoraExata";
 
 export const MenuLateral: React.FC = () => {
   interface INavItems {
@@ -155,14 +156,15 @@ export const MenuLateral: React.FC = () => {
                 paddingRight: 1,
                 borderRadius: 2,
                 marginTop: 4,
-                display: { xs: "none", sm: "block" },
+                display: { xs: "none", sm: "flex" },
+                alignItems: "center",
                 color: "#545454",
               }}
             >
               <IconButton sx={{ color: "#545454" }}>
                 <CalendarMonthIcon />
               </IconButton>
-              12 Dez 2025, 10:12 AM
+              13 Dez 2025, <HoraExata />
             </Typography>
           </Box>
         </Stack>
