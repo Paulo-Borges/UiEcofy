@@ -7,16 +7,55 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { AppThemeProvider } from "./shared/contexts/ThemeContext.tsx";
-import { BrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Home from "../Home.tsx";
+import App from "./App.tsx";
+import ErroPage from "./routes/ErroPage.tsx";
+import Home from "./routes/Home.tsx";
+import Customer from "./routes/Customer.tsx";
+import Products from "./routes/Products.tsx";
+import Reports from "./routes/Reports.tsx";
+import Settings from "./routes/Settings.tsx";
+import Help from "./routes/Help.tsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErroPage />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/customer",
+        element: <Customer />,
+      },
+      {
+        path: "/products",
+        element: <Products />,
+      },
+      {
+        path: "/reports",
+        element: <Reports />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
+      },
+      {
+        path: "/help",
+        element: <Help />,
+      },
+    ],
+  },
+]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AppThemeProvider>
-      <BrowserRouter>
-        <Home />
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </AppThemeProvider>
   </StrictMode>
 );

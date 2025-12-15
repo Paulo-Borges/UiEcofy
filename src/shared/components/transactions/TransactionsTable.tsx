@@ -115,7 +115,7 @@ export default function TransactionsTable() {
   return (
     <Stack component={Paper}>
       <Box
-        sx={{ width: { xs: "60%", sm: "80%", md: "100%" } }}
+        sx={{ width: { xs: "100%", sm: "100%", md: "100%" } }}
         aria-label="table"
       >
         <Stack sx={{ backgroundColor: "#f8f8fa", padding: 2, paddingLeft: 4 }}>

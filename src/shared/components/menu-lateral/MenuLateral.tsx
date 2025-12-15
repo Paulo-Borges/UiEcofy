@@ -24,24 +24,24 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SmallStatistic from "../Small_Statistic/SmallStatistic";
 import Statistic from "../statistic/Statistic";
 import HoraExata from "../hora_exact/HoraExata";
+import { NavLink } from "react-router-dom";
 
 export const MenuLateral: React.FC = () => {
   interface INavItems {
     id: number;
     text: string;
     icon: React.ReactNode;
+    path: string;
   }
 
   const navItems: INavItems[] = [
-    { id: 1, text: "Dashboard", icon: <DashboardIcon /> },
-    { id: 2, text: "Customer", icon: <PeopleIcon /> },
-    { id: 3, text: "Product", icon: <ShoppingCartIcon /> },
-    { id: 4, text: "Reports", icon: <BarChartIcon /> },
-    { id: 5, text: "Settings", icon: <SettingsIcon /> },
-    { id: 6, text: "Help Center", icon: <HelpCenterIcon /> },
+    { id: 1, text: "Dashboard", icon: <DashboardIcon />, path: "/" },
+    { id: 2, text: "Customer", icon: <PeopleIcon />, path: "/customer" },
+    { id: 3, text: "Product", icon: <ShoppingCartIcon />, path: "/products" },
+    { id: 4, text: "Reports", icon: <BarChartIcon />, path: "/reports" },
+    { id: 5, text: "Settings", icon: <SettingsIcon />, path: "/settings" },
+    { id: 6, text: "Help Center", icon: <HelpCenterIcon />, path: "/help" },
   ];
-
-  const activeItemText = "Dashboard";
 
   return (
     <Box
@@ -66,21 +66,31 @@ export const MenuLateral: React.FC = () => {
       >
         <List>
           {navItems.map((item) => {
-            const isDashboard = item.text === activeItemText;
-
             return (
               <ListItem
                 key={item.text}
                 disablePadding
                 sx={{
-                  bgcolor: isDashboard ? "#f68605" : "transparent",
-                  color: isDashboard ? "#ffffff" : "inherit",
-                  borderRadius: isDashboard ? 4 : 0,
                   marginBottom: 2,
                 }}
               >
-                <ListItemButton sx={{}}>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemButton
+                  component={NavLink}
+                  to={item.path}
+                  sx={{
+                    "&.active": {
+                      // Quando o NavLink estiver ativo (URL corresponde)
+                      bgcolor: "#f68605",
+                      color: "#ffffff",
+                      borderRadius: 4,
+                    },
+                    color: "inherit",
+                    borderRadius: 4,
+                  }}
+                >
+                  <ListItemIcon sx={{ color: "inherit" }}>
+                    {item.icon}
+                  </ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
               </ListItem>

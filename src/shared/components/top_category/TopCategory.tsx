@@ -135,13 +135,12 @@ export default function TopCategory() {
           >
             <Box
               sx={{
-                border: "1px solid",
+                border: "1px solid #d7d3d3",
                 display: { xs: "none", sm: "flex" },
                 justifyContent: "center",
                 alignItems: "center",
                 gap: 1,
                 padding: "4px 8px",
-                borderColor: "#cdcac7",
                 borderRadius: 4,
               }}
             >
