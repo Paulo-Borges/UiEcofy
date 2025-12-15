@@ -14,6 +14,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LiveHelpOutlinedIcon from "@mui/icons-material/LiveHelpOutlined";
 import AssignmentReturnOutlinedIcon from "@mui/icons-material/AssignmentReturnOutlined";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export const Navbar: React.FC = () => {
   const [visivel, setVisivel] = useState(false);
@@ -114,8 +115,12 @@ export const Navbar: React.FC = () => {
           }}
         >
           <Box
-            component={IconButton}
+            component={NavLink}
+            to="/settings"
             sx={{
+              display: "flex",
+              textDecoration: "none",
+              color: "#0e0d0d",
               padding: 0,
               justifyContent: "flex-start",
               gap: 2,
@@ -126,9 +131,12 @@ export const Navbar: React.FC = () => {
             <Typography>Settings</Typography>
           </Box>
           <Box
-            component={IconButton}
-            size="small"
+            component={NavLink}
+            to="/help"
             sx={{
+              display: "flex",
+              textDecoration: "none",
+              color: "#0e0d0d",
               padding: 0,
               justifyContent: "flex-start",
               gap: 2,
@@ -139,9 +147,12 @@ export const Navbar: React.FC = () => {
             <Typography>Help & Support</Typography>
           </Box>
           <Box
-            component={IconButton}
-            size="small"
+            component={NavLink}
+            to="/Logout"
             sx={{
+              display: "flex",
+              textDecoration: "none",
+              color: "#0e0d0d",
               padding: 0,
               justifyContent: "flex-start",
               gap: 2,
