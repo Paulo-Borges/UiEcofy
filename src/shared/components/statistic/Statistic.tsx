@@ -2,7 +2,6 @@ import { Avatar, Box, IconButton, Typography } from "@mui/material";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Transactions from "../transactions/Transactions";
-import TopCategory from "../top_category/TopCategory";
 
 export default function Statistic() {
   return (
@@ -125,13 +124,6 @@ export default function Statistic() {
           ></Avatar>
         </Box>
         <Transactions />
-      </Box>
-      <Box
-        sx={{
-          marginRight: 4,
-        }}
-      >
-        <TopCategory />
       </Box>
     </Box>
   );

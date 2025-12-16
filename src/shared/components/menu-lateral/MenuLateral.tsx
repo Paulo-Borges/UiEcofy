@@ -20,10 +20,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import SmallStatistic from "../Small_Statistic/SmallStatistic";
-import Statistic from "../statistic/Statistic";
-import HoraExata from "../hora_exact/HoraExata";
+
 import { NavLink } from "react-router-dom";
 
 export const MenuLateral: React.FC = () => {
@@ -131,56 +128,6 @@ export const MenuLateral: React.FC = () => {
           </Typography>
         </Stack>
       </Toolbar>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-      >
-        <Toolbar />
-        <Stack
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-          direction="row"
-        >
-          <Box>
-            <Typography sx={{ marginBottom: 2, color: "#545454" }}>
-              Manage and track your business
-            </Typography>
-            <Typography
-              sx={{ marginBottom: 2, fontWeight: "bold", fontSize: 25 }}
-            >
-              Welcome Back, Marcus
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              marginRight: { sm: 0, md: 4 },
-            }}
-          >
-            <Typography
-              sx={{
-                marginBottom: 2,
-                bgcolor: "#ffffff",
-                padding: 0,
-                paddingRight: 1,
-                borderRadius: 2,
-                marginTop: 4,
-                display: { xs: "none", sm: "flex" },
-                alignItems: "center",
-                color: "#545454",
-              }}
-            >
-              <IconButton sx={{ color: "#545454" }}>
-                <CalendarMonthIcon />
-              </IconButton>
-              13 Dez 2025, <HoraExata />
-            </Typography>
-          </Box>
-        </Stack>
-        <SmallStatistic />
-        <Statistic />
-      </Box>
     </Box>
   );
 };

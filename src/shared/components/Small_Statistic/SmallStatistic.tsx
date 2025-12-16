@@ -9,6 +9,7 @@ export default function SmallStatistic() {
         spacing={2}
         sx={{
           display: "flex",
+          maxwidth: "100%",
           justifyContent: "center",
           flexWrap: "wrap",
           gap: 2,
@@ -21,8 +22,8 @@ export default function SmallStatistic() {
             backgroundColor: "#ffffff",
             padding: 2,
             borderRadius: 2,
-            height: 170,
-            width: 270,
+            height: 200,
+            width: 370,
           }}
         >
           <Box
@@ -72,8 +73,8 @@ export default function SmallStatistic() {
             backgroundColor: "#ffffff",
             p: 2,
             borderRadius: 2,
-            height: 170,
-            width: 270,
+            height: 200,
+            width: 370,
           }}
         >
           <Box
@@ -123,8 +124,8 @@ export default function SmallStatistic() {
             backgroundColor: "#ffffff",
             p: 2,
             borderRadius: 2,
-            height: 170,
-            width: 270,
+            height: 200,
+            width: 370,
           }}
         >
           <Box
@@ -174,8 +175,8 @@ export default function SmallStatistic() {
             backgroundColor: "#ffffff",
             p: 2,
             borderRadius: 2,
-            height: 170,
-            width: 270,
+            height: 200,
+            width: 370,
           }}
         >
           <Box

@@ -1,8 +1,10 @@
+import { Box } from "@mui/material";
+
 const Logout = () => {
   return (
-    <div>
+    <Box sx={{ margin: 7 }}>
       <h1>Logout</h1>
-    </div>
+    </Box>
   );
 };
 

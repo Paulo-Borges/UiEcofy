@@ -1,8 +1,10 @@
+import { Box } from "@mui/material";
+
 const Help = () => {
   return (
-    <div>
+    <Box sx={{ margin: 7 }}>
       <h1>Help</h1>
-    </div>
+    </Box>
   );
 };
 
