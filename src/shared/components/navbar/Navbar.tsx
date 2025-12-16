@@ -63,7 +63,7 @@ export const Navbar: React.FC = () => {
           </Box>
           <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
             <Box>
-              <IconButton>
+              <IconButton onClick={HandleSettings}>
                 <SearchIcon />
               </IconButton>
               <IconButton>
