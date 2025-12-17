@@ -1,6 +1,7 @@
-import { Box, Link, Stack, Toolbar, Typography } from "@mui/material";
+import { Box, Link, Stack, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import AddIcon from "@mui/icons-material/Add";
+import CustomerTable from "../shared/components/customer_table/CustomerTable";
 
 const Customer = () => {
   return (
@@ -34,6 +35,7 @@ const Customer = () => {
           </Link>
         </Stack>
       </Stack>
+      <CustomerTable />
     </Stack>
   );
 };
