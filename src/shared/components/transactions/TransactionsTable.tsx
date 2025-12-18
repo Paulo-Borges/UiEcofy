@@ -2,7 +2,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import {
   Box,
-  Divider,
   IconButton,
   Table,
   TableHead,
@@ -128,10 +127,7 @@ export default function TransactionsTable() {
       component={Paper}
       sx={{ boxShadow: "none", border: "1px solid #eee" }}
     >
-      <Table
-        sx={{ width: { xs: "100%", sm: "100%", md: "100%" } }}
-        aria-label="table"
-      >
+      <Table sx={{ width: "100%" }} aria-label="table">
         <TableHead
           sx={{
             backgroundColor: "#f8f8fa",
@@ -153,7 +149,6 @@ export default function TransactionsTable() {
               align="right"
               sx={{
                 fontWeight: "bold",
-                display: { xs: "none", md: "table-cell" },
               }}
             >
               <Box
@@ -182,7 +177,7 @@ export default function TransactionsTable() {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody sx={{ display: { xs: "none", md: "table-cell" } }}>
+        <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id} hover>
               <TableCell>
@@ -204,19 +199,13 @@ export default function TransactionsTable() {
                 </Typography>
               </TableCell>
 
-              <TableCell
-                align="right"
-                sx={{ display: { xs: "none", md: "table-cell" } }}
-              >
+              <TableCell align="right">
                 <Typography variant="body2" sx={{ fontWeight: "bold" }}>
                   ${row.total.toFixed(2)}
                 </Typography>
               </TableCell>
 
-              <TableCell
-                align="right"
-                sx={{ display: { xs: "none", md: "table-cell" } }}
-              >
+              <TableCell align="right">
                 <StatusChip status={row.status} />
               </TableCell>
             </TableRow>
