@@ -1,10 +1,20 @@
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Box, Divider, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  IconButton,
+  Table,
+  TableHead,
+  TableBody,
+  TableCell,
+  TableContainer,
+  Typography,
+  Avatar,
+} from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { TableSortLabel } from "@mui/material";
 
 function createData(
   id: number,
@@ -96,14 +106,15 @@ const StatusChip: React.FC<StatusProps> = ({ status }) => {
         // Estilos para transformar em um "chip"
         backgroundColor: backgroundColor,
         color: textColor,
-        borderRadius: 3, // Borda arredondada
-        padding: "4px 8px", // Espaçamento interno
+        borderRadius: 2, // Borda arredondada
+        padding: "4px 12px", // Espaçamento interno
         display: "inline-block", // Para que o Box se ajuste ao conteúdo
         fontWeight: "bold",
         fontSize: "0.8rem",
         minWidth: "80px",
         textAlign: "center",
         border: `1px solid ${borderColor}`,
+        textTransform: "capitalize",
       }}
     >
       {status}
@@ -113,102 +124,105 @@ const StatusChip: React.FC<StatusProps> = ({ status }) => {
 
 export default function TransactionsTable() {
   return (
-    <Stack component={Paper}>
-      <Box
+    <TableContainer
+      component={Paper}
+      sx={{ boxShadow: "none", border: "1px solid #eee" }}
+    >
+      <Table
         sx={{ width: { xs: "100%", sm: "100%", md: "100%" } }}
         aria-label="table"
       >
-        <Stack sx={{ backgroundColor: "#f8f8fa", padding: 2, paddingLeft: 4 }}>
-          {/* 1ª linha, linha de cabeçalho  */}
-          <TableRow sx={{ display: "flex", gap: { sm: 20, md: 8 } }}>
-            <TableSortLabel>
-              <Typography>Product</Typography>
-              <IconButton>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            </TableSortLabel>
+        <TableHead
+          sx={{
+            backgroundColor: "#f8f8fa",
+          }}
+        >
+          <TableRow sx={{}}>
+            <TableCell sx={{ fontWeight: "bold" }}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                Product
+                <KeyboardArrowDownIcon fontSize="small" />
+              </Box>
+            </TableCell>
 
-            <TableSortLabel sx={{ marginLeft: 6, marginRight: 6 }}>
-              <Typography>Customer</Typography>
-            </TableSortLabel>
+            <TableCell align="left" sx={{ fontWeight: "bold" }}>
+              Customer
+            </TableCell>
 
-            <TableSortLabel
-              sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
-            >
-              <Typography>Total</Typography>
-              <IconButton>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            </TableSortLabel>
-
-            <TableSortLabel
-              sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
-            >
-              <Typography>Status</Typography>
-              <IconButton>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            </TableSortLabel>
-          </TableRow>
-        </Stack>
-        <Box>
-          {rows.map((row) => (
-            <TableRow
-              key={row.id}
+            <TableCell
+              align="right"
               sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: 5,
-                paddingY: 1,
-                paddingX: 1,
-                "&:not(:last-child)": {
-                  borderBottom: "1px solid #eee",
-                },
+                fontWeight: "bold",
+                display: { xs: "none", md: "table-cell" },
               }}
             >
-              <Box>
-                <img
-                  src={row.image}
-                  alt={row.name}
-                  style={{
-                    width: 50,
-                    marginTop: 16,
-                  }}
-                />
-              </Box>
-              <Typography>{row.name}</Typography>
-              <Typography
-                sx={{
-                  display: "flex",
-                  alignItems: "flex-end",
-                  marginLeft: 6,
-                  marginRight: 6,
-                }}
-              >
-                {row.customer}
-              </Typography>
-              <Typography
-                sx={{ display: { xs: "none", sm: "none", md: "flex" } }}
-              >
-                {row.total.toFixed(2)}
-              </Typography>
               <Box
                 sx={{
-                  display: {
-                    xs: "none",
-                    sm: "none",
-                    md: "flex",
-                    paddingLeft: 20,
-                  },
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
                 }}
               >
-                <StatusChip status={row.status} />
+                Total
+                <KeyboardArrowDownIcon fontSize="small" />
               </Box>
-              <Divider />
+            </TableCell>
+
+            <TableCell align="right">
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
+                }}
+              >
+                Status
+                <KeyboardArrowDownIcon fontSize="small" />
+              </Box>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody sx={{ display: { xs: "none", md: "table-cell" } }}>
+          {rows.map((row) => (
+            <TableRow key={row.id} hover>
+              <TableCell>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                  <Avatar
+                    src={row.image}
+                    variant="rounded"
+                    sx={{ width: 40, height: 40, bgcolor: "#f5f5f5" }}
+                  />
+                  <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                    {row.name}
+                  </Typography>
+                </Box>
+              </TableCell>
+
+              <TableCell align="left">
+                <Typography variant="body2" color="textSecondary">
+                  {row.customer}
+                </Typography>
+              </TableCell>
+
+              <TableCell
+                align="right"
+                sx={{ display: { xs: "none", md: "table-cell" } }}
+              >
+                <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+                  ${row.total.toFixed(2)}
+                </Typography>
+              </TableCell>
+
+              <TableCell
+                align="right"
+                sx={{ display: { xs: "none", md: "table-cell" } }}
+              >
+                <StatusChip status={row.status} />
+              </TableCell>
             </TableRow>
           ))}
-        </Box>
-      </Box>
+        </TableBody>
+      </Table>
       <Box
         sx={{
           margin: 2,
@@ -216,87 +230,51 @@ export default function TransactionsTable() {
           justifyContent: "space-between",
           alignItems: "center",
         }}
+      ></Box>
+      <Box
+        sx={{
+          p: 2,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
       >
-        <Box>
-          <Typography>Showing 1-5 from 15</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 1,
-          }}
-        >
+        <Typography variant="body2" color="textSecondary">
+          Showing 1-5 from 15
+        </Typography>
+        <Box sx={{ display: "flex", gap: 1 }}>
           <IconButton
-            sx={{
-              border: "1px solid",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 1,
-              padding: 1,
-              borderColor: "#cdcac7",
-              borderRadius: 2,
-            }}
+            size="small"
+            sx={{ border: "1px solid #eee", borderRadius: 1 }}
           >
-            <ArrowBackIosIcon />
+            <ArrowBackIosIcon fontSize="inherit" />
           </IconButton>
+          {[1, 2, 3].map((page) => (
+            <IconButton
+              key={page}
+              size="small"
+              sx={{
+                width: 32,
+                height: 32,
+                fontSize: "0.875rem",
+                borderRadius: 1,
+                border: "1px solid #eee",
+                bgcolor: page === 1 ? "black" : "transparent",
+                color: page === 1 ? "white" : "inherit",
+                "&:hover": { bgcolor: page === 1 ? "#333" : "#f5f5f5" },
+              }}
+            >
+              {page}
+            </IconButton>
+          ))}
           <IconButton
-            sx={{
-              border: "1px solid",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 1,
-              padding: 1,
-              background: "#000",
-              color: "#fff",
-              borderColor: "#cdcac7",
-              borderRadius: 2,
-            }}
+            size="small"
+            sx={{ border: "1px solid #eee", borderRadius: 1 }}
           >
-            1
-          </IconButton>
-          <IconButton
-            sx={{
-              border: "1px solid",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 1,
-              padding: 1,
-              borderColor: "#cdcac7",
-              borderRadius: 2,
-            }}
-          >
-            2
-          </IconButton>
-          <IconButton
-            sx={{
-              border: "1px solid",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 1,
-              padding: 1,
-              borderColor: "#cdcac7",
-              borderRadius: 2,
-            }}
-          >
-            3
-          </IconButton>
-          <IconButton
-            sx={{
-              border: "1px solid",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 1,
-              padding: 1,
-              borderColor: "#cdcac7",
-              borderRadius: 2,
-            }}
-          >
-            <ArrowForwardIosIcon />
+            <ArrowForwardIosIcon fontSize="inherit" />
           </IconButton>
         </Box>
       </Box>
-    </Stack>
+    </TableContainer>
   );
 }

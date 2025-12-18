@@ -96,11 +96,11 @@ const CustomerTable = () => {
               <TableCell component="th" scope="row">
                 {row.customerName}
               </TableCell>
-              <TableCell>{row.phone}</TableCell>
-              <TableCell>{row.orders}</TableCell>
-              <TableCell>{row.balance}</TableCell>
-              <TableCell>{row.status}</TableCell>
-              <TableCell>{row.added}</TableCell>
+              <TableCell align="right">{row.phone}</TableCell>
+              <TableCell align="right">{row.orders}</TableCell>
+              <TableCell align="right">{row.balance}</TableCell>
+              <TableCell align="right">{row.status}</TableCell>
+              <TableCell align="right">{row.added}</TableCell>
             </TableRow>
           ))}
         </TableBody>
