@@ -56,7 +56,7 @@ function Home() {
               <IconButton sx={{ color: "#545454" }}>
                 <CalendarMonthIcon />
               </IconButton>
-              13 Dez 2025, <HoraExata />
+              19 Dez 2025, <HoraExata />
             </Typography>
           </Box>
         </Stack>

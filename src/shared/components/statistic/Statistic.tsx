@@ -31,7 +31,7 @@ export default function Statistic() {
               sx={{
                 color: "#121212",
                 fontWeight: "semiBold",
-                fontSize: { xs: 18, md: 28 },
+                fontSize: { xs: 14, md: 24 },
               }}
             >
               Statistic
@@ -39,7 +39,7 @@ export default function Statistic() {
             <Typography
               sx={{
                 color: "#545454",
-                fontSize: { xs: 12, md: 20 },
+                fontSize: { xs: 8, md: 16 },
               }}
             >
               Income vs expenses
@@ -52,7 +52,7 @@ export default function Statistic() {
             <Box
               component="div"
               sx={{
-                p: 0,
+                paddingY: 1,
                 border: "0.1px solid",
                 borderColor: "#cdcac7",
                 borderRadius: 4,
@@ -62,7 +62,7 @@ export default function Statistic() {
                 <Typography
                   sx={{
                     color: "#545454",
-                    fontSize: { xs: 16, md: 26 },
+                    fontSize: { xs: 8, md: 16 },
                   }}
                 >
                   Daily
@@ -72,7 +72,7 @@ export default function Statistic() {
                 <Typography
                   sx={{
                     color: "#545454",
-                    fontSize: { xs: 16, md: 26 },
+                    fontSize: { xs: 8, md: 16 },
                   }}
                 >
                   Weekly
@@ -85,7 +85,7 @@ export default function Statistic() {
                     color: "#ffffff",
                     p: 1,
                     borderRadius: 2,
-                    fontSize: { xs: 16, md: 26 },
+                    fontSize: { xs: 8, md: 16 },
                   }}
                 >
                   Monthly
