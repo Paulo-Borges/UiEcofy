@@ -18,6 +18,7 @@ import Reports from "./routes/Reports.tsx";
 import Settings from "./routes/Settings.tsx";
 import Help from "./routes/Help.tsx";
 import Logout from "./routes/Logout.tsx";
+import { Details } from "./routes/Details.tsx";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/logout",
         element: <Logout />,
+      },
+      {
+        path: "/details/:id",
+        element: <Details />,
       },
     ],
   },

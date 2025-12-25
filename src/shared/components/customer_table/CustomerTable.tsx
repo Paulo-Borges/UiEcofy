@@ -15,9 +15,11 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Checkbox from "@mui/material/Checkbox";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Link as MuiLink } from "@mui/material";
+import { Link as RouterLink } from "react-router";
 
 function createData(
-  id: number,
+  id: string,
   imagem: string,
   customerName: string,
   phone: number,
@@ -31,7 +33,7 @@ function createData(
 
 const rows = [
   createData(
-    1,
+    "1",
     "../../../src/assets/img1.png",
     "John Bushmill",
     7850548877,
@@ -41,7 +43,7 @@ const rows = [
     "29 Dec 2022"
   ),
   createData(
-    2,
+    "2",
     "../../../src/assets/img2.png",
     "Laura Prichet",
     2153023376,
@@ -51,7 +53,7 @@ const rows = [
     "24 Dec 2022"
   ),
   createData(
-    3,
+    "3",
     "../../../src/assets/img3.png",
     "Mohammad Karim",
     7850548877,
@@ -61,7 +63,7 @@ const rows = [
     "12 Dec 2022"
   ),
   createData(
-    4,
+    "4",
     "../../../src/assets/img4.png",
     "Josh Bill",
     7850548877,
@@ -71,7 +73,7 @@ const rows = [
     "21 Dec 2022"
   ),
   createData(
-    5,
+    "5",
     "../../../src/assets/img5.png",
     "Josh Adam",
     7850548877,
@@ -81,7 +83,7 @@ const rows = [
     "21 Sep 2022"
   ),
   createData(
-    6,
+    "6",
     "../../../src/assets/img6.png",
     "Sin Tae",
     7850548877,
@@ -91,7 +93,7 @@ const rows = [
     "21 Dec 2022"
   ),
   createData(
-    7,
+    "7",
     "../../../src/assets/img7.png",
     "Rajesh Masvidal",
     7850548877,
@@ -101,7 +103,7 @@ const rows = [
     "19 Sep 2022"
   ),
   createData(
-    8,
+    "8",
     "../../../src/assets/img8.png",
     "Fajar Surya",
     7850548877,
@@ -111,7 +113,7 @@ const rows = [
     "19 Dec 2022"
   ),
   createData(
-    9,
+    "9",
     "../../../src/assets/img9.png",
     "Lisa Greg",
     7850548877,
@@ -121,7 +123,7 @@ const rows = [
     "10 Dec 2022"
   ),
   createData(
-    10,
+    "10",
     "../../../src/assets/img10.png",
     "Linda Blair",
     7850548877,
@@ -201,7 +203,10 @@ const CustomerTable = () => {
                     variant="rounded"
                     sx={{ width: 40, height: 40, bgcolor: "#f5f5f5" }}
                   />
-                  <Typography>{row.customerName}</Typography>
+                  <MuiLink component={RouterLink} to={`/details/${row.id}`}>
+                    {row.customerName}
+                  </MuiLink>
+                  {/* <Typography>{row.customerName}</Typography> */}
                 </Box>
               </TableCell>
               <TableCell align="right">{row.phone}</TableCell>
