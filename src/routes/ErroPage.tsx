@@ -1,7 +1,7 @@
 const ErroPage = () => {
   return (
     <div>
-      <h1>ERRO Page</h1>
+      <h1>ERRO Login</h1>
     </div>
   );
 };

@@ -148,7 +148,7 @@ export const Navbar: React.FC = () => {
           </Box>
           <Box
             component={NavLink}
-            to="/Logout"
+            to="/Login"
             sx={{
               display: "flex",
               textDecoration: "none",
