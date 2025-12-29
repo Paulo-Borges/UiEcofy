@@ -7,7 +7,15 @@ export const DetailsCustomer = () => {
   const { id } = useParams(); // Pega o ID da URL
 
   // Procura o cliente específico pelo ID
-  const customer = rows.find((item) => item.id === id);
+  const customer = rows.find((item) => String(item.id) === String(id));
+
+  if (!customer) {
+    return (
+      <Box sx={{ p: 5, textAlign: "center" }}>
+        <Typography variant="h6">Cliente não encontrado.</Typography>
+      </Box>
+    );
+  }
 
   return (
     <Stack direction="row" gap={4}>
