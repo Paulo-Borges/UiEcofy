@@ -38,9 +38,7 @@ export const Details = () => {
           </Link>
         </Stack>
       </Stack>
-      <h1> Detail{id} </h1>
       <DetailsCustomer />
-      {/* <CustomerTable /> */}
     </Stack>
   );
 };

@@ -31,7 +31,7 @@ function createData(
   return { id, imagem, customerName, phone, orders, balance, status, added };
 }
 
-const rows = [
+export const rows = [
   createData(
     "1",
     "../../../src/assets/img1.png",
@@ -198,15 +198,16 @@ const CustomerTable = () => {
             >
               <TableCell component="th" scope="row">
                 <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-                  <Avatar
-                    src={row.imagem}
-                    variant="rounded"
-                    sx={{ width: 40, height: 40, bgcolor: "#f5f5f5" }}
-                  />
+                  <MuiLink component={RouterLink} to={`/details/${row.id}`}>
+                    <Avatar
+                      src={row.imagem}
+                      variant="rounded"
+                      sx={{ width: 40, height: 40, bgcolor: "#f5f5f5" }}
+                    />
+                  </MuiLink>
                   <MuiLink component={RouterLink} to={`/details/${row.id}`}>
                     {row.customerName}
                   </MuiLink>
-                  {/* <Typography>{row.customerName}</Typography> */}
                 </Box>
               </TableCell>
               <TableCell align="right">{row.phone}</TableCell>
