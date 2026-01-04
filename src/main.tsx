@@ -17,7 +17,7 @@ import Reports from "./routes/Reports.tsx";
 import Settings from "./routes/Settings.tsx";
 import Help from "./routes/Help.tsx";
 import { Details } from "./routes/Details.tsx";
-import Login from "./routes/Login.tsx";
+import { Login } from "./routes/Login.tsx";
 
 const router = createBrowserRouter([
   {
