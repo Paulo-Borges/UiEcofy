@@ -2,6 +2,7 @@ import { Avatar, Box, Paper, Stack, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 
 import { rows } from "../customer_table/CustomerTable"; // Importe os dados centralizados
+import { DetailsHistory } from "./DetailsHistory";
 
 export const DetailsCustomer = () => {
   const { id } = useParams(); // Pega o ID da URL
@@ -18,7 +19,7 @@ export const DetailsCustomer = () => {
   }
 
   return (
-    <Stack direction="row" gap={4}>
+    <Stack direction="row" gap={6}>
       <Paper
         sx={{
           p: 3,
@@ -36,7 +37,7 @@ export const DetailsCustomer = () => {
             borderBottom: 1,
             borderColor: "divider",
             marginBottom: 4,
-            gap: 2,
+            gap: 6,
           }}
         >
           <Avatar
@@ -145,22 +146,9 @@ export const DetailsCustomer = () => {
           </Box>
         </Box>
       </Paper>
-
-      {/* 
       <Paper sx={{ p: 3, alignItems: "center", gap: 3 }}>
-        <Avatar
-          src={customer.imagem}
-          sx={{ width: 100, height: 100 }}
-          variant="rounded"
-        />
-        <Box>
-          <Typography variant="h6">{customer.customerName}</Typography>
-          <Typography>{customer.status}</Typography>
-        </Box>
-        <Box>
-          <Typography color="textSecondary">ID: {customer.id}</Typography>
-        </Box>
-      </Paper> */}
+        <DetailsHistory />
+      </Paper>
     </Stack>
   );
 };
