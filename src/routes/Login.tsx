@@ -1,16 +1,14 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Avatar, Box, Typography } from "@mui/material";
+import { useCallback, useMemo, useRef, useState } from "react";
+
+import { InputLogin } from "../shared/components/InputLogin";
+import { ButtonLogin } from "../shared/components/ButtonLogin";
+import { useUsuarioLogado } from "../shared/hooks";
+import { Dashboard } from "../shared/components/Dashboard";
 
 export const Login = () => {
+  const { nomeDoUsuario, logout } = useUsuarioLogado();
+
   const inputPasswordRef = useRef<HTMLInputElement>(null);
 
   const [email, setEmail] = useState("");
@@ -26,6 +24,10 @@ export const Login = () => {
 
   const handleEntrar = useCallback(() => {
     console.log(email, password);
+
+    if (inputPasswordRef.current !== null) {
+      inputPasswordRef.current?.focus();
+    }
   }, [email, password]);
 
   return (
@@ -46,51 +48,42 @@ export const Login = () => {
         LOGIN
       </Typography>
 
-      <Typography>Quantidade de caracteres no email: {emailLength}</Typography>
-      <FormControl sx={{ marginBottom: 2 }}>
-        <InputLabel htmlFor="component-outlined">UserName</InputLabel>
-        <OutlinedInput
-          id="component-outlined"
-          defaultValue=""
-          label="UserName"
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </FormControl>
+      <Typography>{nomeDoUsuario}</Typography>
 
-      <FormControl sx={{ marginBottom: 4 }}>
-        <InputLabel htmlFor="component-outlined">Password</InputLabel>
-        <OutlinedInput
-          id="component-outlined"
-          defaultValue=""
-          label="Password"
-          type="password"
-          value={password}
-          ref={inputPasswordRef}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </FormControl>
+      {/* <Typography>Quantidade de caracteres no email: {emailLength}</Typography> */}
 
-      <Stack
-        direction="row"
-        component={Button}
-        alignItems="center"
-        border="2px solid #ccc"
-        gap={2}
-        paddingX={4}
-        onClick={handleEntrar}
-      >
-        <Button variant="text" sx={{ fontSize: 20 }} type="button">
-          Entrar
-        </Button>
+      <InputLogin
+        InputLabel="Email"
+        type="text"
+        value={email}
+        onChange={(newValue) => setEmail(newValue)}
+        onPressEnter={() => {
+          inputPasswordRef.current?.focus();
+        }}
+      />
+
+      <InputLogin
+        type="password"
+        InputLabel="Password"
+        value={password}
+        onChange={(newValue) => setPassword(newValue)}
+        ref={inputPasswordRef}
+      />
+
+      <ButtonLogin type="button" onClick={handleEntrar}>
+        ENTRAR
         <Avatar
           alt="logo do Ecofy"
           src="./src/assets/Group.svg"
           variant="square"
           sx={{ width: 30, height: 30 }}
         ></Avatar>
-      </Stack>
+      </ButtonLogin>
+
+      {/* <ButtonLogin type="button" onClick={logout}>
+        logout
+      </ButtonLogin> */}
+      <Dashboard />
     </Box>
   );
 };

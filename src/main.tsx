@@ -18,6 +18,7 @@ import Settings from "./routes/Settings.tsx";
 import Help from "./routes/Help.tsx";
 import { Details } from "./routes/Details.tsx";
 import { Login } from "./routes/Login.tsx";
+import { UsuarioLogadoProvider } from "./shared/contexts/UsuarioLogado.tsx";
 
 const router = createBrowserRouter([
   {
@@ -59,8 +60,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AppThemeProvider>
-      <RouterProvider router={router} />
-    </AppThemeProvider>
+    <UsuarioLogadoProvider>
+      <AppThemeProvider>
+        <RouterProvider router={router} />
+      </AppThemeProvider>
+    </UsuarioLogadoProvider>
   </StrictMode>
 );
