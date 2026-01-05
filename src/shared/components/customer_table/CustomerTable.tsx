@@ -198,6 +198,7 @@ const CustomerTable = () => {
             >
               <TableCell component="th" scope="row">
                 <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                  <Checkbox />
                   <MuiLink component={RouterLink} to={`/details/${row.id}`}>
                     <Avatar
                       src={row.imagem}
@@ -205,6 +206,7 @@ const CustomerTable = () => {
                       sx={{ width: 40, height: 40, bgcolor: "#f5f5f5" }}
                     />
                   </MuiLink>
+
                   <MuiLink component={RouterLink} to={`/details/${row.id}`}>
                     {row.customerName}
                   </MuiLink>
