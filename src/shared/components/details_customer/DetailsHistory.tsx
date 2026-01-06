@@ -140,9 +140,15 @@ export const DetailsHistory = () => {
   return (
     <TableContainer
       component={Paper}
-      sx={{ boxShadow: "none", border: "1px solid #eee", borderRadius: 2 }}
+      sx={{
+        boxShadow: "none",
+        border: "1px solid #eee",
+        borderRadius: 2,
+        maxWidth: "100%",
+        overflowX: "auto",
+      }}
     >
-      <Table sx={{ width: "100%" }} aria-label="table">
+      <Table sx={{ minWidth: 650 }} aria-label="table">
         <TableHead
           sx={{
             backgroundColor: "#f8f8fa",
@@ -238,19 +244,8 @@ export const DetailsHistory = () => {
           alignItems: "center",
         }}
       >
-        <Typography variant="body2" color="textSecondary" display="flex">
-          Show
-          <Box
-            sx={{
-              mx: 1,
-              border: "1px solid #d4d1d1",
-              borderRadius: 1,
-              px: 0.5,
-            }}
-          >
-            10
-          </Box>
-          from 1400
+        <Typography variant="body2" color="textSecondary">
+          Show 10 from 1400
         </Typography>
         <Box sx={{ display: "flex", gap: 1 }}>
           <IconButton

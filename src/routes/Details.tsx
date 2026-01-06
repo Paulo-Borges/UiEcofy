@@ -10,12 +10,18 @@ export const Details = () => {
   return (
     <Stack sx={{ margin: 7, flexGrow: 1 }}>
       <Stack
-        direction="row"
+        direction={{ xs: "column", sm: "row" }}
         spacing={2}
-        sx={{ justifyContent: "space-between", alignItems: "center" }}
+        sx={{
+          justifyContent: "space-between",
+          alignItems: { xs: "flex-start", sm: "center" },
+          marginTop: { xs: 2, md: 7 },
+        }}
       >
         <Box>
-          <Typography sx={{ display: "flex", marginTop: 7 }}>
+          <Typography
+            sx={{ display: "flex", marginTop: 7, alignItems: "center" }}
+          >
             <Box sx={{ fontWeight: 600 }}>Dashboard</Box>
             <ChevronRightIcon /> Customers
           </Typography>
@@ -24,7 +30,7 @@ export const Details = () => {
           <Link
             sx={{
               display: "flex",
-              marginTop: 7,
+              // marginTop: 7,
               background: "#111111",
               color: "#fff",
               padding: 1,
@@ -32,6 +38,8 @@ export const Details = () => {
               borderRadius: 3,
               textDecoration: "none",
               cursor: "pointer",
+              width: { xs: "100%", sm: "auto" },
+              justifyContent: "center",
             }}
           >
             Edit Profile

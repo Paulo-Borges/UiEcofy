@@ -19,19 +19,24 @@ export const DetailsCustomer = () => {
   }
 
   return (
-    <Stack direction="row" gap={6}>
+    <Stack
+      direction={{ xs: "column", lg: "row" }}
+      gap={{ xs: 3, md: 6 }}
+      sx={{ width: "100%" }}
+    >
       <Paper
         sx={{
           p: 3,
-          alignItems: "center",
-          gap: 3,
           borderRadius: 4,
           marginTop: 3,
+          width: { xs: "100%", lg: "350px" },
+          flexShrink: 0,
         }}
       >
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", sm: "row", lg: "column" },
             justifyContent: "center",
             alignItems: "center",
             borderBottom: 1,
@@ -42,7 +47,7 @@ export const DetailsCustomer = () => {
         >
           <Avatar
             src={customer.imagem}
-            sx={{ width: 100, height: 100, marginBottom: 3 }}
+            sx={{ width: 100, height: 100 }}
             variant="rounded"
           />
           <Box sx={{}}>
@@ -146,7 +151,7 @@ export const DetailsCustomer = () => {
           </Box>
         </Box>
       </Paper>
-      <Paper sx={{ p: 3, alignItems: "center", gap: 3 }}>
+      <Paper sx={{ p: { xs: 1, sm: 3 }, flexGrow: 1, overflow: "hidden" }}>
         <DetailsHistory />
       </Paper>
     </Stack>
