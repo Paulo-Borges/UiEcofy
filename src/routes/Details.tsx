@@ -1,11 +1,11 @@
 import { Box, Link, Stack, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { DetailsCustomer } from "../shared/components/details_customer/DetailsCustomer";
 
 export const Details = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   return (
     <Stack sx={{ margin: 7, flexGrow: 1 }}>
