@@ -2,9 +2,11 @@ import {
   AppBar,
   Avatar,
   Box,
+  Icon,
   IconButton,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -15,6 +17,7 @@ import LiveHelpOutlinedIcon from "@mui/icons-material/LiveHelpOutlined";
 import AssignmentReturnOutlinedIcon from "@mui/icons-material/AssignmentReturnOutlined";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import type { Theme } from "@mui/material/styles";
 
 export const Navbar: React.FC = () => {
   const [visivel, setVisivel] = useState(false);
@@ -22,6 +25,8 @@ export const Navbar: React.FC = () => {
   function HandleSettings() {
     setVisivel(!visivel);
   }
+
+  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
 
   return (
     <>
@@ -48,6 +53,11 @@ export const Navbar: React.FC = () => {
               alignItems: "center",
             }}
           >
+            {smDown && (
+              <IconButton>
+                <Icon>menu</Icon>
+              </IconButton>
+            )}
             <Avatar
               alt="logo do Ecofy"
               src="./src/assets/Group.svg"
