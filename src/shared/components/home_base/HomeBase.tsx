@@ -2,7 +2,11 @@ import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
 import HoraExata from "../hora_exact/HoraExata";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
-export const HomeBase = () => {
+interface IHomeBaseProps {
+  titulo: string;
+}
+
+export const HomeBase: React.FC<IHomeBaseProps> = ({ titulo }) => {
   const theme = useTheme();
 
   return (
@@ -21,7 +25,7 @@ export const HomeBase = () => {
           <Typography
             sx={{ marginBottom: 2, fontWeight: "bold", fontSize: 25 }}
           >
-            Reports
+            {titulo}
           </Typography>
         </Box>
         <Box>

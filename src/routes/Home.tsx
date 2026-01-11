@@ -17,49 +17,7 @@ function Home() {
         }}
       >
         <Toolbar />
-        <HomeBase />
-        {/* <Stack
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-          direction="row"
-        >
-          <Box>
-            <Typography sx={{ marginBottom: 2, color: "#545454" }}>
-              Manage and track your business
-            </Typography>
-            <Typography
-              sx={{ marginBottom: 2, fontWeight: "bold", fontSize: 25 }}
-            >
-              Welcome Back, Marcus
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              marginRight: { sm: 0, md: 4 },
-            }}
-          >
-            <Typography
-              sx={{
-                marginBottom: 2,
-                bgcolor: "#ffffff",
-                padding: 0,
-                paddingRight: 4,
-                borderRadius: 2,
-                marginTop: 4,
-                display: { xs: "none", sm: "flex" },
-                alignItems: "center",
-                color: "#545454",
-              }}
-            >
-              <IconButton sx={{ color: "#545454" }}>
-                <CalendarMonthIcon />
-              </IconButton>
-              11 Jan 2026, <HoraExata />
-            </Typography>
-          </Box>
-        </Stack> */}
+        <HomeBase titulo="Welcome Back, Marcus" />
         <SmallStatistic />
       </Box>
       <Box sx={{ padding: 5, gap: 5, display: { sm: "block", md: "flex" } }}>
