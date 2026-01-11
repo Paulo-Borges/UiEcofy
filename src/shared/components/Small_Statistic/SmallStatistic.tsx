@@ -4,14 +4,12 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 export default function SmallStatistic() {
   return (
     <div>
-      <Stack
-        direction="row"
-        spacing={2}
+      <Box
+        display="flex"
+        flexWrap="wrap"
         sx={{
-          display: "flex",
-          maxwidth: "100%",
+          width: "100%",
           justifyContent: "center",
-          flexWrap: "wrap",
           gap: 2,
           mt: 4,
           mb: 4,
@@ -221,7 +219,7 @@ export default function SmallStatistic() {
             +$142
           </Typography>
         </Box>
-      </Stack>
+      </Box>
     </div>
   );
 }

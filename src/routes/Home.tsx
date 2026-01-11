@@ -9,9 +9,7 @@ function Home() {
   return (
     <Box>
       <Box
-        // component="main"
         sx={{
-          // flexGrow: 1,
           bgcolor: "background.default",
           p: 3,
         }}
