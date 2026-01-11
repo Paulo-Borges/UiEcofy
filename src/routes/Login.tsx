@@ -1,34 +1,36 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { InputLogin } from "../shared/components/InputLogin";
 import { ButtonLogin } from "../shared/components/ButtonLogin";
 import { useUsuarioLogado } from "../shared/hooks";
-import { Dashboard } from "../shared/components/Dashboard";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const { nomeDoUsuario, logout } = useUsuarioLogado();
+  const { nomeDoUsuario } = useUsuarioLogado();
 
   const inputPasswordRef = useRef<HTMLInputElement>(null);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   // useEffect(() => {
   //   console.log(email, password);
   // }, [email, password]);
 
-  const emailLength = useMemo(() => {
-    return email.length * 1000;
-  }, [email.length]);
+  // const emailLength = useMemo(() => {
+  //   return email.length * 1000;
+  // }, [email.length]);
 
   const handleEntrar = useCallback(() => {
     console.log(email, password);
 
-    if (inputPasswordRef.current !== null) {
-      inputPasswordRef.current?.focus();
+    if (email !== "" && password !== "") {
+      navigate("/");
     }
-  }, [email, password]);
+  }, [email, password, navigate]);
 
   return (
     <Box
@@ -83,7 +85,7 @@ export const Login = () => {
       {/* <ButtonLogin type="button" onClick={logout}>
         logout
       </ButtonLogin> */}
-      <Dashboard />
+      {/* <Dashboard /> */}
     </Box>
   );
 };
