@@ -1,10 +1,9 @@
-import { Box, IconButton, Stack, Toolbar, Typography } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
 
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SmallStatistic from "../shared/components/Small_Statistic/SmallStatistic";
 import Statistic from "../shared/components/statistic/Statistic";
-import HoraExata from "../shared/components/hora_exact/HoraExata";
 import TopCategory from "../shared/components/top_category/TopCategory";
+import { HomeBase } from "../shared/components/home_base/HomeBase";
 
 function Home() {
   return (
@@ -18,7 +17,8 @@ function Home() {
         }}
       >
         <Toolbar />
-        <Stack
+        <HomeBase />
+        {/* <Stack
           sx={{
             display: "flex",
             justifyContent: "space-between",
@@ -59,7 +59,7 @@ function Home() {
               11 Jan 2026, <HoraExata />
             </Typography>
           </Box>
-        </Stack>
+        </Stack> */}
         <SmallStatistic />
       </Box>
       <Box sx={{ padding: 5, gap: 5, display: { sm: "block", md: "flex" } }}>

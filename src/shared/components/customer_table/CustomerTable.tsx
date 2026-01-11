@@ -137,7 +137,7 @@ export const rows = [
 const CustomerTable = () => {
   return (
     <TableContainer component={Paper} sx={{ marginTop: 5, borderRadius: 6 }}>
-      <Table sx={{ minWidth: 450 }} size="small" aria-label="a dense table">
+      <Table>
         <TableHead>
           <TableRow sx={{ height: 56 }}>
             <TableCell>

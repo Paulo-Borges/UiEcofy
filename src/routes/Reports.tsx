@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
+import { HomeBase } from "../shared/components/home_base/HomeBase";
 
 const Reports = () => {
   return (
     <Box sx={{ margin: 7 }}>
-      <h1>Reports</h1>
+      <HomeBase />
     </Box>
   );
 };
