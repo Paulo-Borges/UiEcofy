@@ -1,4 +1,11 @@
-import { Box, Link, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Link,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 // import { useParams } from "react-router-dom";
 
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -6,6 +13,8 @@ import { DetailsCustomer } from "../shared/components/details_customer/DetailsCu
 
 export const Details = () => {
   // const { id } = useParams();
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Stack sx={{ margin: 7, flexGrow: 1 }}>
@@ -29,8 +38,6 @@ export const Details = () => {
         <Stack sx={{}}>
           <Link
             sx={{
-              display: "flex",
-              // marginTop: 7,
               background: "#111111",
               color: "#fff",
               padding: 1,
@@ -41,6 +48,7 @@ export const Details = () => {
               width: { xs: "100%", sm: "auto" },
               justifyContent: "center",
             }}
+            display={smDown ? "none" : "flex"}
           >
             Edit Profile
           </Link>
