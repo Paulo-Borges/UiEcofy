@@ -1,10 +1,22 @@
-import { Avatar, Box, Paper, Stack, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Paper,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useParams } from "react-router-dom";
 
 import { rows } from "../customer_table/CustomerTable"; // Importe os dados centralizados
 import { DetailsHistory } from "./DetailsHistory";
 
 export const DetailsCustomer = () => {
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
+
   const { id } = useParams(); // Pega o ID da URL
 
   // Procura o cliente específico pelo ID
@@ -22,7 +34,8 @@ export const DetailsCustomer = () => {
     <Stack
       direction={{ xs: "column", lg: "row" }}
       gap={{ xs: 3, md: 6 }}
-      sx={{ width: "100%" }}
+      width={smDown ? "60%" : mdDown ? "80%" : "100%"}
+      paddingLeft={smDown ? 2 : 0}
     >
       <Paper
         sx={{
@@ -32,6 +45,7 @@ export const DetailsCustomer = () => {
           width: { xs: "100%", lg: "350px" },
           flexShrink: 0,
         }}
+        // width={smDown ? "60%" : mdDown ? "80%" : "100%"}
       >
         <Box
           sx={{

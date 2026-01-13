@@ -17,7 +17,7 @@ export const Details = () => {
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Stack sx={{ margin: 7, flexGrow: 1 }}>
+    <Stack sx={{ flexGrow: 1 }} margin={smDown ? 0 : 7}>
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={2}
@@ -27,7 +27,7 @@ export const Details = () => {
           marginTop: { xs: 2, md: 7 },
         }}
       >
-        <Box>
+        <Box paddingLeft={smDown ? 7 : 0} paddingTop={smDown ? 7 : 0}>
           <Typography
             sx={{ display: "flex", marginTop: 7, alignItems: "center" }}
           >
