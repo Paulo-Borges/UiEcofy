@@ -1,4 +1,11 @@
-import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import HoraExata from "../hora_exact/HoraExata";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
@@ -8,9 +15,10 @@ interface IHomeBaseProps {
 
 export const HomeBase: React.FC<IHomeBaseProps> = ({ titulo }) => {
   const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Box width={theme.spacing(228)} padding={4}>
+    <Box width={theme.spacing("auto")} padding={4}>
       <Stack
         sx={{
           display: "flex",
@@ -28,7 +36,7 @@ export const HomeBase: React.FC<IHomeBaseProps> = ({ titulo }) => {
             {titulo}
           </Typography>
         </Box>
-        <Box>
+        <Box display={smDown ? "none" : "flex"}>
           <Typography
             sx={{
               marginBottom: 2,
