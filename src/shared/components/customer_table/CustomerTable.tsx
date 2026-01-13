@@ -134,7 +134,7 @@ export const rows = [
   ),
 ];
 
-const CustomerTable = () => {
+const CustomerTable: React.FC = () => {
   return (
     <TableContainer component={Paper} sx={{ marginTop: 5, borderRadius: 6 }}>
       <Table>
@@ -148,7 +148,10 @@ const CustomerTable = () => {
               </Box>
             </TableCell>
             <TableCell align="right">Phone</TableCell>
-            <TableCell align="right">
+            <TableCell
+              align="right"
+              sx={{ display: { xs: "none", md: "table-cell" } }}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -160,7 +163,10 @@ const CustomerTable = () => {
                 <KeyboardArrowDownIcon />
               </Box>
             </TableCell>
-            <TableCell align="right">
+            <TableCell
+              align="right"
+              sx={{ display: { xs: "none", md: "table-cell" } }}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -172,7 +178,10 @@ const CustomerTable = () => {
                 <KeyboardArrowDownIcon />
               </Box>
             </TableCell>
-            <TableCell align="right">
+            <TableCell
+              align="right"
+              sx={{ display: { xs: "none", md: "table-cell" } }}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -184,7 +193,12 @@ const CustomerTable = () => {
                 <KeyboardArrowDownIcon />
               </Box>
             </TableCell>
-            <TableCell align="right">Added</TableCell>
+            <TableCell
+              align="right"
+              sx={{ display: { xs: "none", md: "table-cell" } }}
+            >
+              Added
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -213,10 +227,30 @@ const CustomerTable = () => {
                 </Box>
               </TableCell>
               <TableCell align="right">{row.phone}</TableCell>
-              <TableCell align="right">{row.orders}</TableCell>
-              <TableCell align="right">{row.balance}</TableCell>
-              <TableCell align="right">{row.status}</TableCell>
-              <TableCell align="right">{row.added}</TableCell>
+              <TableCell
+                align="right"
+                sx={{ display: { xs: "none", md: "table-cell" } }}
+              >
+                {row.orders}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{ display: { xs: "none", md: "table-cell" } }}
+              >
+                {row.balance}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{ display: { xs: "none", md: "table-cell" } }}
+              >
+                {row.status}
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{ display: { xs: "none", md: "table-cell" } }}
+              >
+                {row.added}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
