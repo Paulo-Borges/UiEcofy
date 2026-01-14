@@ -1,9 +1,19 @@
-import { Avatar, Box, IconButton, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Icon,
+  IconButton,
+  Paper,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import TopCategory from "../top_category/TopCategory";
 
 export const ReportsStatic = () => {
+  const theme = useTheme();
+
   return (
     <Box
       component="div"
@@ -126,7 +136,33 @@ export const ReportsStatic = () => {
             }}
           ></Avatar>
         </Box>
-        <Typography>o que falta!</Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: 4,
+          }}
+        >
+          <Box component={Paper} sx={{ display: "flex", padding: 2 }}>
+            <Box sx={{ display: "flex", gap: 1 }} width={theme.spacing(35)}>
+              <Typography>Top Campaign Types</Typography>
+              <Icon>info-outline</Icon>
+            </Box>
+            <Box sx={{ display: "flex" }}>
+              <Typography color="#666666">Monthly</Typography>
+              <Icon>seta</Icon>
+            </Box>
+          </Box>
+          <Box component={Paper} sx={{ display: "flex", padding: 2 }}>
+            <Box
+              sx={{ display: "flex", justifyContent: "space-between" }}
+              width={theme.spacing(30)}
+            >
+              <Typography>Customer Age Rates</Typography>
+              <Icon>more</Icon>
+            </Box>
+          </Box>
+        </Box>
       </Box>
       <Box sx={{ width: { lg: 705, xs: 385 } }}>
         <TopCategory />
