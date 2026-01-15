@@ -10,6 +10,7 @@ import {
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import TopCategory from "../top_category/TopCategory";
+import Brightness1Icon from "@mui/icons-material/Brightness1";
 
 export const ReportsStatic = () => {
   const theme = useTheme();
@@ -143,23 +144,96 @@ export const ReportsStatic = () => {
             marginTop: 4,
           }}
         >
-          <Box component={Paper} sx={{ display: "flex", padding: 2 }}>
-            <Box sx={{ display: "flex", gap: 1 }} width={theme.spacing(35)}>
-              <Typography>Top Campaign Types</Typography>
-              <Icon>info-outline</Icon>
+          <Box component={Paper} sx={{ borderRadius: 5 }}>
+            <Box sx={{ display: "flex", padding: 2 }}>
+              <Box sx={{ display: "flex", gap: 1 }} width={theme.spacing(35)}>
+                <Typography>Top Campaign Types</Typography>
+                <Icon>info-outline</Icon>
+              </Box>
+              <Box sx={{ display: "flex" }}>
+                <Typography color="#666666">Monthly</Typography>
+                <Icon>seta</Icon>
+              </Box>
             </Box>
-            <Box sx={{ display: "flex" }}>
-              <Typography color="#666666">Monthly</Typography>
-              <Icon>seta</Icon>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Avatar
+                alt="Grafico de types"
+                src="../../../src/assets/reportTypes.png"
+                variant="square"
+                sx={{
+                  width: 190,
+                  height: 190,
+                  marginTop: 2,
+                }}
+              ></Avatar>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                marginLeft: 10,
+                gap: 2,
+                marginTop: 2,
+              }}
+            >
+              <Brightness1Icon color="success" />
+              <Typography>Whatsapp (40.1%)</Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                marginLeft: 10,
+                gap: 2,
+                marginTop: 2,
+              }}
+            >
+              <Brightness1Icon color="warning" />
+              <Typography>Email (25%)</Typography>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                marginLeft: 10,
+                gap: 2,
+                marginTop: 2,
+              }}
+            >
+              <Brightness1Icon color="error" />
+              <Typography>SMS (6.1%)</Typography>
             </Box>
           </Box>
-          <Box component={Paper} sx={{ display: "flex", padding: 2 }}>
+          <Box
+            component={Paper}
+            sx={{
+              display: "flex",
+              padding: 2,
+              flexDirection: "column",
+              borderRadius: 5,
+            }}
+          >
             <Box
               sx={{ display: "flex", justifyContent: "space-between" }}
               width={theme.spacing(30)}
             >
               <Typography>Customer Age Rates</Typography>
               <Icon>more</Icon>
+            </Box>
+
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Avatar
+                alt="Grafico de types"
+                src="../../../src/assets/reportRates.png"
+                variant="square"
+                sx={{
+                  width: 190,
+                  height: 190,
+                  marginTop: 3,
+                }}
+              ></Avatar>
             </Box>
           </Box>
         </Box>
