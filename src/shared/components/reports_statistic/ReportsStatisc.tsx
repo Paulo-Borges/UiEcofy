@@ -1,7 +1,6 @@
 import {
   Avatar,
   Box,
-  Icon,
   IconButton,
   Paper,
   Typography,
@@ -19,6 +18,7 @@ import MoreVertSharpIcon from "@mui/icons-material/MoreVertSharp";
 export const ReportsStatic = () => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const lgDown = useMediaQuery(theme.breakpoints.down("lg"));
 
   return (
     <Box
@@ -143,13 +143,15 @@ export const ReportsStatic = () => {
           ></Avatar>
         </Box>
         <Box
+          display="flex"
+          flexDirection={smDown ? "column" : lgDown ? "column" : "row"}
+          gap={theme.spacing(4)}
           sx={{
-            display: "flex",
             justifyContent: "space-between",
             marginTop: 4,
           }}
         >
-          <Box component={Paper} sx={{ borderRadius: 5 }}>
+          <Box component={Paper} sx={{ borderRadius: 5, gap: 5 }}>
             <Box
               sx={{
                 display: "flex",
