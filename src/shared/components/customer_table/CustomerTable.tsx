@@ -17,7 +17,6 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link as MuiLink } from "@mui/material";
 import { Link as RouterLink } from "react-router";
-import { StatusChip as status } from "../details_customer/DetailsHistory";
 
 interface IRowsProps {
   id: string;

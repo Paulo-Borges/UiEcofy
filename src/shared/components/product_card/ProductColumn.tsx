@@ -8,6 +8,7 @@ import {
   TableRow,
   TableSortLabel,
 } from "@mui/material";
+import { Product } from "./ProductRows";
 
 interface IProductColumnProps {
   id: string;
@@ -33,12 +34,11 @@ export const ProductColumn: React.FC = () => {
       sx={{
         borderTopLeftRadius: 9,
         borderTopRightRadius: 9,
-        background: "#F68605",
         marginTop: 6,
       }}
     >
       <Table>
-        <TableHead>
+        <TableHead sx={{ background: "#F68605" }}>
           <TableRow>
             <TableCell>
               <CheckBoxOutlineBlank fontSize="small" />
@@ -59,6 +59,7 @@ export const ProductColumn: React.FC = () => {
             ))}
           </TableRow>
         </TableHead>
+        <Product />
       </Table>
     </TableContainer>
   );

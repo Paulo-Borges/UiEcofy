@@ -1,5 +1,6 @@
 import { Box, Icon, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Product } from "./ProductRows";
 
 export const ProductInput = () => {
   const theme = useTheme();
