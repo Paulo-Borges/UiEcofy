@@ -2,6 +2,7 @@ import { Box, Stack, Typography, Link } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import AddIcon from "@mui/icons-material/Add";
 import { ProductCards } from "../shared/components/product_card/ProductCard";
+import { ProductInput } from "../shared/components/product_card/ProductInput";
 
 const Products = () => {
   return (
@@ -40,6 +41,7 @@ const Products = () => {
         </Stack>
       </Stack>
       <ProductCards />
+      <ProductInput />
     </Box>
   );
 };

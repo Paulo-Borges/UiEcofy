@@ -1,4 +1,5 @@
 import { Avatar, Box, Typography } from "@mui/material";
+import { ProductInput } from "./ProductInput";
 
 export interface IProductCards {
   id: string;
