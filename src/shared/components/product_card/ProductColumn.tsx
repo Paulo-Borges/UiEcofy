@@ -29,6 +29,7 @@ export const ProductColumn: React.FC = () => {
   return (
     <TableContainer
       component={Paper}
+      elevation={0}
       sx={{
         borderTopLeftRadius: 9,
         borderTopRightRadius: 9,
