@@ -20,7 +20,7 @@ function createData(
   name: string,
   date: string,
   total: number,
-  status: string
+  status: string,
 ) {
   return { id, image, name, date, total, status };
 }
@@ -32,7 +32,7 @@ const rows = [
     "TWS Earphone T2",
     "1 min ago",
     174001.0,
-    "Processing"
+    "Processing",
   ),
   createData(
     2,
@@ -40,7 +40,7 @@ const rows = [
     "Headphone G1",
     "5 min ago",
     174001.0,
-    "Shiped"
+    "Shiped",
   ),
   createData(
     3,
@@ -48,7 +48,7 @@ const rows = [
     "Sams Galaxy S6 Pro 5G",
     "1 hour ago",
     174001.0,
-    "Shiped"
+    "Shiped",
   ),
   createData(
     4,
@@ -56,7 +56,7 @@ const rows = [
     "Headphone G1",
     "1 day ago",
     174001.0,
-    "Canceled"
+    "Canceled",
   ),
   createData(
     5,
@@ -64,7 +64,7 @@ const rows = [
     "Berry Smartwatch",
     "17 May 2023",
     174001.0,
-    "Delivered"
+    "Delivered",
   ),
   createData(
     6,
@@ -72,7 +72,7 @@ const rows = [
     "TWS Earphone T2",
     "1 Apr 2023",
     174001.0,
-    "Delivered"
+    "Delivered",
   ),
   createData(
     7,
@@ -80,7 +80,7 @@ const rows = [
     "Logic G Pro Wireless Mouse",
     "5 Feb 2023",
     174001.0,
-    "Delivered"
+    "Delivered",
   ),
 ];
 
@@ -88,7 +88,7 @@ interface StatusProps {
   status: string;
 }
 
-const StatusChip: React.FC<StatusProps> = ({ status }) => {
+export const StatusChip: React.FC<StatusProps> = ({ status }) => {
   let backgroundColor: string;
   let textColor: string;
   let borderColor: string;

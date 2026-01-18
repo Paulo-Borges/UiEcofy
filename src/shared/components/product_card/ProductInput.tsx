@@ -13,10 +13,15 @@ export const ProductInput = () => {
         gap={1}
         marginTop={7}
         flexGrow={smDown ? 1 : mdDown ? 1 : 0}
-        sx={{ background: "#fff", padding: 1, borderRadius: 3 }}
+        sx={{
+          background: "#fff",
+          padding: 1,
+          borderRadius: 4,
+          paddingX: 12,
+        }}
       >
         <Icon fontSize="small">search</Icon>
-        <Typography color="#7c7a7a" fontSize={14}>
+        <Typography color="#7c7a7a" fontSize={14} sx={{}}>
           Search...
         </Typography>
       </Box>
