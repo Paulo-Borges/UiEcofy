@@ -18,120 +18,118 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link as MuiLink } from "@mui/material";
 import { Link as RouterLink } from "react-router";
 
-function createData(
-  id: string,
-  imagem: string,
-  customerName: string,
-  phone: number,
-  orders: number,
-  balance: number,
-  status: string,
-  added: string
-) {
-  return { id, imagem, customerName, phone, orders, balance, status, added };
+interface IRowsProps {
+  id: string;
+  imagem: string;
+  customerName: string;
+  phone: number;
+  orders: number;
+  balance: number;
+  status: string;
+  added: string;
 }
 
-export const rows = [
-  createData(
-    "1",
-    "../../../src/assets/img1.png",
-    "John Bushmill",
-    7850548877,
-    124,
-    121.0,
-    "Offline",
-    "29 Dec 2022"
-  ),
-  createData(
-    "2",
-    "../../../src/assets/img2.png",
-    "Laura Prichet",
-    2153023376,
-    45,
-    590.0,
-    "Online",
-    "24 Dec 2022"
-  ),
-  createData(
-    "3",
-    "../../../src/assets/img3.png",
-    "Mohammad Karim",
-    7850548877,
-    32,
-    121.0,
-    "Offline",
-    "12 Dec 2022"
-  ),
-  createData(
-    "4",
-    "../../../src/assets/img4.png",
-    "Josh Bill",
-    7850548877,
-    99,
-    121.0,
-    "Offline",
-    "21 Dec 2022"
-  ),
-  createData(
-    "5",
-    "../../../src/assets/img5.png",
-    "Josh Adam",
-    7850548877,
-    100,
-    121.0,
-    "Offline",
-    "21 Sep 2022"
-  ),
-  createData(
-    "6",
-    "../../../src/assets/img6.png",
-    "Sin Tae",
-    7850548877,
-    431,
-    121.0,
-    "Offline",
-    "21 Dec 2022"
-  ),
-  createData(
-    "7",
-    "../../../src/assets/img7.png",
-    "Rajesh Masvidal",
-    7850548877,
-    36,
-    121.0,
-    "Offline",
-    "19 Sep 2022"
-  ),
-  createData(
-    "8",
-    "../../../src/assets/img8.png",
-    "Fajar Surya",
-    7850548877,
-    77,
-    121.0,
-    "Offline",
-    "19 Dec 2022"
-  ),
-  createData(
-    "9",
-    "../../../src/assets/img9.png",
-    "Lisa Greg",
-    7850548877,
-    89,
-    121.0,
-    "Offline",
-    "10 Dec 2022"
-  ),
-  createData(
-    "10",
-    "../../../src/assets/img10.png",
-    "Linda Blair",
-    7850548877,
-    107,
-    121.0,
-    "Offline",
-    "29 Aug 2022"
-  ),
+export const rows: IRowsProps[] = [
+  {
+    id: "1",
+    imagem: "../../../src/assets/img1.png",
+    customerName: "John Bushmill",
+    phone: 7850548877,
+    orders: 124,
+    balance: 121.0,
+    status: "Offline",
+    added: "29 Dec 2022",
+  },
+  {
+    id: "2",
+    imagem: "../../../src/assets/img2.png",
+    customerName: "Laura Prichet",
+    phone: 2153023376,
+    orders: 45,
+    balance: 590.0,
+    status: "Online",
+    added: "24 Dec 2022",
+  },
+  {
+    id: "3",
+    imagem: "../../../src/assets/img3.png",
+    customerName: "Mohammad Karim",
+    phone: 7850548877,
+    orders: 32,
+    balance: 121.0,
+    status: "Offline",
+    added: "12 Dec 2022",
+  },
+  {
+    id: "4",
+    imagem: "../../../src/assets/img4.png",
+    customerName: "Josh Bill",
+    phone: 7850548877,
+    orders: 99,
+    balance: 121.0,
+    status: "Offline",
+    added: "21 Dec 2022",
+  },
+  {
+    id: "5",
+    imagem: "../../../src/assets/img5.png",
+    customerName: "Josh Adam",
+    phone: 7850548877,
+    orders: 100,
+    balance: 121.0,
+    status: "Offline",
+    added: "21 Sep 2022",
+  },
+  {
+    id: "6",
+    imagem: "../../../src/assets/img6.png",
+    customerName: "Sin Tae",
+    phone: 7850548877,
+    orders: 431,
+    balance: 121.0,
+    status: "Offline",
+    added: "21 Dec 2022",
+  },
+  {
+    id: "7",
+    imagem: "../../../src/assets/img7.png",
+    customerName: "Rajesh Masvidal",
+    phone: 7850548877,
+    orders: 36,
+    balance: 121.0,
+    status: "Offline",
+    added: "19 Sep 2022",
+  },
+  {
+    id: "8",
+    imagem: "../../../src/assets/img8.png",
+    customerName: "Fajar Surya",
+    phone: 7850548877,
+    orders: 77,
+    balance: 121.0,
+    status: "Offline",
+    added: "19 Dec 2022",
+  },
+  {
+    id: "9",
+    imagem: "../../../src/assets/img9.png",
+    customerName: "Lisa Greg",
+    phone: 7850548877,
+    orders: 89,
+    balance: 121.0,
+    status: "Offline",
+    added: "10 Dec 2022",
+  },
+  {
+    id: "10",
+    imagem: "../../../src/assets/img10.png",
+    customerName: "Linda Blair",
+    phone: 7850548877,
+    orders: 107,
+    balance: 121.0,
+    status: "Offline",
+    added: "29 Aug 2022",
+  },
 ];
 
 const CustomerTable: React.FC = () => {
