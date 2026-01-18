@@ -36,19 +36,20 @@ export const Rows: IProductCards[] = [
 
 export const ProductCards: React.FC = () => {
   return (
-    <Box display="flex" gap={3}>
+    <Box display="flex" gap={3} flexWrap="wrap">
       {Rows.map((Row) => (
         <Box
           key={Row.id}
           bgcolor="#fff"
           paddingX={7}
           paddingY={4}
-          borderRadius={2}
+          borderRadius={4}
           marginTop={5}
+          flexGrow={1}
         >
           <Box display="flex" gap={2}>
             <Avatar src={Row.src} alt={Row.title} />
-            <Typography sx={{ fontSize: 30, color: "#7a7979" }}>
+            <Typography sx={{ fontSize: 20, color: "#7a7979" }}>
               {Row.title}
             </Typography>
           </Box>
