@@ -1,20 +1,9 @@
 import { CheckBox } from "@mui/icons-material";
-import CreateIcon from "@mui/icons-material/Create";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import {
-  Avatar,
-  Box,
-  IconButton,
-  Stack,
-  TableBody,
-  TableCell,
-  TableRow,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+
+import { Avatar, Box, TableBody, TableCell, TableRow } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
 import { Link as RouterLink } from "react-router";
+import { Icones } from "../Icones";
 
 interface IProductRowsProps {
   id: string;
@@ -32,54 +21,112 @@ export const ProductRows: IProductRowsProps[] = [
   {
     id: "1",
     avatar: "src/assets/productHeadphone.png",
-    name: "TWS Earphone m1",
+    name: "Headphone G1",
     category: "Headphones",
     price: "$174.00",
     stock: 134,
     status: "Published",
     created: "14 mai 2025",
-    action: (
-      <Stack direction="row" spacing={1}>
-        <IconButton
-          size="small"
-          color="success"
-          onClick={() => console.log("Edit")}
-        >
-          <CreateIcon fontSize="small" />
-        </IconButton>
-        <IconButton
-          size="small"
-          color="error"
-          onClick={() => console.log("Delete")}
-        >
-          <DeleteForeverIcon fontSize="small" />
-        </IconButton>
-      </Stack>
-    ),
+    action: <Icones />,
   },
   {
     id: "2",
-    avatar: "src/assets/productHeadphone.png",
+    avatar: "src/assets/productTWSm1.png",
     name: "TWS Earphone m1",
     category: "Headphones",
-    price: "$174.00",
-    stock: 134,
+    price: "$40.00",
+    stock: 0,
+    status: "Out of Stock",
+    created: "02 jan 2025",
+    action: <Icones />,
+  },
+  {
+    id: "3",
+    avatar: "src/assets/productLaptop.png",
+    name: "B1 Laptop Bag",
+    category: "Mouse",
+    price: "$40.00",
+    stock: 0,
+    status: "in Draft",
+    created: "01 jan 2025",
+    action: <Icones />,
+  },
+  {
+    id: "4",
+    avatar: "src/assets/productTWSt2.png",
+    name: "TWS Earphone T2",
+    category: "Keyboard",
+    price: "$140.00",
+    stock: 120,
     status: "Published",
-    created: "14 mai 2025",
-    action: (
-      <Stack direction="row" spacing={1}>
-        <IconButton size="small" onClick={() => console.log("Edit")}>
-          <CreateIcon fontSize="small" />
-        </IconButton>
-        <IconButton
-          size="small"
-          color="error"
-          onClick={() => console.log("Delete")}
-        >
-          <DeleteForeverIcon fontSize="small" />
-        </IconButton>
-      </Stack>
-    ),
+    created: "29 dez 2024",
+    action: <Icones />,
+  },
+  {
+    id: "5",
+    avatar: "src/assets/productBerry.png",
+    name: "Berry SmartWatch",
+    category: "watch",
+    price: "$140.00",
+    stock: 114,
+    status: "Published",
+    created: "20 dez 2024",
+    action: <Icones />,
+  },
+  {
+    id: "6",
+    avatar: "src/assets/productKeyPLus.png",
+    name: "Keyboard Keyplus",
+    category: "Mouse",
+    price: "$140.00",
+    stock: 120,
+    status: "Published",
+    created: "29 dez 2024",
+    action: <Icones />,
+  },
+  {
+    id: "7",
+    avatar: "src/assets/productKeyPLus.png",
+    name: "Keyboard Keyplus",
+    category: "Mouse",
+    price: "$140.00",
+    stock: 120,
+    status: "Published",
+    created: "29 dez 2024",
+    action: <Icones />,
+  },
+  {
+    id: "8",
+    avatar: "src/assets/productLogic.png",
+    name: "Keyboard Keyplus",
+    category: "Mouse",
+    price: "$140.00",
+    stock: 120,
+    status: "Out of Stock",
+    created: "29 dez 2024",
+    action: <Icones />,
+  },
+  {
+    id: "9",
+    avatar: "src/assets/productMouse.png",
+    name: "Keyboard Keyplus",
+    category: "Mouse",
+    price: "$140.00",
+    stock: 120,
+    status: "Published",
+    created: "29 dez 2024",
+    action: <Icones />,
+  },
+  {
+    id: "10",
+    avatar: "src/assets/productMouseLite.png",
+    name: "Keyboard Keyplus",
+    category: "Mouse",
+    price: "$140.00",
+    stock: 120,
+    status: "in Draft",
+    created: "29 dez 2024",
+    action: <Icones />,
   },
 ];
 
@@ -102,13 +149,13 @@ export const Product: React.FC = () => {
                 to={`/ProductDetails/${ProductRow.id}`}
                 sx={{ textDecoration: "none" }}
               >
-                <Typography
+                <Box
                 //   whiteSpace="nowrap"
                 //   textOverflow="ellipsis"
                 //   overflow="hidden"
                 >
                   {ProductRow.name}
-                </Typography>
+                </Box>
               </MuiLink>
             </Box>
           </TableCell>
