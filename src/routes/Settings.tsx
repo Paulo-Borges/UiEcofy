@@ -1,6 +1,7 @@
 import { Box, Link, Stack, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { SettingsLinks } from "../shared/components/settings_links/SettingsLinks";
+import { SettingsForm } from "../shared/components/settings_links/SettingsForm";
 
 const Settings = () => {
   return (
@@ -41,6 +42,7 @@ const Settings = () => {
         </Stack>
       </Stack>
       <SettingsLinks />
+      <SettingsForm />
     </Box>
   );
 };
