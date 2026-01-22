@@ -1,19 +1,9 @@
-import {
-  Avatar,
-  Box,
-  Divider,
-  FormControl,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Divider, Paper, Typography } from "@mui/material";
+import { SettingsInput } from "./SettingsInput";
 
 export const SettingsForm = () => {
   return (
-    <Box
-      component={Paper}
-      sx={{ flexGrow: 1, marginTop: 3, borderRadius: 5, padding: 3 }}
-    >
+    <Box component={Paper} sx={{ marginTop: 3, borderRadius: 5, padding: 3 }}>
       <Box paddingBottom={3}>
         <Typography sx={{ fontWeight: 500 }}>Personal informations</Typography>
       </Box>
@@ -67,10 +57,7 @@ export const SettingsForm = () => {
           </Box>
         </Box>
       </Box>
-      <FormControl>
-        <Typography>Teste</Typography>
-        <TextField variant="outlined" placeholder="oiii" />
-      </FormControl>
+      <SettingsInput />
     </Box>
   );
 };
