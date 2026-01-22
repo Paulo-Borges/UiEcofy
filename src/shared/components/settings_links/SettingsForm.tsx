@@ -3,11 +3,8 @@ import {
   Box,
   Divider,
   FormControl,
-  FormHelperText,
-  IconButton,
-  Input,
-  InputLabel,
   Paper,
+  TextField,
   Typography,
 } from "@mui/material";
 
@@ -30,22 +27,49 @@ export const SettingsForm = () => {
         </Box>
         <Box>
           <Box>
-            <Typography>We only support .JPG, .JPEG, or .PNG file.</Typography>
+            <Typography marginBottom={3} fontSize={12}>
+              We only support .JPG, .JPEG, or .PNG file.
+            </Typography>
           </Box>
-          <Box display="flex">
-            <IconButton sx={{ background: "#F68605" }}>
+          <Box display="flex" gap={2}>
+            <Box
+              component="button"
+              sx={{
+                background: "#F68605",
+                color: "#fff",
+                "&:hover": {
+                  backgroundColor: "#e6b272",
+                  color: "#888",
+                },
+                paddingX: 2,
+                paddingY: 1,
+                borderRadius: 2,
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
               Upload your photo
-            </IconButton>
-            <IconButton>Delete Image</IconButton>
+            </Box>
+            <Box
+              component="button"
+              sx={{
+                background: "#fff",
+                "&:hover": {
+                  color: "#888",
+                },
+                fontWeight: "bold",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Delete Image
+            </Box>
           </Box>
         </Box>
       </Box>
       <FormControl>
-        <InputLabel htmlFor="my-input">Email address</InputLabel>
-        <Input id="my-input" aria-describedby="my-helper-text" />
-        <FormHelperText id="my-helper-text">
-          We'll never share your email.
-        </FormHelperText>
+        <Typography>Teste</Typography>
+        <TextField variant="outlined" placeholder="oiii" />
       </FormControl>
     </Box>
   );
