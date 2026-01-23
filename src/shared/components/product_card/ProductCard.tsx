@@ -1,14 +1,13 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import { ProductInput } from "./ProductInput";
 
-export interface IProductCards {
+interface IProductCards {
   id: string;
   src: string;
   title: string;
   preco: number;
 }
 
-export const Rows: IProductCards[] = [
+const Rows: IProductCards[] = [
   {
     id: "1",
     src: "../../src/assets/Icon Badge card.png",
