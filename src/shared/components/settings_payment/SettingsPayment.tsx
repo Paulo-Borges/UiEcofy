@@ -2,9 +2,13 @@ import { Avatar, Box, Paper, Typography } from "@mui/material";
 
 export const SettingsPayment = () => {
   return (
-    <Box component={Paper} sx={{ marginTop: 3, borderRadius: 5, padding: 3 }}>
+    <Box
+      component={Paper}
+      sx={{ marginTop: 3, borderRadius: 5, padding: 3 }}
+      id="SettingsPayment"
+    >
       <Box paddingBottom={3}>
-        <Typography sx={{ fontWeight: 500 }}>Personal informations</Typography>
+        <Typography sx={{ fontWeight: 500 }}>Payment Providers</Typography>
       </Box>
       <Box display="flex" sx={{ paddingY: 5, gap: 5 }}>
         <Box>

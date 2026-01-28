@@ -6,7 +6,7 @@ import {
   ListItemText,
 } from "@mui/material";
 
-export const SettingsLinks = () => {
+export const SettingsLinks = ({ setActiveTab, activeTab }) => {
   return (
     <nav>
       <List
@@ -18,15 +18,23 @@ export const SettingsLinks = () => {
         }}
       >
         <ListItem disablePadding>
-          <ListItemButton component="a" href="#">
+          <ListItemButton
+            onClick={() => setActiveTab("general")}
+            selected={activeTab === "general"} // Opcional: destaca o botão ativo
+          >
             <ListItemText primary="General" />
           </ListItemButton>
         </ListItem>
+
         <ListItem disablePadding>
-          <ListItemButton component="a" href="#">
+          <ListItemButton
+            onClick={() => setActiveTab("payment")}
+            selected={activeTab === "payment"}
+          >
             <ListItemText primary="Payment & Billing" />
           </ListItemButton>
         </ListItem>
+
         <ListItem disablePadding>
           <ListItemButton component="a" href="#">
             <ListItemText primary="Taxes & Duties" />
