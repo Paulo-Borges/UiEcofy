@@ -36,22 +36,37 @@ export const SettingsLinks = ({ setActiveTab, activeTab }) => {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton component="a" href="#">
+          <ListItemButton
+            onClick={() => setActiveTab("taxes")}
+            selected={activeTab === "taxes"}
+          >
             <ListItemText primary="Taxes & Duties" />
           </ListItemButton>
         </ListItem>
+
         <ListItem disablePadding>
-          <ListItemButton component="a" href="#">
+          <ListItemButton
+            onClick={() => setActiveTab("languages")}
+            selected={activeTab === "languages"}
+          >
             <ListItemText primary="Languages" />
           </ListItemButton>
         </ListItem>
+
         <ListItem disablePadding>
-          <ListItemButton component="a" href="#">
+          <ListItemButton
+            onClick={() => setActiveTab("appearance")}
+            selected={activeTab === "appearance"}
+          >
             <ListItemText primary="Appearance" />
           </ListItemButton>
         </ListItem>
+
         <ListItem disablePadding>
-          <ListItemButton component="a" href="#">
+          <ListItemButton
+            onClick={() => setActiveTab("session")}
+            selected={activeTab === "session"}
+          >
             <ListItemText primary="Active Session" />
           </ListItemButton>
         </ListItem>

@@ -5,6 +5,7 @@ import { SettingsForm } from "../shared/components/settings_links/SettingsForm";
 
 import { SettingsPayment } from "../shared/components/settings_payment/SettingsPayment";
 import { useState } from "react";
+import { SettingsTaxes } from "../shared/components/settings_taxes/SettingsTaxes";
 
 // 1. Definição do tipo para as abas (aumenta a segurança do código)
 export type SettingsTab =
@@ -17,7 +18,7 @@ export type SettingsTab =
 
 const Settings = () => {
   // 2. Inicializando o estado com o tipo definido
-  const [activeTab, setActiveTab] = useState<SettingsTab>("general");
+  const [activeTab, setActiveTab] = useState<SettingsTab>("taxes");
 
   return (
     <Box sx={{ margin: 7, flexGrow: 1 }}>
@@ -67,7 +68,7 @@ const Settings = () => {
         {activeTab === "payment" && <SettingsPayment />}
 
         {/* Placeholder para as outras abas caso você as crie futuramente */}
-        {activeTab === "taxes" && <Typography>Taxes Content</Typography>}
+        {activeTab === "taxes" && <SettingsTaxes />}
       </Box>
     </Box>
   );
