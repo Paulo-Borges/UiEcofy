@@ -8,7 +8,12 @@ export const SettingsPayment = () => {
       id="SettingsPayment"
     >
       <Box paddingBottom={3}>
-        <Typography sx={{ fontWeight: 500 }}>Payment Providers</Typography>
+        <Typography sx={{ fontWeight: 500, fontSize: 18, marginBottom: 1 }}>
+          Payment Providers
+        </Typography>
+        <Typography sx={{ fontWeight: 100, fontSize: 14, color: "#545454" }}>
+          These are accepted payment methods in your store.
+        </Typography>
       </Box>
       <Box display="flex" sx={{ paddingY: 5, gap: 5 }}>
         <Box>
