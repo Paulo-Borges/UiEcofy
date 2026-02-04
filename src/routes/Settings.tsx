@@ -21,7 +21,7 @@ export type SettingsTab =
 
 const Settings = () => {
   // 2. Inicializando o estado com o tipo definido
-  const [activeTab, setActiveTab] = useState<SettingsTab>("taxes");
+  const [activeTab, setActiveTab] = useState<SettingsTab>("general");
 
   return (
     <Box sx={{ margin: 7, flexGrow: 1 }}>
