@@ -6,6 +6,9 @@ import { SettingsForm } from "../shared/components/settings_links/SettingsForm";
 import { SettingsPayment } from "../shared/components/settings_payment/SettingsPayment";
 import { useState } from "react";
 import { SettingsTaxes } from "../shared/components/settings_taxes/SettingsTaxes";
+import { SettingsLanguages } from "../shared/components/settings_languages/SettingsLanguages";
+import { SettingsAppearance } from "../shared/components/settings_appearance/SettingsAppearance";
+import { SettingsSession } from "../shared/components/settings_session/SettingsSession";
 
 // 1. Definição do tipo para as abas (aumenta a segurança do código)
 export type SettingsTab =
@@ -66,9 +69,10 @@ const Settings = () => {
       <Box sx={{ mt: 2 }}>
         {activeTab === "general" && <SettingsForm />}
         {activeTab === "payment" && <SettingsPayment />}
-
-        {/* Placeholder para as outras abas caso você as crie futuramente */}
         {activeTab === "taxes" && <SettingsTaxes />}
+        {activeTab === "languages" && <SettingsLanguages />}
+        {activeTab === "appearance" && <SettingsAppearance />}
+        {activeTab === "session" && <SettingsSession />}
       </Box>
     </Box>
   );
