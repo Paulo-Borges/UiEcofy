@@ -50,8 +50,8 @@ const Help = () => {
       >
         Linkedin
       </MuiLink>
-      <Typography fontSize={68} fontWeight="bold">
-        (021)98614-9579 <WhatsAppIcon fontSize="large" />
+      <Typography fontSize={28} fontWeight="bold">
+        (021)98614-9579 <WhatsAppIcon fontSize="medium" />
       </Typography>
       <Typography
         sx={{
