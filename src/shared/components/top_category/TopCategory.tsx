@@ -9,7 +9,7 @@ function categoryData(
   title: string,
   preco: number,
   sales: number,
-  porcent: number
+  porcent: number,
 ) {
   return { id, image, title, preco, sales, porcent };
 }
@@ -21,7 +21,7 @@ const rows = [
     "Smart Watch",
     24.501,
     140,
-    8
+    8,
   ),
   categoryData(
     2,
@@ -29,7 +29,7 @@ const rows = [
     "A1 Mouse",
     4.345,
     285,
-    10
+    10,
   ),
 
   categoryData(3, "../../../src/assets/camera.png", "4D Camera", 1.2, 24, 7),
@@ -39,7 +39,7 @@ const rows = [
     "G55 Mouse",
     780,
     176,
-    8.4
+    8.4,
   ),
   categoryData(
     5,
@@ -47,7 +47,7 @@ const rows = [
     "120z Headphone",
     1.902,
     192,
-    11.2
+    11.2,
   ),
   categoryData(
     6,
@@ -55,7 +55,7 @@ const rows = [
     "Portable Spesker",
     860,
     86,
-    14
+    14,
   ),
   categoryData(
     7,
@@ -63,7 +63,7 @@ const rows = [
     "Rocking Chair",
     260,
     18,
-    10
+    10,
   ),
   categoryData(
     8,
@@ -71,7 +71,7 @@ const rows = [
     "Earphone",
     1.12,
     112,
-    6.5
+    6.5,
   ),
   categoryData(9, "../../../src/assets/hat.png", "Hat", 680, 68, 8.8),
 ];
@@ -85,7 +85,7 @@ export default function TopCategory() {
         borderRadius: 6,
         padding: 2,
         marginBottom: 4,
-        width: "100%",
+        width: "50vw",
       }}
     >
       <Box

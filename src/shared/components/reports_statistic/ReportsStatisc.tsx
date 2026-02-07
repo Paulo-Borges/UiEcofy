@@ -25,7 +25,7 @@ export const ReportsStatic = () => {
       component="div"
       sx={{
         display: "flex",
-        width: "100",
+        width: "100%",
         paddingX: 3,
         justifyContent: "flex-start",
         gap: 4,
@@ -257,7 +257,7 @@ export const ReportsStatic = () => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ width: { lg: 705, xs: 385 } }}>
+      <Box width="100%">
         <TopCategory />
       </Box>
     </Box>

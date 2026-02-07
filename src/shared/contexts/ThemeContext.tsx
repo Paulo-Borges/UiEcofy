@@ -32,7 +32,7 @@ export const AppThemeProvider: React.FC<IAppThemeProviderProps> = ({
 
   const toggleTheme = useCallback(() => {
     setThemeName((oldThemeName) =>
-      oldThemeName === "light" ? "dark" : "light"
+      oldThemeName === "light" ? "dark" : "light",
     );
   }, []);
 
