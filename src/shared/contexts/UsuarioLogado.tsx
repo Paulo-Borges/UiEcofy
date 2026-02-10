@@ -6,7 +6,7 @@ interface IUsuarioLogadoContextData {
 }
 
 export const UsuarioLogadoContext = createContext<IUsuarioLogadoContextData>(
-  {} as IUsuarioLogadoContextData
+  {} as IUsuarioLogadoContextData,
 );
 
 interface IUsuarioLogadoProviderProps {

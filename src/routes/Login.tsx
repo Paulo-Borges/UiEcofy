@@ -13,22 +13,22 @@ export const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [nome, setNome] = useState(""); /*teste pegar nome 1 */
 
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   console.log(email, password);
-  // }, [email, password]);
-
-  // const emailLength = useMemo(() => {
-  //   return email.length * 1000;
-  // }, [email.length]);
 
   const handleEntrar = useCallback(() => {
     console.log(email, password);
 
-    if (email !== "" && password !== "") {
+    if (email.trim().length > 2 && password !== "") {
+      localStorage.setItem(
+        "@MeuApp:usuario",
+        email,
+      ); /*localStorage 1º chave 2º oo que esta guardado */
+
       navigate("/");
+    } else {
+      alert("Introduza um dado válido!");
     }
   }, [email, password, navigate]);
 
@@ -51,8 +51,6 @@ export const Login = () => {
       </Typography>
 
       <Typography>{nomeDoUsuario}</Typography>
-
-      {/* <Typography>Quantidade de caracteres no email: {emailLength}</Typography> */}
 
       <InputLogin
         InputLabel="Email"

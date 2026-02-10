@@ -15,12 +15,28 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LiveHelpOutlinedIcon from "@mui/icons-material/LiveHelpOutlined";
 import AssignmentReturnOutlinedIcon from "@mui/icons-material/AssignmentReturnOutlined";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import type { Theme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar: React.FC = () => {
   const [visivel, setVisivel] = useState(false);
+
+  const [usuario, setUsuario] = useState<string>("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // BUSCAR NO LOCALSTORAGE:
+    const nomeGuardado = localStorage.getItem("@MeuApp:usuario");
+
+    if (nomeGuardado) {
+      setUsuario(nomeGuardado);
+    } else {
+      // Se alguém tentar entrar na Home sem ter feito login, mandamos de volta
+      navigate("/");
+    }
+  }, [navigate]);
 
   function HandleSettings() {
     setVisivel(!visivel);
@@ -100,7 +116,7 @@ export const Navbar: React.FC = () => {
                   Marcus Orlando
                 </Typography>
                 <Typography color="secondary" sx={{ fontSize: 10 }}>
-                  marcusorlando@gmail.com
+                  {usuario}
                 </Typography>
               </Box>
               <IconButton onClick={HandleSettings}>

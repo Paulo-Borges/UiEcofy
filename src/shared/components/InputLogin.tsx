@@ -1,4 +1,5 @@
 import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
+import { useState } from "react";
 
 interface IInputLoginProps {
   value: string;
@@ -10,6 +11,8 @@ interface IInputLoginProps {
 }
 
 export const InputLogin: React.FC<IInputLoginProps> = (props, ref) => {
+  const [name, setName] = useState("");
+
   return (
     <div>
       <FormControl sx={{ marginBottom: 2 }}>
