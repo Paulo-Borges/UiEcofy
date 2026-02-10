@@ -18,7 +18,7 @@ export const ButtonLogin: React.FC<IButtonLoginProps> = ({
       sx={{
         border: "1px solid #dedcdc",
         paddingy: 2,
-        paddingX: 5,
+        paddingX: 7,
         fontSize: 20,
         gap: 2,
       }}

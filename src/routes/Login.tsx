@@ -1,4 +1,4 @@
-import { Avatar, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 
 import { InputLogin } from "../shared/components/InputLogin";
@@ -57,7 +57,7 @@ export const Login = () => {
       {/* <Typography>{nomeDoUsuario}</Typography> */}
 
       <InputLogin
-        InputLabel="Email"
+        InputLabel="Digite seu Email"
         type="text"
         value={email}
         onChange={(newValue) => setEmail(newValue)}
@@ -67,8 +67,8 @@ export const Login = () => {
       />
 
       <InputLogin
-        type="password"
-        InputLabel="Password"
+        type="text"
+        InputLabel="Digite seu nome"
         value={nome}
         onChange={(newValue) => setNome(newValue)}
         ref={inputPasswordRef}
@@ -76,18 +76,7 @@ export const Login = () => {
 
       <ButtonLogin type="button" onClick={handleEntrar}>
         ENTRAR
-        <Avatar
-          alt="logo do Ecofy"
-          src="./src/assets/Group.svg"
-          variant="square"
-          sx={{ width: 30, height: 30 }}
-        ></Avatar>
       </ButtonLogin>
-
-      {/* <ButtonLogin type="button" onClick={logout}>
-        logout
-      </ButtonLogin> */}
-      {/* <Dashboard /> */}
     </Box>
   );
 };
