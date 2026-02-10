@@ -12,25 +12,29 @@ export const Login = () => {
   const inputPasswordRef = useRef<HTMLInputElement>(null);
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // const [nome, setNome] = useState(""); /*teste pegar nome 1 */
+  // const [password, setPassword] = useState("");
+  const [nome, setNome] = useState(""); /*teste pegar nome 1 */
 
   const navigate = useNavigate();
 
   const handleEntrar = useCallback(() => {
-    console.log(email, password);
+    console.log(email, nome);
 
-    if (email.trim().length > 2 && password !== "") {
+    if (email.trim().length > 2 && nome !== "") {
       localStorage.setItem(
         "@MeuApp:usuario",
         email,
+      ); /*localStorage 1º chave 2º oo que esta guardado */
+      localStorage.setItem(
+        "@MeuApp:pessoa",
+        nome,
       ); /*localStorage 1º chave 2º oo que esta guardado */
 
       navigate("/");
     } else {
       alert("Introduza um dado válido!");
     }
-  }, [email, password, navigate]);
+  }, [email, nome, navigate]);
 
   return (
     <Box
@@ -50,7 +54,7 @@ export const Login = () => {
         LOGIN
       </Typography>
 
-      <Typography>{nomeDoUsuario}</Typography>
+      {/* <Typography>{nomeDoUsuario}</Typography> */}
 
       <InputLogin
         InputLabel="Email"
@@ -65,8 +69,8 @@ export const Login = () => {
       <InputLogin
         type="password"
         InputLabel="Password"
-        value={password}
-        onChange={(newValue) => setPassword(newValue)}
+        value={nome}
+        onChange={(newValue) => setNome(newValue)}
         ref={inputPasswordRef}
       />
 

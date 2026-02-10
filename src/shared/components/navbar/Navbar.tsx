@@ -24,14 +24,17 @@ export const Navbar: React.FC = () => {
   const [visivel, setVisivel] = useState(false);
 
   const [usuario, setUsuario] = useState<string>("");
+  const [nome, setNome] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
     // BUSCAR NO LOCALSTORAGE:
     const nomeGuardado = localStorage.getItem("@MeuApp:usuario");
+    const nomesGuardado = localStorage.getItem("@MeuApp:pessoa");
 
-    if (nomeGuardado) {
+    if (nomeGuardado && nomesGuardado) {
       setUsuario(nomeGuardado);
+      setNome(nomesGuardado);
     } else {
       // Se alguém tentar entrar na Home sem ter feito login, mandamos de volta
       navigate("/");
@@ -113,7 +116,7 @@ export const Navbar: React.FC = () => {
               ></Avatar>
               <Box>
                 <Typography color="secondary" variant="h6">
-                  Marcus Orlando
+                  {nome}
                 </Typography>
                 <Typography color="secondary" sx={{ fontSize: 10 }}>
                   {usuario}

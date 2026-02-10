@@ -4,8 +4,20 @@ import SmallStatistic from "../shared/components/Small_Statistic/SmallStatistic"
 import Statistic from "../shared/components/statistic/Statistic";
 import TopCategory from "../shared/components/top_category/TopCategory";
 import { HomeBase } from "../shared/components/home_base/HomeBase";
+import { useEffect, useState } from "react";
 
 function Home() {
+  const [nome, setNome] = useState("");
+  const nomesGuardado = localStorage.getItem("@MeuApp:pessoa");
+
+  useEffect(() => {
+    if (nomesGuardado) {
+      setNome(nomesGuardado);
+    } else {
+      alert(`${nome} não encontrado!`);
+    }
+  }, []);
+
   return (
     <Box>
       <Box
@@ -15,7 +27,7 @@ function Home() {
         }}
       >
         <Toolbar />
-        <HomeBase titulo="Welcome Back, Marcus" />
+        <HomeBase titulo={`Welcome Back, ${nome}`} />
         <SmallStatistic />
       </Box>
       <Box sx={{ padding: 5, gap: 5, display: { sm: "block", md: "flex" } }}>
