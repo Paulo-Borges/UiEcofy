@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 
 import { InputLogin } from "../shared/components/InputLogin";
@@ -37,46 +37,63 @@ export const Login = () => {
   }, [email, nome, navigate]);
 
   return (
-    <Box
-      component="form"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        margin: "auto",
-        justifyContent: "center",
-        alignItems: "center",
-        width: 300,
-        height: 400,
-        background: "#f2eeee",
-      }}
-    >
-      <Typography sx={{ fontWeight: "bold", fontSize: 30, marginBottom: 2 }}>
-        LOGIN
-      </Typography>
-
-      {/* <Typography>{nomeDoUsuario}</Typography> */}
-
-      <InputLogin
-        InputLabel="Digite seu Email"
-        type="text"
-        value={email}
-        onChange={(newValue) => setEmail(newValue)}
-        onPressEnter={() => {
-          inputPasswordRef.current?.focus();
+    <Box>
+      <Box
+        component="form"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          margin: "auto",
+          justifyContent: "center",
+          alignItems: "center",
+          width: 300,
+          height: 400,
+          background: "#f2eeee",
         }}
-      />
+      >
+        <Box sx={{ display: "flex" }}>
+          <Avatar
+            alt="logo do Ecofy"
+            src="../src/assets/Group.svg"
+            variant="square"
+          ></Avatar>
+          <Typography
+            color="secondary"
+            variant="h6"
+            sx={{ fontWeight: "bold" }}
+          >
+            ECOFY
+          </Typography>
+        </Box>
 
-      <InputLogin
-        type="text"
-        InputLabel="Digite seu nome"
-        value={nome}
-        onChange={(newValue) => setNome(newValue)}
-        ref={inputPasswordRef}
-      />
+        <Typography sx={{ fontWeight: "bold", fontSize: 30, marginBottom: 2 }}>
+          LOGIN
+        </Typography>
 
-      <ButtonLogin type="button" onClick={handleEntrar}>
-        ENTRAR
-      </ButtonLogin>
+        {/* <Typography>{nomeDoUsuario}</Typography> */}
+
+        <InputLogin
+          InputLabel="Digite seu Email"
+          type="text"
+          value={email}
+          onChange={(newValue) => setEmail(newValue)}
+          onPressEnter={() => {
+            inputPasswordRef.current?.focus();
+          }}
+        />
+
+        <InputLogin
+          type="text"
+          InputLabel="Digite seu nome"
+          value={nome}
+          onChange={(newValue) => setNome(newValue)}
+          ref={inputPasswordRef}
+        />
+
+        <ButtonLogin type="button" onClick={handleEntrar}>
+          ENTRAR
+        </ButtonLogin>
+      </Box>
     </Box>
   );
 };
