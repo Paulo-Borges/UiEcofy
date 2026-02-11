@@ -16,7 +16,7 @@ export const ButtonLogin: React.FC<IButtonLoginProps> = ({
       type={type}
       onClick={onClick}
       sx={{
-        border: "1px solid #dedcdc",
+        border: "5px solid #dedcdc",
         paddingy: 2,
         paddingX: 7,
         fontSize: 20,
