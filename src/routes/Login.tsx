@@ -4,6 +4,7 @@ import {
   Divider,
   InputBase,
   InputLabel,
+  Link,
   Typography,
 } from "@mui/material";
 import { useCallback, useState } from "react";
@@ -24,6 +25,7 @@ export const Login = () => {
   const [nome, setNome] = useState(""); /*teste pegar nome 1 */
   const [isMoved, setIsMoved] = useState(false);
   const [isNone, setIsNone] = useState(true);
+  const [isGoogle, setIsGoogle] = useState(true);
 
   const navigate = useNavigate();
 
@@ -33,6 +35,12 @@ export const Login = () => {
 
   const handleCheck = () => {
     setIsNone(!isNone);
+  };
+  const handleIsGoogle = () => {
+    if (isGoogle) {
+      navigate("/https://www.google.com");
+    }
+    setIsGoogle(!isGoogle);
   };
 
   const handleEntrar = useCallback(() => {
@@ -199,6 +207,7 @@ export const Login = () => {
           component="button"
           sx={{
             display: "flex",
+            alignItems: "center",
             gap: 1,
             backgroundColor: "transparent",
             paddingX: 18,
@@ -209,7 +218,14 @@ export const Login = () => {
           }}
         >
           <GoogleIcon fontSize="small" />
-          <Typography>Sign in With Google</Typography>
+          <Link
+            href="https://www.google.com"
+            target="_blank"
+            rel="noreferrer"
+            underline="hover"
+          >
+            Sign in With Google
+          </Link>
         </Box>
         <Box sx={{ display: "flex", gap: 33 }}>
           <Box sx={{ color: "#666d80" }}>©2025 Ecarto. All right reserved.</Box>
