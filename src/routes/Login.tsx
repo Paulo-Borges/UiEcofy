@@ -4,29 +4,30 @@ import {
   Divider,
   InputBase,
   InputLabel,
-  Stack,
   Typography,
 } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 
-import { InputLogin } from "../shared/components/InputLogin";
-import { ButtonLogin } from "../shared/components/ButtonLogin";
 import { useUsuarioLogado } from "../shared/hooks";
 import { useNavigate } from "react-router-dom";
+
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GoogleIcon from "@mui/icons-material/Google";
 
 export const Login = () => {
   const { nomeDoUsuario } = useUsuarioLogado();
-
   const inputPasswordRef = useRef<HTMLInputElement>(null);
 
   const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [nome, setNome] = useState(""); /*teste pegar nome 1 */
+  const [isMoved, setIsMoved] = useState(false);
 
   const navigate = useNavigate();
+
+  const handleSing = () => {
+    setIsMoved(!isMoved);
+  };
 
   const handleEntrar = useCallback(() => {
     console.log(email, nome);
@@ -92,12 +93,14 @@ export const Login = () => {
             }}
           >
             <Box
+              onClick={handleSing}
               sx={{
                 backgroundColor: "#ffffff",
                 paddingX: 14,
                 paddingY: 1,
                 borderRadius: 12,
                 cursor: "pointer",
+                transform: isMoved ? "translateX(180px)" : "translateX(0)",
               }}
             >
               Sign in
@@ -108,6 +111,7 @@ export const Login = () => {
                 paddingY: 1,
                 borderRadius: 12,
                 cursor: "pointer",
+                transform: isMoved ? "translateX(-300px)" : "translateX(0)",
               }}
             >
               Sign Up
