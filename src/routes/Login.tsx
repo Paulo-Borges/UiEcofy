@@ -5,12 +5,13 @@ import {
   InputBase,
   InputLabel,
   Link,
+  Link as MuiLink,
   Typography,
 } from "@mui/material";
 import { useCallback, useState } from "react";
 
 // import { useUsuarioLogado } from "../shared/hooks";
-import { useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
@@ -238,7 +239,14 @@ export const Login = () => {
             }}
           >
             <HelpOutlineIcon fontSize="small" />
-            Get help
+            <MuiLink
+              component={RouterLink}
+              to="/help"
+              underline="hover"
+              color="#666d80"
+            >
+              Get help
+            </MuiLink>
           </Box>
         </Box>
       </Box>
