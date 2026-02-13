@@ -6,27 +6,33 @@ import {
   InputLabel,
   Typography,
 } from "@mui/material";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 
-import { useUsuarioLogado } from "../shared/hooks";
+// import { useUsuarioLogado } from "../shared/hooks";
 import { useNavigate } from "react-router-dom";
 
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GoogleIcon from "@mui/icons-material/Google";
 
 export const Login = () => {
-  const { nomeDoUsuario } = useUsuarioLogado();
-  const inputPasswordRef = useRef<HTMLInputElement>(null);
+  // const { nomeDoUsuario } = useUsuarioLogado();
+  // const inputPasswordRef = useRef<HTMLInputElement>(null);
 
   const [email, setEmail] = useState("");
   const [nome, setNome] = useState(""); /*teste pegar nome 1 */
   const [isMoved, setIsMoved] = useState(false);
+  const [isNone, setIsNone] = useState(true);
 
   const navigate = useNavigate();
 
   const handleSing = () => {
     setIsMoved(!isMoved);
+  };
+
+  const handleCheck = () => {
+    setIsNone(!isNone);
   };
 
   const handleEntrar = useCallback(() => {
@@ -154,7 +160,15 @@ export const Login = () => {
         </Box>
         <Box sx={{ display: "flex", gap: 13, marginBottom: 4 }}>
           <Box sx={{ display: "flex", gap: 1 }}>
-            <CheckBoxOutlineBlankIcon cursor="pointer" />
+            <CheckBoxIcon
+              opacity={isNone ? 0 : 1}
+              sx={{ transform: !isNone ? "translateX(30px)" : "translateX(0)" }}
+            />
+            <CheckBoxOutlineBlankIcon
+              cursor="pointer"
+              onClick={handleCheck}
+              sx={{ opacity: isNone ? "none" : 0 }}
+            />
             <Typography>Keep me logged in</Typography>
           </Box>
           <Box>
