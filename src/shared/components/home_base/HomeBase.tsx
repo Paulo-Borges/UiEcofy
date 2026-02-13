@@ -53,7 +53,7 @@ export const HomeBase: React.FC<IHomeBaseProps> = ({ titulo }) => {
             <IconButton sx={{ color: "#545454" }}>
               <CalendarMonthIcon />
             </IconButton>
-            12 Fev 2026, <HoraExata />
+            13 Fev 2026, <HoraExata />
           </Typography>
         </Box>
       </Stack>
