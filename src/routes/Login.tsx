@@ -26,7 +26,6 @@ export const Login = () => {
   const [nome, setNome] = useState(""); /*teste pegar nome 1 */
   const [isMoved, setIsMoved] = useState(false);
   const [isNone, setIsNone] = useState(true);
-  const [isGoogle, setIsGoogle] = useState(true);
 
   const navigate = useNavigate();
 
@@ -36,12 +35,6 @@ export const Login = () => {
 
   const handleCheck = () => {
     setIsNone(!isNone);
-  };
-  const handleIsGoogle = () => {
-    if (isGoogle) {
-      navigate("/https://www.google.com");
-    }
-    setIsGoogle(!isGoogle);
   };
 
   const handleEntrar = useCallback(() => {
@@ -140,6 +133,7 @@ export const Login = () => {
             <InputBase
               type="text"
               value={email}
+              name={email}
               onChange={(e) => setEmail(e.target.value)}
               sx={{
                 border: "1px solid #ccc",
@@ -156,6 +150,7 @@ export const Login = () => {
             <InputBase
               type="text"
               value={nome}
+              name={nome}
               onChange={(e) => setNome(e.target.value)}
               sx={{
                 border: "1px solid #ccc",
@@ -258,9 +253,7 @@ export const Login = () => {
           borderRadius: 6,
           border: "none",
         }}
-      >
-        oiii
-      </Box>
+      ></Box>
     </Box>
   );
 };
