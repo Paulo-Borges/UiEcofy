@@ -38,21 +38,21 @@ export const Login = () => {
   };
 
   const handleEntrar = useCallback(() => {
-    console.log(email, nome);
+    // console.log(email);
 
-    if (email.trim().length > 2 && nome !== "") {
-      localStorage.setItem(
-        "@MeuApp:usuario",
-        email,
-      ); /*localStorage 1º chave 2º oo que esta guardado */
-      localStorage.setItem(
-        "@MeuApp:pessoa",
-        nome,
-      ); /*localStorage 1º chave 2º oo que esta guardado */
+    if (email.trim().length > 2 && email !== "") {
+      localStorage.setItem("@MeuApp:usuario", email);
 
       navigate("/");
     } else {
-      alert("Introduza um dado válido!");
+      alert("Introduza um email válido!");
+    }
+    if (nome.length > 2 && nome !== "") {
+      localStorage.setItem("@MeuApp:pessoa", nome);
+
+      navigate("/");
+    } else {
+      alert("Introduza um nome válido!");
     }
   }, [email, nome, navigate]);
 

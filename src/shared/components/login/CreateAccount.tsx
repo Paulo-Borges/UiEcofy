@@ -35,21 +35,21 @@ export const CreateAccount = () => {
   };
 
   const handleEntrar = useCallback(() => {
-    console.log(fullName, nome);
+    // console.log(email);
 
-    if (fullName.trim().length > 2 && nome !== "") {
-      localStorage.setItem(
-        "@MeuApp:usuario",
-        fullName,
-      ); /*localStorage 1º chave 2º oo que esta guardado */
-      localStorage.setItem(
-        "@MeuApp:pessoa",
-        nome,
-      ); /*localStorage 1º chave 2º oo que esta guardado */
+    if (fullName.trim().length > 2 && fullName !== "") {
+      localStorage.setItem("@MeuApp:usuario", fullName);
 
       navigate("/");
     } else {
-      alert("Introduza um dado válido!");
+      alert("Introduza um nome válido!");
+    }
+    if (nome.length > 2 && nome !== "") {
+      localStorage.setItem("@MeuApp:pessoa", nome);
+
+      navigate("/");
+    } else {
+      alert("Introduza um sobrenome válido!");
     }
   }, [fullName, nome, navigate]);
 

@@ -14,7 +14,7 @@ function Home() {
     if (nomesGuardado) {
       setNome(nomesGuardado);
     } else {
-      alert(`${nome} não encontrado!`);
+      alert(`${nome} email não encontrado!`);
     }
   }, []);
 
