@@ -17,8 +17,18 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GoogleIcon from "@mui/icons-material/Google";
+import { CreateAccount } from "../shared/components/login/CreateAccount";
+import { ResetLogin } from "./ResetLogin";
+
+export type createTab =
+  | "login"
+  | "createAccount"
+  | "resetLogin"
+  | "successLogin";
 
 export const Login = () => {
+  const [activeTab, setActiveTab] = useState<createTab>();
+
   // const { nomeDoUsuario } = useUsuarioLogado();
   // const inputPasswordRef = useRef<HTMLInputElement>(null);
 
@@ -114,6 +124,7 @@ export const Login = () => {
               Sign in
             </Box>
             <Box
+              onClick={() => setActiveTab("createAccount")}
               sx={{
                 paddingX: 8,
                 paddingY: 1,
@@ -176,7 +187,12 @@ export const Login = () => {
             <Typography>Keep me logged in</Typography>
           </Box>
           <Box>
-            <Typography sx={{ color: "#f68605" }}>Forgot password</Typography>
+            <Typography
+              sx={{ color: "#f68605", cursor: "pointer" }}
+              onClick={() => setActiveTab("resetLogin")}
+            >
+              Forgot password
+            </Typography>
           </Box>
         </Box>
 
@@ -254,6 +270,12 @@ export const Login = () => {
           border: "none",
         }}
       ></Box>
+      <Box sx={{ mt: 2 }}>
+        {activeTab === "login" && <Login />}
+        {activeTab === "createAccount" && <CreateAccount />}
+        {activeTab === "resetLogin" && <ResetLogin />}
+        {activeTab === "successLogin" && <SuccessLogin />}
+      </Box>
     </Box>
   );
 };
