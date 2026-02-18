@@ -46,21 +46,24 @@ export const Login = ({ onSwitchTab, onForgotPass }: LoginProps) => {
   };
 
   const handleEntrar = useCallback(() => {
-    // console.log(email);
+    const isEmailValid = email.trim().length > 2 && email.includes("@");
+    const isNomeValid = nome.trim().length > 2 && nome !== "";
 
-    if (email.trim().length > 2 && email !== "") {
+    if (isEmailValid && isNomeValid) {
       localStorage.setItem("@MeuApp:usuario", email);
-
-      navigate("/");
-    } else {
-      alert("Introduza um email válido!");
-    }
-    if (nome.length > 2 && nome !== "") {
       localStorage.setItem("@MeuApp:pessoa", nome);
 
+      // Navega para a home apenas se tudo estiver ok
       navigate("/");
     } else {
-      alert("Introduza um nome válido!");
+      // Alerta específico baseado no que falta
+      if (!isEmailValid && !isNomeValid) {
+        alert("Por favor, preencha o e-mail e o nome corretamente.");
+      } else if (!isEmailValid) {
+        alert("Introduza um e-mail válido!");
+      } else {
+        alert("Introduza um nome válido!");
+      }
     }
   }, [email, nome, navigate]);
 

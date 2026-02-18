@@ -1,4 +1,4 @@
-import { Box, InputBase, InputLabel, Typography } from "@mui/material";
+import { Avatar, Box, InputBase, InputLabel, Typography } from "@mui/material";
 import { useCallback, useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
@@ -19,7 +19,16 @@ export const ResetLogin = ({ onBack }: ResetLoginProps) => {
   }, [email, onBack]);
 
   return (
-    <Box sx={{ display: "flex", background: "#ffffff", padding: 2 }}>
+    <Box sx={{ display: "flex", background: "#f8f2f2", padding: 2 }}>
+      <Box sx={{ display: "flex" }}>
+        <Avatar
+          alt="logo do Ecofy"
+          src="../src/assets/Group.svg"
+          variant="square"
+          sx={{ width: 30, height: 30 }}
+        ></Avatar>
+        <Typography sx={{ fontWeight: "bold", fontSize: 24 }}>ECOFY</Typography>
+      </Box>
       <Box
         sx={{
           display: "flex",
@@ -30,28 +39,35 @@ export const ResetLogin = ({ onBack }: ResetLoginProps) => {
           height: "100vh",
         }}
       >
-        <Box sx={{ width: "100%", maxWidth: 400 }}>
-          {/* Botão de Voltar */}
-          <Box
-            onClick={onBack}
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: 400,
+            background: "#ffffff",
+            padding: 4,
+            borderRadius: 6,
+          }}
+        >
+          <Typography
+            variant="h4"
+            sx={{ fontWeight: "bold", mb: 1, fontSize: 24, paddingLeft: 10 }}
+          >
+            Reset Your Password
+          </Typography>
+          <Typography
             sx={{
               display: "flex",
-              alignItems: "center",
-              gap: 1,
-              cursor: "pointer",
+              justifyContent: "center",
+              textAlign: "center",
               mb: 4,
-              color: "#666d80",
+              color: "gray",
+              fontSize: 14,
+              width: 300,
+              paddingLeft: 5,
             }}
           >
-            <ArrowBackIcon fontSize="small" />
-            <Typography variant="body2">Back to login</Typography>
-          </Box>
-
-          <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
-            Forgot Password?
-          </Typography>
-          <Typography sx={{ mb: 4, color: "gray" }}>
-            No worries, we'll send you reset instructions.
+            Enter Your Email Address and we’ll sand you password reset
+            Instructions.
           </Typography>
 
           <Box sx={{ mb: 3 }}>
@@ -77,24 +93,30 @@ export const ResetLogin = ({ onBack }: ResetLoginProps) => {
               cursor: "pointer",
             }}
           >
-            <Typography sx={{ color: "#ffffff", fontWeight: "bold" }}>
-              Reset Password
+            <Typography sx={{ color: "#ffffff", fontWeight: 100 }}>
+              Verify
+            </Typography>
+          </Box>
+
+          <Box
+            onClick={onBack}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 1,
+              cursor: "pointer",
+              marginTop: 4,
+              color: "#666d80",
+            }}
+          >
+            <Typography variant="body2">Don’t have access anymore?</Typography>
+            <Typography sx={{ color: "#f68605" }} variant="body2">
+              Try another method
             </Typography>
           </Box>
         </Box>
       </Box>
-
-      {/* Lado Direito: Banner Cinza padrão */}
-      <Box
-        sx={{
-          display: { xs: "none", md: "block" },
-          background: "#f2eeee",
-          flex: 1,
-          height: "95vh",
-          borderRadius: 6,
-          m: 2,
-        }}
-      />
     </Box>
   );
 };
