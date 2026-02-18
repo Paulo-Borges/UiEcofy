@@ -21,7 +21,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState(""); /*teste pegar nome 1 */
-  const [senha, setSenha] = useState(""); /*teste pegar nome 1 */
+  const [nome, setNome] = useState(""); /*teste pegar nome 1 */
   const [isMoved, setIsMoved] = useState(true);
   const [isNone, setIsNone] = useState(true);
 
@@ -36,7 +36,7 @@ export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
   };
 
   const handleCreate = () => {
-    if (fullName && email && senha) {
+    if (fullName && email && nome) {
       // Lógica de salvar...
       onSuccess(); // Vai para a tela de sucesso
     } else {
@@ -44,28 +44,33 @@ export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
     }
   };
 
-  const handleEntrar = useCallback(() => {
-    const isEmailValid = email.trim().length > 2 && email.includes("@");
-    const isFullNameValid = fullName.trim().length > 2 && fullName !== "";
-    // const isSenhaValid = senha.trim().length >= 6 && senha !== "";
+  const handleEntrar = useCallback(
+    (e) => {
+      e.preventDefault();
+      const isEmailValid = email.trim().length > 2 && email.includes("@");
+      const isFullNameValid = fullName.trim().length > 2 && fullName !== "";
+      const isNomeValid = nome.trim().length >= 6 && nome !== "";
 
-    if (isEmailValid && isFullNameValid) {
-      localStorage.setItem("@MeuApp:usuario", email);
-      localStorage.setItem("@MeuApp:pessoaFull", fullName);
+      if (isEmailValid && isFullNameValid && isNomeValid) {
+        localStorage.setItem("@MeuApp:usuario", email);
+        localStorage.setItem("@MeuApp:pessoaFull", fullName);
+        localStorage.setItem("@MeuApp:pessoa", nome);
 
-      // Navega para a home apenas se tudo estiver ok
-      navigate("/");
-    } else {
-      // Alerta específico baseado no que falta
-      if (!isEmailValid && !isFullNameValid) {
-        alert("Por favor, preencha o e-mail e o nome corretamente.");
-      } else if (!isEmailValid) {
-        alert("Introduza um e-mail válido!");
+        // Navega para a home apenas se tudo estiver ok
+        navigate("/");
       } else {
-        alert("Introduza um nome válido!");
+        // Alerta específico baseado no que falta
+        if (!isEmailValid && !isFullNameValid) {
+          alert("Por favor, preencha o e-mail ou o nome corretamente.");
+        } else if (!isEmailValid) {
+          alert("Introduza um e-mail válido!");
+        } else {
+          alert("Introduza um nome válido!");
+        }
       }
-    }
-  }, [email, fullName, navigate]);
+    },
+    [email, fullName, nome, navigate],
+  );
 
   return (
     <Box sx={{ background: "#ffffff" }}>
@@ -191,12 +196,12 @@ export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
           </Box>
 
           <Box>
-            <InputLabel sx={{ marginBottom: 1 }}>Password</InputLabel>
+            <InputLabel sx={{ marginBottom: 1 }}>Nome</InputLabel>
             <InputBase
               type="text"
-              value={senha}
-              name={senha}
-              onChange={(e) => setSenha(e.target.value)}
+              value={nome}
+              name={nome}
+              onChange={(e) => setNome(e.target.value)}
               sx={{
                 border: "1px solid #ccc",
                 padding: 0.5,

@@ -11,11 +11,7 @@ import {
 import { useCallback, useEffect, useState } from "react";
 
 // import { useUsuarioLogado } from "../shared/hooks";
-import {
-  Link as RouterLink,
-  useNavigate,
-  useNavigation,
-} from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
@@ -42,7 +38,7 @@ export const Login = ({ onSwitchTab, onForgotPass }: LoginProps) => {
     const usuario = localStorage.getItem("@MeuApp:usuario");
 
     if (usuario) {
-      navigate("/createAccount");
+      navigate("login/createAccount");
     }
   }, [navigate]);
 
