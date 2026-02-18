@@ -8,18 +8,19 @@ import {
   Link as MuiLink,
   Typography,
 } from "@mui/material";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // import { useUsuarioLogado } from "../shared/hooks";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import {
+  Link as RouterLink,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GoogleIcon from "@mui/icons-material/Google";
-import { CreateAccount } from "../shared/components/login/CreateAccount";
-import { ResetLogin } from "./ResetLogin";
-import { SuccessLogin } from "../shared/components/login/SuccessLogin";
 
 interface LoginProps {
   onSwitchTab: () => void;
@@ -37,6 +38,14 @@ export const Login = ({ onSwitchTab, onForgotPass }: LoginProps) => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const usuario = localStorage.getItem("@MeuApp:usuario");
+
+    if (usuario) {
+      navigate("/createAccount");
+    }
+  }, [navigate]);
+
   const handleSing = () => {
     setIsMoved(!isMoved);
   };
@@ -44,6 +53,18 @@ export const Login = ({ onSwitchTab, onForgotPass }: LoginProps) => {
   const handleCheck = () => {
     setIsNone(!isNone);
   };
+
+  // const Confirmcadastro = () => {
+  //   const usuario = localStorage.getItem("@MeuApp:usuario");
+  //   const pessoa = localStorage.getItem("@MeuApp:pessoa");
+
+  //   if (!usuario || !pessoa) {
+  //     alert("Acesso negado! Você precisa estar CADASTRADO!!");
+  //     window.location.href = "/createAccount";
+  //     return;
+  //   }
+  //   console.log("Acesso permitido para:", JSON.parse(pessoa));
+  // };
 
   const handleEntrar = useCallback(() => {
     const isEmailValid = email.trim().length > 2 && email.includes("@");
