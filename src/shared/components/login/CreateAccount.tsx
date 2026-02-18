@@ -18,9 +18,10 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GoogleIcon from "@mui/icons-material/Google";
 
-export const CreateAccount = () => {
+export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
   const [fullName, setFullName] = useState("");
   const [nome, setNome] = useState(""); /*teste pegar nome 1 */
+  const [senha, setSenha] = useState(""); /*teste pegar nome 1 */
   const [isMoved, setIsMoved] = useState(true);
   const [isNone, setIsNone] = useState(true);
 
@@ -32,6 +33,15 @@ export const CreateAccount = () => {
 
   const handleCheck = () => {
     setIsNone(!isNone);
+  };
+
+  const handleCreate = () => {
+    if (fullName && nome && senha) {
+      // Lógica de salvar...
+      onSuccess(); // Vai para a tela de sucesso
+    } else {
+      alert("Preencha todos os campos");
+    }
   };
 
   const handleEntrar = useCallback(() => {
@@ -59,11 +69,11 @@ export const CreateAccount = () => {
         <Box
           component="form"
           sx={{
-            // display: "flex",
-            // flexDirection: "column",
-            // justifyContent: "center",
-            // alignItems: "center",
-            // background: "#ffffff",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#ffffff",
             width: "100%",
             height: "100%",
           }}
@@ -108,9 +118,9 @@ export const CreateAccount = () => {
               <InputLabel>Password</InputLabel>
               <InputBase
                 type="text"
-                value={nome}
-                name={nome}
-                onChange={(e) => setNome(e.target.value)}
+                value={senha}
+                name={senha}
+                onChange={(e) => setSenha(e.target.value)}
                 sx={{
                   border: "1px solid #ccc",
                   padding: 0.5,
@@ -147,7 +157,8 @@ export const CreateAccount = () => {
 
           <Box
             component="button"
-            onClick={handleEntrar}
+            // onClick={handleEntrar}
+            onClick={handleCreate}
             sx={{
               display: "flex",
               backgroundColor: "#dadada",
@@ -158,8 +169,24 @@ export const CreateAccount = () => {
               cursor: "pointer",
             }}
           >
-            <Typography sx={{ color: "#ffffff" }}>Create Account</Typography>
+            <Typography sx={{ color: "#ffffff" }}>Create Account13</Typography>
           </Box>
+
+          <Typography sx={{ marginBottom: 2 }}>
+            Already have an account?{" "}
+            <Link
+              component="button" // Faz o link se comportar como botão para não recarregar a página
+              variant="body2"
+              onClick={(e: any) => {
+                e.preventDefault();
+                onBackToLogin(); // Chama a função que troca a aba para 'login'
+              }}
+              sx={{ cursor: "pointer", fontWeight: "bold" }}
+            >
+              Log In
+            </Link>
+          </Typography>
+
           <Box sx={{ display: "flex", marginBottom: 4 }}>
             <Divider />
             Or

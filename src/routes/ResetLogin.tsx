@@ -1,169 +1,100 @@
-import { Login } from "./Login";
-import { Avatar, Box, Typography } from "@mui/material";
-import { useState } from "react";
-import { CreateAccount } from "../shared/components/login/CreateAccount";
-import { Link as RouterLink } from "react-router-dom";
-import { Link as MuiLink } from "@mui/material";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { Box, InputBase, InputLabel, Typography } from "@mui/material";
+import { useCallback, useState } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-export type createTab =
-  | "login"
-  | "createAccount"
-  | "resetAccount"
-  | "successLogin";
+interface ResetLoginProps {
+  onBack: () => void;
+}
 
-export const ResetLogin = () => {
-  const [activeTab, setActiveTab] = useState<createTab>(" ");
+export const ResetLogin = ({ onBack }: ResetLoginProps) => {
+  const [email, setEmail] = useState("");
 
-  const [isMoved, setIsMoved] = useState(false);
-  // const [isNone, setIsNone] = useState(true);
-
-  // const handleSing = () => {
-  //   setIsMoved(!isMoved);
-  // };
-
-  // const handleCheck = () => {
-  //   setIsNone(!isNone);
-  // };
-
-  // const handleEntrar = useCallback(() => {
-  //   // console.log(email);
-
-  //   if (email.trim().length > 2 && email !== "") {
-  //     localStorage.setItem("@MeuApp:usuario", email);
-
-  //     navigate("/");
-  //   } else {
-  //     alert("Introduza um email válido!");
-  //   }
-  //   if (nome.length > 2 && nome !== "") {
-  //     localStorage.setItem("@MeuApp:pessoa", nome);
-
-  //     navigate("/");
-  //   } else {
-  //     alert("Introduza um nome válido!");
-  //   }
-  // }, [email, nome, navigate]);
-
-  {
-    /* 3. Passando as props necessárias para o controle de navegação */
-  }
-  {
-    /* <SettingsLinks setActiveTab={setActiveTab} activeTab={activeTab} /> */
-  }
-  // {/* 4. Renderização Condicional com base no estado */}
-  <Box sx={{ mt: 2 }}>
-    {activeTab === "login" && <Login />}
-    {activeTab === "createAccount" && <CreateAccount />}
-    {activeTab === "resetLogin" && <ResetLogin />}
-    {/* {activeTab === "successLogin" && <SettingsLanguages />} */}
-  </Box>;
+  const handleReset = useCallback(() => {
+    if (email.includes("@")) {
+      alert("Link de recuperação enviado para o seu e-mail!");
+      onBack(); // Volta para o login após o "sucesso"
+    } else {
+      alert("Introduza um e-mail válido!");
+    }
+  }, [email, onBack]);
 
   return (
-    <Box sx={{ padding: 4, background: "#ffffff" }}>
-      <Box sx={{ display: "flex" }}>
-        <Avatar
-          alt="logo do Ecofy"
-          src="../src/assets/Group.svg"
-          variant="square"
-          sx={{ width: 30, height: 30 }}
-        ></Avatar>
-        <Typography sx={{ fontWeight: "bold", fontSize: 24 }}>ECOFY</Typography>
-      </Box>
+    <Box sx={{ display: "flex", background: "#ffffff", padding: 2 }}>
       <Box
         sx={{
           display: "flex",
-          background: "#ffffff",
-          padding: 2,
-          paddingTop: 30,
+          flexDirection: "column",
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
         }}
       >
-        <Box
-          component="form"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "#ffffff",
-            width: "100%",
-            height: "100vh",
-          }}
-        >
-          <Box sx={{ marginBottom: 4 }}>
-            <Box>
-              <Typography
-                sx={{ fontWeight: "bold", fontSize: 30, marginBottom: 2 }}
-              >
-                Create account
-              </Typography>
-              <Typography
-                sx={{ fontWeight: 100, fontSize: 15, marginBottom: 2 }}
-              >
-                Start your 30-day free trial. Cancel anytime.
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                backgroundColor: "#dadada",
-                paddingX: 1,
-                paddingY: 1,
-                borderRadius: 12,
-              }}
-            >
-              <Box
-                onClick={() => setActiveTab("login")}
-                sx={{
-                  backgroundColor: "#ffffff",
-                  paddingX: 14,
-                  paddingY: 1,
-                  borderRadius: 12,
-                  cursor: "pointer",
-                  transform: isMoved ? "translateX(180px)" : "translateX(0)",
-                }}
-              >
-                Sign in
-              </Box>
-              <Box
-                onClick={() => setActiveTab("createAccount")}
-                sx={{
-                  paddingX: 8,
-                  paddingY: 1,
-                  borderRadius: 12,
-                  cursor: "pointer",
-                  transform: isMoved ? "translateX(-300px)" : "translateX(0)",
-                }}
-              >
-                Sign Up
-              </Box>
-            </Box>
+        <Box sx={{ width: "100%", maxWidth: 400 }}>
+          {/* Botão de Voltar */}
+          <Box
+            onClick={onBack}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              cursor: "pointer",
+              mb: 4,
+              color: "#666d80",
+            }}
+          >
+            <ArrowBackIcon fontSize="small" />
+            <Typography variant="body2">Back to login</Typography>
           </Box>
 
-          <Box sx={{ display: "flex", gap: 33 }}>
-            <Box sx={{ color: "#666d80" }}>
-              ©2025 Ecarto. All right reserved.
-            </Box>
-            <Box
-              sx={{
-                color: "#666d80",
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-              }}
-            >
-              <HelpOutlineIcon fontSize="small" />
-              <MuiLink
-                component={RouterLink}
-                to="/help"
-                underline="hover"
-                color="#666d80"
-              >
-                Get help
-              </MuiLink>
-            </Box>
+          <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
+            Forgot Password?
+          </Typography>
+          <Typography sx={{ mb: 4, color: "gray" }}>
+            No worries, we'll send you reset instructions.
+          </Typography>
+
+          <Box sx={{ mb: 3 }}>
+            <InputLabel>Email address</InputLabel>
+            <InputBase
+              fullWidth
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{ border: "1px solid #ccc", borderRadius: 8, p: 1 }}
+            />
+          </Box>
+
+          <Box
+            component="button"
+            onClick={handleReset}
+            sx={{
+              width: "100%",
+              backgroundColor: "#f68605", // Destaque para ação de reset
+              py: 1.5,
+              borderRadius: 12,
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            <Typography sx={{ color: "#ffffff", fontWeight: "bold" }}>
+              Reset Password
+            </Typography>
           </Box>
         </Box>
       </Box>
+
+      {/* Lado Direito: Banner Cinza padrão */}
+      <Box
+        sx={{
+          display: { xs: "none", md: "block" },
+          background: "#f2eeee",
+          flex: 1,
+          height: "95vh",
+          borderRadius: 6,
+          m: 2,
+        }}
+      />
     </Box>
   );
 };

@@ -19,16 +19,14 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GoogleIcon from "@mui/icons-material/Google";
 import { CreateAccount } from "../shared/components/login/CreateAccount";
 import { ResetLogin } from "./ResetLogin";
+import { SuccessLogin } from "../shared/components/login/SuccessLogin";
 
-export type createTab =
-  | "login"
-  | "createAccount"
-  | "resetLogin"
-  | "successLogin";
+interface LoginProps {
+  onSwitchTab: () => void;
+  onForgotPass: () => void;
+}
 
-export const Login = () => {
-  const [activeTab, setActiveTab] = useState<createTab>();
-
+export const Login = ({ onSwitchTab, onForgotPass }: LoginProps) => {
   // const { nomeDoUsuario } = useUsuarioLogado();
   // const inputPasswordRef = useRef<HTMLInputElement>(null);
 
@@ -111,7 +109,7 @@ export const Login = () => {
             }}
           >
             <Box
-              onClick={handleSing}
+              onClick={() => {}}
               sx={{
                 backgroundColor: "#ffffff",
                 paddingX: 14,
@@ -124,7 +122,7 @@ export const Login = () => {
               Sign in
             </Box>
             <Box
-              onClick={() => setActiveTab("createAccount")}
+              onClick={onSwitchTab}
               sx={{
                 paddingX: 8,
                 paddingY: 1,
@@ -189,7 +187,7 @@ export const Login = () => {
           <Box>
             <Typography
               sx={{ color: "#f68605", cursor: "pointer" }}
-              onClick={() => setActiveTab("resetLogin")}
+              onClick={onForgotPass}
             >
               Forgot password
             </Typography>
@@ -270,12 +268,6 @@ export const Login = () => {
           border: "none",
         }}
       ></Box>
-      <Box sx={{ mt: 2 }}>
-        {activeTab === "login" && <Login />}
-        {activeTab === "createAccount" && <CreateAccount />}
-        {activeTab === "resetLogin" && <ResetLogin />}
-        {activeTab === "successLogin" && <SuccessLogin />}
-      </Box>
     </Box>
   );
 };

@@ -18,13 +18,13 @@ import Settings from "./routes/Settings.tsx";
 import Help from "./routes/Help.tsx";
 import { Details } from "./routes/Details.tsx";
 import { UsuarioLogadoProvider } from "./shared/contexts/UsuarioLogado.tsx";
-import { Login } from "./routes/Login.tsx";
+import { AuthLogin } from "./shared/components/login/AuthLogin.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Login />,
+    errorElement: <AuthLogin />,
     children: [
       {
         path: "/",
