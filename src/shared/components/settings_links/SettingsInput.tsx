@@ -10,6 +10,8 @@ export const SettingsInput: React.FC = () => {
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
   const [code, setCode] = useState("");
+  const [error, setError] = useState(null);
+  const [error1, setError1] = useState(null);
 
   const handleFirstName = (e) => setFirstName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
@@ -22,100 +24,161 @@ export const SettingsInput: React.FC = () => {
 
   console.log(firstName, email, country, address, lastName, phone, city, code);
 
+  // const isFirstValid = firstName.trim().length > 3 && firstName !== "";
+  // const isEmailValid = email.trim().length > 5 && email.includes("@");
+  // const isCountryValid = country.trim().length > 3 && country !== "";
+  // const isAddressValid = address.trim().length > 3 && address !== "";
+  // const isLastNameValid = lastName.trim().length > 3 && lastName !== "";
+
+  function isPhoneValid(value) {
+    if (value.length === 0) {
+      setError("Preencha um valor");
+      return false;
+    } else if (!/^\d{2}\d{5}-\d{4}$/.test(value)) {
+      setError("Preencha um celular válido");
+      return false;
+    } else {
+      setError(null);
+      return true;
+    }
+  }
+
+  function isCodeValid(value) {
+    if (value.length === 0) {
+      setError1("Preencha os dados");
+      return false;
+    } else if (!/^\d{5}-\d{3}$/.test(value)) {
+      setError1("Preencha um cep válido");
+      return false;
+    } else {
+      setError1(null);
+      return true;
+    }
+  }
+
+  function handleBlurCode({ target }) {
+    isCodeValid(target.value);
+  }
+
+  function handleBlurPhone({ target }) {
+    isPhoneValid(target.value);
+  }
+
+  function handlePhoneChange({ target }) {
+    if (error) isPhoneValid(target.value);
+  }
+  function handleCodeChange({ target }) {
+    if (error1) isCodeValid(target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (isCodeValid(code)) {
+      console.log("Enviou");
+    } else if (isPhoneValid(phone)) {
+      console.log("Enviou");
+    } else {
+      console.log("Não Enviar");
+    }
+  }
+
+  // const isCityValid = city.trim().length > 3 && city !== "";
+
   return (
-    <FormControl component="form">
+    <FormControl component="form" onSubmit={handleSubmit}>
       <Box display="flex" gap={2} justifyContent="space-between" width="100%">
         <Box>
           <Typography sx={{ marginBottom: 2 }}>First Name</Typography>
           <TextField
             name="firstName"
-            required
+            type="text"
             onChange={handleFirstName}
             variant="outlined"
             placeholder="Digite seu nome"
             sx={{ width: "30vw" }}
           />
-
+          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>Email</Typography>
           <TextField
             name="email"
-            required
+            type="email"
             onChange={handleEmail}
             variant="outlined"
             placeholder="Digite seu email"
             sx={{ width: "30vw" }}
           />
-
+          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>
             Country or Region
           </Typography>
           <TextField
             name="country"
-            required
+            type="text"
             onChange={handleCountry}
             variant="outlined"
             placeholder="Digite sua região"
             sx={{ width: "30vw" }}
           />
-
+          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>
             Address
           </Typography>
           <TextField
             name="address"
-            required
+            type="text"
             onChange={handleAddress}
             variant="outlined"
             placeholder="Digite seu Address"
             sx={{ width: "30vw" }}
           />
+          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
         </Box>
-
         <Box>
           <Typography sx={{ marginBottom: 2 }}>Last Name</Typography>
           <TextField
             name="lastName"
-            required
+            type="text"
             onChange={handleLastName}
             variant="outlined"
             placeholder="Digite seu sobrenome"
             sx={{ width: "30vw" }}
           />
-
+          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>
             Phone Number(optional)
           </Typography>
 
           <TextField
             name="phone"
-            required
-            onChange={handlePhone}
+            onBlur={handleBlurPhone}
+            onChange={handlePhoneChange}
             variant="outlined"
             placeholder="Digite seu Phone"
             sx={{ width: "30vw" }}
           />
-
+          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>City</Typography>
           <TextField
             name="city"
-            required
+            type="text"
             onChange={handleCity}
             variant="outlined"
             placeholder="Digite sua cidade"
             sx={{ width: "30vw" }}
           />
-
+          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>
             Postal Code
           </Typography>
           <TextField
             name="code"
-            required
-            onChange={handleCode}
+            onBlur={handleBlurCode}
+            onChange={handleCodeChange}
             variant="outlined"
             placeholder="Digite seu Codigo postal"
             sx={{ width: "30vw" }}
           />
+          {error1 && <p style={{ border: "1px solid #e81010" }}>{error1}</p>}
         </Box>
       </Box>
       <Box
@@ -134,7 +197,6 @@ export const SettingsInput: React.FC = () => {
         <p>{city}</p>
         <p>{code}</p>
       </Box>
-      <button type="submit">submi</button>
     </FormControl>
   );
 };
