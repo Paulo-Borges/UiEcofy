@@ -12,15 +12,13 @@ export const SettingsInput: React.FC = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
   const [error1, setError1] = useState(null);
+  const [error2, setError2] = useState(null);
 
   const handleFirstName = (e) => setFirstName(e.target.value);
-  const handleEmail = (e) => setEmail(e.target.value);
   const handleCountry = (e) => setCountry(e.target.value);
   const handleAddress = (e) => setAddress(e.target.value);
   const handleLastName = (e) => setLastName(e.target.value);
-  const handlePhone = (e) => setPhone(e.target.value);
   const handleCity = (e) => setCity(e.target.value);
-  const handleCode = (e) => setCode(e.target.value);
 
   console.log(firstName, email, country, address, lastName, phone, city, code);
 
@@ -29,6 +27,19 @@ export const SettingsInput: React.FC = () => {
   // const isCountryValid = country.trim().length > 3 && country !== "";
   // const isAddressValid = address.trim().length > 3 && address !== "";
   // const isLastNameValid = lastName.trim().length > 3 && lastName !== "";
+
+  function isEmailValid(value) {
+    if (value.length === 0) {
+      setError2("Preencha um valor");
+      return false;
+    } else if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(value)) {
+      setError2("Preencha um email válido");
+      return false;
+    } else {
+      setError2(null);
+      return true;
+    }
+  }
 
   function isPhoneValid(value) {
     if (value.length === 0) {
@@ -63,12 +74,18 @@ export const SettingsInput: React.FC = () => {
   function handleBlurPhone({ target }) {
     isPhoneValid(target.value);
   }
+  function handleBlurEmail({ target }) {
+    isEmailValid(target.value);
+  }
 
   function handlePhoneChange({ target }) {
     if (error) isPhoneValid(target.value);
   }
   function handleCodeChange({ target }) {
     if (error1) isCodeValid(target.value);
+  }
+  function handleEmailChange({ target }) {
+    if (error2) isEmailValid(target.value);
   }
 
   function handleSubmit(e) {
@@ -102,12 +119,13 @@ export const SettingsInput: React.FC = () => {
           <TextField
             name="email"
             type="email"
-            onChange={handleEmail}
+            onBlur={handleBlurEmail}
+            onChange={handleEmailChange}
             variant="outlined"
             placeholder="Digite seu email"
             sx={{ width: "30vw" }}
           />
-          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
+          {error2 && <p style={{ border: "1px solid #e81010" }}>{error2}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>
             Country or Region
           </Typography>
