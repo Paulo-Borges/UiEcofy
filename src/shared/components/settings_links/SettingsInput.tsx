@@ -13,6 +13,7 @@ export const SettingsInput: React.FC = () => {
   const [error, setError] = useState(null);
   const [error1, setError1] = useState(null);
   const [error2, setError2] = useState(null);
+  const [error3, setError3] = useState(null);
 
   const handleFirstName = (e) => setFirstName(e.target.value);
   const handleCountry = (e) => setCountry(e.target.value);
@@ -22,11 +23,20 @@ export const SettingsInput: React.FC = () => {
 
   console.log(firstName, email, country, address, lastName, phone, city, code);
 
-  // const isFirstValid = firstName.trim().length > 3 && firstName !== "";
   // const isEmailValid = email.trim().length > 5 && email.includes("@");
   // const isCountryValid = country.trim().length > 3 && country !== "";
   // const isAddressValid = address.trim().length > 3 && address !== "";
   // const isLastNameValid = lastName.trim().length > 3 && lastName !== "";
+
+  function isFirstValid(value) {
+    if (value.length === 0) {
+      setError3("Preencha um valor");
+      return false;
+    } else {
+      setError3(null);
+      return true;
+    }
+  }
 
   function isEmailValid(value) {
     if (value.length === 0) {
@@ -67,6 +77,10 @@ export const SettingsInput: React.FC = () => {
     }
   }
 
+  function handleBlurFirst({ target }) {
+    isFirstValid(target.value);
+  }
+
   function handleBlurCode({ target }) {
     isCodeValid(target.value);
   }
@@ -86,6 +100,9 @@ export const SettingsInput: React.FC = () => {
   }
   function handleEmailChange({ target }) {
     if (error2) isEmailValid(target.value);
+  }
+  function handleFirstChange({ target }) {
+    if (error3) isFirstValid(target.value);
   }
 
   function handleSubmit(e) {
@@ -109,12 +126,13 @@ export const SettingsInput: React.FC = () => {
           <TextField
             name="firstName"
             type="text"
-            onChange={handleFirstName}
+            onBlur={handleBlurFirst}
+            onChange={handleFirstChange}
             variant="outlined"
             placeholder="Digite seu nome"
             sx={{ width: "30vw" }}
           />
-          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
+          {error3 && <p style={{ border: "1px solid #e81010" }}>{error3}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>Email</Typography>
           <TextField
             name="email"
@@ -137,7 +155,6 @@ export const SettingsInput: React.FC = () => {
             placeholder="Digite sua região"
             sx={{ width: "30vw" }}
           />
-          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>
             Address
           </Typography>
@@ -149,7 +166,6 @@ export const SettingsInput: React.FC = () => {
             placeholder="Digite seu Address"
             sx={{ width: "30vw" }}
           />
-          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
         </Box>
         <Box>
           <Typography sx={{ marginBottom: 2 }}>Last Name</Typography>
@@ -161,7 +177,6 @@ export const SettingsInput: React.FC = () => {
             placeholder="Digite seu sobrenome"
             sx={{ width: "30vw" }}
           />
-          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>
             Phone Number(optional)
           </Typography>
@@ -184,7 +199,6 @@ export const SettingsInput: React.FC = () => {
             placeholder="Digite sua cidade"
             sx={{ width: "30vw" }}
           />
-          {error && <p style={{ border: "1px solid #e81010" }}>{error}</p>}
           <Typography sx={{ marginBottom: 2, marginTop: 2 }}>
             Postal Code
           </Typography>
