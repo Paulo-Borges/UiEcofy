@@ -23,10 +23,10 @@ export const SettingsInput: React.FC = () => {
 
   console.log(firstName, email, country, address, lastName, phone, city, code);
 
-  // const isEmailValid = email.trim().length > 5 && email.includes("@");
-  // const isCountryValid = country.trim().length > 3 && country !== "";
-  // const isAddressValid = address.trim().length > 3 && address !== "";
-  // const isLastNameValid = lastName.trim().length > 3 && lastName !== "";
+  // // Aplicando a máscara
+  //   const celular = "21964457368";
+  // const formatado = celular.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+  // console.log(formatado); // Resultado: (21) 96445-7368
 
   function isFirstValid(value) {
     if (value.length === 0) {
@@ -115,8 +115,6 @@ export const SettingsInput: React.FC = () => {
       console.log("Não Enviar");
     }
   }
-
-  // const isCityValid = city.trim().length > 3 && city !== "";
 
   return (
     <FormControl component="form" onSubmit={handleSubmit}>
@@ -212,22 +210,6 @@ export const SettingsInput: React.FC = () => {
           />
           {error1 && <p style={{ border: "1px solid #e81010" }}>{error1}</p>}
         </Box>
-      </Box>
-      <Box
-        display="flex"
-        gap={4}
-        paddingLeft={3}
-        color="#f68605"
-        sx={{ backgroundColor: "#f9f4f4" }}
-      >
-        <p>{firstName}</p>
-        <p>{email}</p>
-        <p>{country}</p>
-        <p>{address}</p>
-        <p>{lastName}</p>
-        <p>{phone}</p>
-        <p>{city}</p>
-        <p>{code}</p>
       </Box>
     </FormControl>
   );
