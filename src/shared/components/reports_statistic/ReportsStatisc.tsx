@@ -32,7 +32,7 @@ export const ReportsStatic = () => {
         flexDirection: { xs: "column", md: "row" },
       }}
     >
-      <Box sx={{ width: { lg: 700, xs: 385 } }}>
+      <Box sx={{ width: { lg: 600, xs: 385 } }}>
         <Box
           component="div"
           sx={{
