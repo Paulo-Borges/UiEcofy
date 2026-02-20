@@ -74,7 +74,7 @@ export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
 
   return (
     <Box sx={{ background: "#ffffff" }}>
-      <Box sx={{ display: "flex", padding: 3 }}>
+      <Box sx={{ display: "flex", padding: 3, gap: 1 }}>
         <Avatar
           alt="logo do Ecofy"
           src="../src/assets/Group.svg"

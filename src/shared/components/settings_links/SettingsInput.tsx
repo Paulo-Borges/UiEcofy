@@ -2,18 +2,18 @@ import { Box, FormControl, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
 export const SettingsInput: React.FC = () => {
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("");
-  const [address, setAddress] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [city, setCity] = useState("");
-  const [code, setCode] = useState("");
-  const [error, setError] = useState(null);
-  const [error1, setError1] = useState(null);
-  const [error2, setError2] = useState(null);
-  const [error3, setError3] = useState(null);
+  const [firstName, setFirstName] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
+  const [country, setCountry] = useState<string | null>(null);
+  const [address, setAddress] = useState<string | null>(null);
+  const [lastName, setLastName] = useState<string | null>(null);
+  const [phone, setPhone] = useState<string | null>(null);
+  const [city, setCity] = useState<string | null>(null);
+  const [code, setCode] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [error1, setError1] = useState<string | null>(null);
+  const [error2, setError2] = useState<string | null>(null);
+  const [error3, setError3] = useState<string | null>(null);
 
   const handleFirstName = (e) => setFirstName(e.target.value);
   const handleCountry = (e) => setCountry(e.target.value);
@@ -28,9 +28,9 @@ export const SettingsInput: React.FC = () => {
   // const formatado = celular.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
   // console.log(formatado); // Resultado: (21) 96445-7368
 
-  function isFirstValid(value) {
+  function isFirstValid(value: string): boolean {
     if (value.length === 0) {
-      setError3("Preencha um valor");
+      setError3("Preencha o nome");
       return false;
     } else {
       setError3(null);
@@ -38,9 +38,9 @@ export const SettingsInput: React.FC = () => {
     }
   }
 
-  function isEmailValid(value) {
+  function isEmailValid(value: string): boolean {
     if (value.length === 0) {
-      setError2("Preencha um valor");
+      setError2("Preencha um email");
       return false;
     } else if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(value)) {
       setError2("Preencha um email válido");
@@ -51,9 +51,9 @@ export const SettingsInput: React.FC = () => {
     }
   }
 
-  function isPhoneValid(value) {
+  function isPhoneValid(value: string): boolean {
     if (value.length === 0) {
-      setError("Preencha um valor");
+      setError("Preencha o número do celular");
       return false;
     } else if (!/^\d{2}\d{5}-\d{4}$/.test(value)) {
       setError("Preencha um celular válido");
@@ -64,7 +64,7 @@ export const SettingsInput: React.FC = () => {
     }
   }
 
-  function isCodeValid(value) {
+  function isCodeValid(value: string): boolean {
     if (value.length === 0) {
       setError1("Preencha os dados");
       return false;
@@ -77,42 +77,45 @@ export const SettingsInput: React.FC = () => {
     }
   }
 
-  function handleBlurFirst({ target }) {
+  function handleBlurFirst({ target }: React.FocusEvent<HTMLInputElement>) {
     isFirstValid(target.value);
   }
 
-  function handleBlurCode({ target }) {
+  function handleBlurCode({ target }: React.FocusEvent<HTMLInputElement>) {
     isCodeValid(target.value);
   }
 
-  function handleBlurPhone({ target }) {
+  function handleBlurPhone({ target }: React.FocusEvent<HTMLInputElement>) {
     isPhoneValid(target.value);
   }
-  function handleBlurEmail({ target }) {
+  function handleBlurEmail({ target }: React.FocusEvent<HTMLInputElement>) {
     isEmailValid(target.value);
   }
 
-  function handlePhoneChange({ target }) {
+  function handlePhoneChange({ target }: React.FocusEvent<HTMLInputElement>) {
     if (error) isPhoneValid(target.value);
   }
-  function handleCodeChange({ target }) {
+  function handleCodeChange({ target }: React.FocusEvent<HTMLInputElement>) {
     if (error1) isCodeValid(target.value);
   }
-  function handleEmailChange({ target }) {
+  function handleEmailChange({ target }: React.FocusEvent<HTMLInputElement>) {
     if (error2) isEmailValid(target.value);
   }
-  function handleFirstChange({ target }) {
+  function handleFirstChange({ target }: React.FocusEvent<HTMLInputElement>) {
     if (error3) isFirstValid(target.value);
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (isCodeValid(code)) {
-      console.log("Enviou");
-    } else if (isPhoneValid(phone)) {
-      console.log("Enviou");
+
+    const codeIsValid = isCodeValid(code);
+    const phoneIsValid = isPhoneValid(phone);
+
+    // Lógica: Só envia se AMBOS forem verdadeiros
+    if (codeIsValid && phoneIsValid) {
+      console.log("Enviou: Tudo certo!");
     } else {
-      console.log("Não Enviar");
+      console.log("Não Enviar: Existem erros no formulário.");
     }
   }
 
