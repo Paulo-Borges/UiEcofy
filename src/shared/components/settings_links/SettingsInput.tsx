@@ -75,25 +75,19 @@ export const SettingsInput: React.FC = () => {
     code: "",
   });
 
-  // const [response, setResponse] = useState(null);   /*mascara 1 */
   const [response, setResponse] = useState(false);
-  const [errors, setErrors] = useState<{ [key: string]: string }>(
-    {},
-  ); /*mascara 2*/
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   function handleChange({ target }: React.ChangeEvent<HTMLInputElement>) {
     const { id, value } = target;
-    let maskedValue = value; /*mascara 3*/
+    let maskedValue = value;
 
-    // Aplica a máscara baseada no ID do campo
-    if (id === "phone") maskedValue = masks.phone(value); /*mascara 4*/
-    if (id === "code") maskedValue = masks.code(value); /*mascara 4*/
-    if (id === "email") maskedValue = masks.email(value); /*mascara 4*/
+    if (id === "phone") maskedValue = masks.phone(value);
+    if (id === "code") maskedValue = masks.code(value);
+    if (id === "email") maskedValue = masks.email(value);
 
-    // setForm({ ...form, [id]: value });   /*mascara 5*/
     setForm({ ...form, [id]: maskedValue });
 
-    // Limpa o erro do campo quando o usuário volta a digitar
     if (errors[id]) {
       setErrors((prev) => ({ ...prev, [id]: "" }));
     }
@@ -105,13 +99,11 @@ export const SettingsInput: React.FC = () => {
 
     if (!form.firstName) newErrors.firstName = "Nome é obrigatório";
 
-    // Validação de Email (Regex padrão)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(form.email)) {
       newErrors.email = "E-mail inválido";
     }
 
-    // Validação de Telefone (verifica se tem o tamanho certo após máscara)
     if (form.phone.length < 14) {
       newErrors.phone = "Telefone incompleto";
     }
@@ -122,13 +114,7 @@ export const SettingsInput: React.FC = () => {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    // setResponse(true);
-    setResponse(false); /*mascara 7*/
-
-    // localStorage.setItem("@MeuApp:nome", form.firstName);   /*mascara 8*/
-    // localStorage.setItem("@MeuApp:email", form.email);      /*mascara 8*/
-    // localStorage.setItem("@MeuApp:city", form.city);        /*mascara 8*/
-    // localStorage.setItem("@MeuApp:phone", form.phone);       /*mascara 8*/
+    setResponse(false);
 
     if (validate()) {
       localStorage.setItem("@MeuApp:dados", JSON.stringify(form));
@@ -136,20 +122,20 @@ export const SettingsInput: React.FC = () => {
       console.log("Sucesso!", form);
     }
   }
-  console.log("Formulário enviado com sucesso:", form);
+  // console.log("Formulário enviado com sucesso:", form);
 
   return (
-    <FormControl component="form" onSubmit={handleSubmit}>
-      <Box
-        display="flex"
-        flexWrap="wrap"
-        gap={2}
-        justifyContent="space-between"
-        width="100%"
-      >
+    <FormControl
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ width: "100%", padding: 2 }}
+    >
+      <Box display="flex" flexWrap="wrap" gap={3}>
         {formFields.map(({ id, label, type }) => (
-          <Box>
-            <Typography sx={{ marginBottom: 2 }}>{label}</Typography>
+          <Box key={id} sx={{ width: { xs: "100%", sm: "48%" } }}>
+            <Typography sx={{ marginBottom: 1, fontWeight: 500 }}>
+              {label}
+            </Typography>
             <TextField
               name={label}
               type={type}
@@ -166,9 +152,16 @@ export const SettingsInput: React.FC = () => {
         ))}
       </Box>
       {response && (
-        <p style={{ color: "#e90f0f" }}>Dados enviados pro localStorage</p>
+        <Typography sx={{ width: { xs: "100%", sm: "48%", color: "#13db31" } }}>
+          Dados enviados pro localStorage
+        </Typography>
       )}
-      <button>Enviar</button>
+      <button
+        type="submit"
+        style={{ marginTop: "20px", padding: "10px 20px", cursor: "pointer" }}
+      >
+        Enviar
+      </button>
     </FormControl>
   );
 };
