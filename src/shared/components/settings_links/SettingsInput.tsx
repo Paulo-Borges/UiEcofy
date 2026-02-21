@@ -58,23 +58,31 @@ export const SettingsInput: React.FC = () => {
 
   const [response, setResponse] = useState(null);
 
-  function handleChange({ target }: React.FocusEvent<HTMLInputElement>) {
+  function handleChange({ target }: React.ChangeEvent<HTMLInputElement>) {
     const { id, value } = target;
     setForm({ ...form, [id]: value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("https://ranekapi.origamid.dev/json/api/usuario", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    }).then((response) => {
-      setResponse(response);
-    });
+
+    localStorage.setItem("@MeuApp:nome", form.firstName);
+    localStorage.setItem("@MeuApp:email", form.email);
+    localStorage.setItem("@MeuApp:city", form.city);
+    localStorage.setItem("@MeuApp:phone", form.phone);
+    setResponse(true);
+
+    // fetch("https://ranekapi.origamid.dev/json/api/usuario", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(form),
+    // }).then((response) => {
+    //   setResponse(response);
+    // });
   }
+  console.log("Estado atual do Formulário:", form);
 
   return (
     <FormControl component="form" onSubmit={handleSubmit}>
