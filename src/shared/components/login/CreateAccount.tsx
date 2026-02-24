@@ -1,332 +1,204 @@
 import {
   Avatar,
   Box,
-  Divider,
-  InputBase,
-  InputLabel,
+  Button,
+  Checkbox,
+  Container,
+  FormControlLabel,
   Link,
-  Link as MuiLink,
+  TextField,
   Typography,
+  Divider,
 } from "@mui/material";
-import { useCallback, useState } from "react";
-
-// import { useUsuarioLogado } from "../shared/hooks";
+import { useState, useCallback } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GoogleIcon from "@mui/icons-material/Google";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState(""); /*teste pegar nome 1 */
-  const [nome, setNome] = useState(""); /*teste pegar nome 1 */
-  const [isMoved, setIsMoved] = useState(true);
-  const [isNone, setIsNone] = useState(true);
-
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    username: "",
+  });
+  const [agreeTerms, setAgreeTerms] = useState(false);
   const navigate = useNavigate();
 
-  const handleSing = () => {
-    setIsMoved(!isMoved);
-  };
-
-  const handleCheck = () => {
-    setIsNone(!isNone);
-  };
-
-  const handleCreate = () => {
-    if (fullName && email && nome) {
-      // Lógica de salvar...
-      onSuccess(); // Vai para a tela de sucesso
-    } else {
-      alert("Preencha todos os campos");
-    }
+  // Atualização genérica de campos
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleEntrar = useCallback(
-    (e) => {
+    (e: React.FormEvent) => {
       e.preventDefault();
-      const isEmailValid = email.trim().length > 2 && email.includes("@");
-      const isFullNameValid = fullName.trim().length > 2 && fullName !== "";
-      const isNomeValid = nome.trim().length >= 6 && nome !== "";
+      const { email, fullName, username } = formData;
 
-      if (isEmailValid && isFullNameValid && isNomeValid) {
+      const isEmailValid = email.includes("@") && email.length > 5;
+      const isFullValid = fullName.trim().length > 2;
+
+      if (isEmailValid && isFullValid && agreeTerms) {
         localStorage.setItem("@MeuApp:usuario", email);
-        localStorage.setItem("@MeuApp:pessoaFull", fullName);
-        localStorage.setItem("@MeuApp:pessoa", nome);
-
-        // Navega para a home apenas se tudo estiver ok
+        localStorage.setItem("@MeuApp:pessoa", username);
         navigate("/");
       } else {
-        // Alerta específico baseado no que falta
-        if (!isEmailValid && !isFullNameValid) {
-          alert("Por favor, preencha o e-mail ou o nome corretamente.");
-        } else if (!isEmailValid) {
-          alert("Introduza um e-mail válido!");
-        } else {
-          alert("Introduza um nome válido!");
-        }
+        alert("Verifique os dados e aceite os termos.");
       }
     },
-    [email, fullName, nome, navigate],
+    [formData, agreeTerms, navigate],
   );
 
   return (
-    <Box sx={{ background: "#ffffff" }}>
-      <Box sx={{ display: "flex", padding: 3, gap: 1 }}>
-        <Avatar
-          alt="logo do Ecofy"
-          src="../src/assets/Group.svg"
-          variant="square"
-          sx={{ width: 30, height: 30 }}
-        ></Avatar>
-        <Typography sx={{ fontWeight: "bold", fontSize: 24 }}>ECOFY</Typography>
-      </Box>
+    <Container maxWidth="sm">
       <Box
-        component="form"
         sx={{
+          mt: 4,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "start",
-          background: "#ffffff",
-          paddingLeft: 20,
-          width: "100%",
-          height: "100%",
-          marginTop: 2,
+          alignItems: "center",
         }}
       >
+        {/* Header/Logo */}
         <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "start",
-            marginBottom: 2,
-          }}
-        >
-          <Typography
-            sx={{ fontWeight: "bold", fontSize: 30, marginBottom: 2 }}
-          >
-            Create account
-          </Typography>
-          <Typography sx={{ fontWeight: 100, fontSize: 13, marginBottom: 2 }}>
-            Start your 30-day free trial. Cancel anytime.
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            backgroundColor: "#dadada",
-            paddingX: 6,
-            paddingY: 1,
-            borderRadius: 12,
-          }}
-        >
-          <Box
-            onClick={() => {}}
-            sx={{
-              backgroundColor: "#ffffff",
-              paddingX: 14,
-              paddingY: 1,
-              borderRadius: 12,
-              cursor: "pointer",
-              transform: isMoved ? "translateX(210px)" : "translateX(0)",
-            }}
-          >
-            <Typography sx={{ fontSize: 13 }}>Sign in</Typography>
-          </Box>
-          <Box
-            // onClick={onSwitchTab}
-            sx={{
-              paddingX: 8,
-              paddingY: 1,
-              borderRadius: 12,
-              cursor: "pointer",
-              transform: isMoved ? "translateX(-300px)" : "translateX(0)",
-            }}
-          >
-            <Typography sx={{ fontSize: 13 }}>Sign Up</Typography>
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 3,
-            marginBottom: 3,
-            marginTop: 3,
-          }}
-        >
-          <Box>
-            <InputLabel sx={{ marginBottom: 1 }}>Full name</InputLabel>
-
-            <InputBase
-              type="text"
-              value={fullName}
-              name={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              sx={{
-                border: "1px solid #ccc",
-                padding: 0.5,
-                paddingX: 22,
-                borderRadius: 8,
-                width: "100%",
-              }}
-            />
-          </Box>
-
-          <Box>
-            <InputLabel sx={{ marginBottom: 1 }}>Email</InputLabel>
-            <InputBase
-              type="text"
-              value={email}
-              name={email}
-              onChange={(e) => setEmail(e.target.value)}
-              sx={{
-                border: "1px solid #ccc",
-                padding: 0.5,
-                paddingX: 18,
-                borderRadius: 8,
-                width: "100%",
-              }}
-            />
-          </Box>
-
-          <Box>
-            <InputLabel sx={{ marginBottom: 1 }}>Nome</InputLabel>
-            <InputBase
-              type="text"
-              value={nome}
-              name={nome}
-              onChange={(e) => setNome(e.target.value)}
-              sx={{
-                border: "1px solid #ccc",
-                padding: 0.5,
-                paddingX: 18,
-                borderRadius: 8,
-                width: "100%",
-              }}
-            />
-          </Box>
-        </Box>
-        <Box sx={{ display: "flex", gap: 13, marginBottom: 4 }}>
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <CheckBoxIcon
-              opacity={isNone ? 0 : 1}
-              sx={{
-                transform: !isNone ? "translateX(30px)" : "translateX(0)",
-              }}
-            />
-            <CheckBoxOutlineBlankIcon
-              cursor="pointer"
-              onClick={handleCheck}
-              sx={{ opacity: isNone ? "none" : 0 }}
-            />
-            <Typography sx={{ display: "flex", gap: 6 }}>
-              By proceeding, you agree to the
-              <Box>
-                <Typography sx={{ color: "#f68605" }}>
-                  Terms and Conditions
-                </Typography>
-              </Box>
-            </Typography>
-          </Box>
-        </Box>
-
-        <Box
-          component="button"
-          onClick={handleEntrar}
-          // onClick={handleCreate}
-          sx={{
-            display: "flex",
-            backgroundColor: "#dadada",
-            paddingX: 26,
-            paddingY: 1,
-            borderRadius: 12,
-            marginBottom: 4,
-            cursor: "pointer",
-          }}
-        >
-          <Typography sx={{ color: "#ffffff" }}>Create Account</Typography>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 4,
-          }}
-        >
-          <Divider />
-          <Typography
-            sx={{
-              marginBottom: 2,
-              paddingLeft: 30,
-            }}
-          >
-            <Link
-              component="button" // Faz o link se comportar como botão para não recarregar a página
-              variant="body2"
-              onClick={(e: any) => {
-                e.preventDefault();
-                onBackToLogin(); // Chama a função que troca a aba para 'login'
-              }}
-              sx={{ cursor: "pointer", fontWeight: "bold" }}
-            >
-              Or
-            </Link>
-          </Typography>
-        </Box>
-        <Box
-          component="button"
           sx={{
             display: "flex",
             alignItems: "center",
             gap: 1,
-            backgroundColor: "transparent",
-            paddingX: 23,
-            paddingY: 1,
-            borderRadius: 12,
-            marginBottom: 22,
-            cursor: "pointer",
+            mb: 4,
+            alignSelf: "flex-start",
           }}
         >
-          <GoogleIcon fontSize="small" />
-          <Link
-            href="https://www.google.com"
-            target="_blank"
-            rel="noreferrer"
-            underline="hover"
-          >
-            Sign in With Google
-          </Link>
+          <Avatar
+            src="/src/assets/Group.svg"
+            variant="square"
+            sx={{ width: 32, height: 32 }}
+          />
+          <Typography variant="h6" fontWeight="bold">
+            ECOFY
+          </Typography>
         </Box>
-        <Box sx={{ display: "flex", gap: 33 }}>
-          <Box sx={{ color: "#666d80" }}>©2025 Ecarto. All right reserved.</Box>
+
+        <Box sx={{ width: "100%" }}>
+          <Typography variant="h4" fontWeight="bold" gutterBottom>
+            Create account
+          </Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+            Start your 30-day free trial. Cancel anytime.
+          </Typography>
+
+          {/* Formulário */}
           <Box
-            sx={{
-              color: "#666d80",
-              display: "flex",
-              alignItems: "center",
-              cursor: "pointer",
-            }}
+            component="form"
+            onSubmit={handleEntrar}
+            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
           >
+            <TextField
+              label="Full Name"
+              name="fullName"
+              fullWidth
+              variant="outlined"
+              value={formData.fullName}
+              onChange={handleChange}
+            />
+            <TextField
+              label="Email"
+              name="email"
+              type="email"
+              fullWidth
+              variant="outlined"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <TextField
+              label="Username"
+              name="username"
+              fullWidth
+              variant="outlined"
+              value={formData.username}
+              onChange={handleChange}
+            />
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={agreeTerms}
+                  onChange={(e) => setAgreeTerms(e.target.checked)}
+                  color="primary"
+                />
+              }
+              label={
+                <Typography variant="body2">
+                  By proceeding, you agree to the{" "}
+                  <Link href="#" underline="hover" sx={{ color: "#f68605" }}>
+                    Terms and Conditions
+                  </Link>
+                </Typography>
+              }
+            />
+
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              sx={{
+                py: 1.5,
+                borderRadius: 2,
+                mt: 2,
+                backgroundColor: "#dadada",
+                color: "#000",
+                "&:hover": { backgroundColor: "#ccc" },
+              }}
+            >
+              Create Account
+            </Button>
+
+            <Divider sx={{ my: 2 }}>OR</Divider>
+
+            <Button
+              variant="outlined"
+              fullWidth
+              startIcon={<GoogleIcon />}
+              href="https://google.com"
+              sx={{ py: 1.5, borderRadius: 2 }}
+            >
+              Sign in with Google
+            </Button>
+
+            <Button
+              onClick={onBackToLogin}
+              sx={{ mt: 1, textTransform: "none" }}
+            >
+              Already have an account? Sign in
+            </Button>
+          </Box>
+        </Box>
+
+        {/* Footer */}
+        <Box
+          sx={{
+            mt: 8,
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+            color: "text.secondary",
+          }}
+        >
+          <Typography variant="caption">
+            ©2025 Ecarto. All rights reserved.
+          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
             <HelpOutlineIcon fontSize="small" />
-            <MuiLink
+            <Link
               component={RouterLink}
               to="/help"
-              underline="hover"
-              color="#666d80"
+              variant="caption"
+              color="inherit"
             >
               Get help
-            </MuiLink>
+            </Link>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Container>
   );
 };

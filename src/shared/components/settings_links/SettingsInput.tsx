@@ -93,7 +93,6 @@ export const SettingsInput: React.FC = () => {
     }
   }
 
-  // --- LÓGICA DE VALIDAÇÃO ---  /*mascara 6*/
   function validate() {
     const newErrors: { [key: string]: string } = {};
 
@@ -122,7 +121,6 @@ export const SettingsInput: React.FC = () => {
       console.log("Sucesso!", form);
     }
   }
-  // console.log("Formulário enviado com sucesso:", form);
 
   return (
     <FormControl
