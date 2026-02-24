@@ -15,7 +15,7 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import GoogleIcon from "@mui/icons-material/Google";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
-export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
+export const CreateAccount = ({ onBackToLogin }: any) => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -36,10 +36,12 @@ export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
 
       const isEmailValid = email.includes("@") && email.length > 5;
       const isFullValid = fullName.trim().length > 2;
+      const isUserValid = username.trim().length > 2;
 
-      if (isEmailValid && isFullValid && agreeTerms) {
+      if (isEmailValid && isFullValid && isUserValid && agreeTerms) {
         localStorage.setItem("@MeuApp:usuario", email);
         localStorage.setItem("@MeuApp:pessoa", username);
+        localStorage.setItem("@MeuApp", fullName);
         navigate("/");
       } else {
         alert("Verifique os dados e aceite os termos.");
@@ -58,7 +60,6 @@ export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
           alignItems: "center",
         }}
       >
-        {/* Header/Logo */}
         <Box
           sx={{
             display: "flex",
@@ -86,7 +87,6 @@ export const CreateAccount = ({ onBackToLogin, onSuccess }: any) => {
             Start your 30-day free trial. Cancel anytime.
           </Typography>
 
-          {/* Formulário */}
           <Box
             component="form"
             onSubmit={handleEntrar}

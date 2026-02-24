@@ -126,9 +126,9 @@ export const SettingsInput: React.FC = () => {
     <FormControl
       component="form"
       onSubmit={handleSubmit}
-      sx={{ width: "100%", padding: 2 }}
+      sx={{ width: "100%" }}
     >
-      <Box display="flex" flexWrap="wrap" gap={3}>
+      <Box display="flex" flexWrap="wrap" gap={5}>
         {formFields.map(({ id, label, type }) => (
           <Box key={id} sx={{ width: { xs: "100%", sm: "48%" } }}>
             <Typography sx={{ marginBottom: 1, fontWeight: 500 }}>
@@ -156,9 +156,16 @@ export const SettingsInput: React.FC = () => {
       )}
       <button
         type="submit"
-        style={{ marginTop: "20px", padding: "10px 20px", cursor: "pointer" }}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 14,
+          marginTop: "20px",
+          cursor: "pointer",
+        }}
       >
-        Enviar
+        <Typography sx={{ fontWeight: 500 }}>Enviar</Typography>
       </button>
     </FormControl>
   );
