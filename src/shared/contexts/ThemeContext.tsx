@@ -8,7 +8,7 @@ import {
 import { ThemeProvider } from "@emotion/react";
 import { DarkTheme } from "./../themes";
 import { LightTheme } from "./../themes";
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 
 interface IThemeContextData {
   themeName: "light" | "dark";
@@ -19,7 +19,7 @@ interface IAppThemeProviderProps {
   children: React.ReactNode;
 }
 
-const ThemeContext = createContext({} as IThemeContextData);
+export const ThemeContext = createContext({} as IThemeContextData);
 
 export const useAppThemeContext = () => {
   return useContext(ThemeContext);

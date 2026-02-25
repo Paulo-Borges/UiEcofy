@@ -74,7 +74,7 @@ export const SettingsTaxesForm: React.FC = () => {
   }
 
   return (
-    <Box paddingBottom={3} marginTop={3}>
+    <Box paddingBottom={3} marginTop={3} onSubmit={handleSubmit}>
       <Typography sx={{ fontWeight: 500, fontSize: 18, marginBottom: 1 }}>
         Tax Form Review
       </Typography>
@@ -83,11 +83,7 @@ export const SettingsTaxesForm: React.FC = () => {
         you're unsure where you have a tax obligation.
       </Typography>
 
-      <FormControl
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{ width: "100%" }}
-      >
+      <FormControl component="form" sx={{ width: "100%" }}>
         <Box
           sx={{
             display: "flex",
