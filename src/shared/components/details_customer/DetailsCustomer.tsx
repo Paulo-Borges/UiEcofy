@@ -12,6 +12,41 @@ import { useParams } from "react-router-dom";
 import { rows } from "../customer_table/CustomerTable"; // Importe os dados centralizados
 import { DetailsHistory } from "./DetailsHistory";
 
+const customerFields = [
+  {
+    src: "../../../src/assets/CustomerUser.png",
+    label: "Account ID",
+    id: "124",
+  },
+  {
+    src: "../../../src/assets/CustomerIcon Badge.png",
+    label: "Email",
+    id: "27",
+  },
+  {
+    src: "../../../src/assets/CustomerIconBadge.png",
+    label: "Phone Number",
+    id: "7850548877",
+  },
+
+  {
+    src: "../../../src/assets/CustomerIcon1Badge.png",
+    label: "Shipping Address",
+    id: "U2186 Joice Street",
+  },
+
+  {
+    src: "../../../src/assets/CustomerIcon2Badge.png",
+    label: "Join Date",
+    id: "29 Dec 2022",
+  },
+  {
+    src: "../../../src/assets/CustomerIcon3Badge.png",
+    label: "Last Transaction",
+    id: "121 minute",
+  },
+];
+
 export const DetailsCustomer = () => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
@@ -92,76 +127,26 @@ export const DetailsCustomer = () => {
           >
             Customer Details
           </Typography>
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <Avatar
-              src="../../../src/assets/CustomerUser.png"
-              variant="rounded"
-              sx={{ width: 20, height: 20, bgcolor: "#000", borderRadius: 28 }}
-            />
-            <Box>
-              <Typography variant="caption">Account ID</Typography>
-              <Typography variant="body2">{customer.orders}</Typography>
-            </Box>
-          </Box>
 
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <Avatar
-              src="../../../src/assets/CustomerIcon Badge.png"
-              variant="rounded"
-              sx={{ width: 20, height: 20, bgcolor: "#000", borderRadius: 28 }}
-            />
-            <Box>
-              <Typography variant="caption">Email</Typography>
-              <Typography variant="body2">{customer.customerName}</Typography>
-            </Box>
-          </Box>
-
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <Avatar
-              src="../../../src/assets/CustomerIconBadge.png"
-              variant="rounded"
-              sx={{ width: 20, height: 20, bgcolor: "#000", borderRadius: 28 }}
-            />
-            <Box>
-              <Typography variant="caption">Phone Number</Typography>
-              <Typography variant="body2">{customer.phone}</Typography>
-            </Box>
-          </Box>
-
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <Avatar
-              src="../../../src/assets/CustomerIcon1Badge.png"
-              variant="rounded"
-              sx={{ width: 20, height: 20, bgcolor: "#000", borderRadius: 28 }}
-            />
-            <Box>
-              <Typography variant="caption">Shipping Address</Typography>
-              <Typography variant="body2">U2186 Joice Street</Typography>
-            </Box>
-          </Box>
-
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <Avatar
-              src="../../../src/assets/CustomerIcon2Badge.png"
-              variant="rounded"
-              sx={{ width: 20, height: 20, bgcolor: "#000", borderRadius: 28 }}
-            />
-            <Box>
-              <Typography variant="caption">Join Date</Typography>
-              <Typography variant="body2">{customer.added}</Typography>
-            </Box>
-          </Box>
-
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <Avatar
-              src="../../../src/assets/CustomerIcon3Badge.png"
-              variant="rounded"
-              sx={{ width: 20, height: 20, bgcolor: "#000", borderRadius: 28 }}
-            />
-            <Box>
-              <Typography variant="caption">Last Transaction</Typography>
-              <Typography variant="body2">{customer.balance} minute</Typography>
-            </Box>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            {customerFields.map((field) => (
+              <Box key={field.label}>
+                <Avatar
+                  src={field.src}
+                  variant="rounded"
+                  sx={{
+                    width: 20,
+                    height: 20,
+                    bgcolor: "#000",
+                    borderRadius: 28,
+                  }}
+                />
+                <Box>
+                  <Typography variant="caption">{field.label}</Typography>
+                  <Typography variant="body2">{field.id}</Typography>
+                </Box>
+              </Box>
+            ))}
           </Box>
         </Box>
       </Paper>
