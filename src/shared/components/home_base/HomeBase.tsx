@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import HoraExata from "../hora_exact/HoraExata";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import { useMemo } from "react";
 
 interface IHomeBaseProps {
   titulo: string;
@@ -16,6 +17,15 @@ interface IHomeBaseProps {
 export const HomeBase: React.FC<IHomeBaseProps> = ({ titulo }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down("md"));
+
+  // Gera a data formatada dinamicamente
+  const dataFormatada = useMemo(() => {
+    return new Date().toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  }, []);
 
   return (
     <Box width={theme.spacing("auto")} padding={4}>
@@ -53,7 +63,7 @@ export const HomeBase: React.FC<IHomeBaseProps> = ({ titulo }) => {
             <IconButton sx={{ color: "#545454" }}>
               <CalendarMonthIcon />
             </IconButton>
-            23 march 2026, <HoraExata />
+            {dataFormatada}, <HoraExata />
           </Typography>
         </Box>
       </Stack>
