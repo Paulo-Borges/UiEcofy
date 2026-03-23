@@ -20,7 +20,7 @@ export const HomeBase: React.FC<IHomeBaseProps> = ({ titulo }) => {
 
   // Gera a data formatada dinamicamente
   const dataFormatada = useMemo(() => {
-    return new Date().toLocaleDateString("en-US", {
+    return new Date().toLocaleDateString("pt-BR", {
       day: "numeric",
       month: "long",
       year: "numeric",
